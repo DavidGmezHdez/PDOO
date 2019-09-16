@@ -3,12 +3,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Dado {
-    static final private Dado instance = new Dado();
     
+    static final private Dado instance = new Dado();
     private Random random;
     private int ultimoResultado;
     private boolean debug;
     private static int SalidaCarcel;
+    
     private int valor;
     private boolean salir = false;
     private int primerJugador;
