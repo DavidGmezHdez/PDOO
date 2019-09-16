@@ -10,6 +10,8 @@ public class Tablero {
     Tablero(int numero){
         if(numero>=1)
             numCasillaCarcel = numero;
+        else
+            numCasillaCarcel = 1;
         
         casillas = new ArrayList<>(); 
         Casilla Salida = new Casilla("Salida");
@@ -24,7 +26,7 @@ public class Tablero {
     }
 
     private boolean correcto(int numCasilla){
-        return correcto() && (numCasilla >=0 || numCasilla<= casillas.size());
+        return correcto() && (numCasilla >=0 && numCasilla<= casillas.size());
     }
     
     int getCarcel(){
@@ -36,7 +38,13 @@ public class Tablero {
     }
     
     void añadeCasilla(Casilla casilla){
-        
+        Casilla carcel = new Casilla("Carcel");
+        if(casillas.size() == numCasillaCarcel){           
+            casillas.add(carcel);
+            casillas.add(casilla);
+        }
+        else
+            casillas.add(casilla);
     }
 
     void añadeJuez(){
@@ -45,6 +53,13 @@ public class Tablero {
             casillas.add(Juez);
         
         tieneJuez = true;
+    }
+    
+    Casilla getCasilla(int numCasilla){
+        if(numCasilla >= 0 && numCasilla <= casillas.size())
+            return casillas.get(numCasilla);
+        else
+            return null;
     }
     
     int nuevaPosicion(int actual, int tirada){
