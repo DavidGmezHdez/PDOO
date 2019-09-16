@@ -41,10 +41,9 @@ public class Tablero {
         Casilla carcel = new Casilla("Carcel");
         if(casillas.size() == numCasillaCarcel){           
             casillas.add(carcel);
-            casillas.add(casilla);
         }
-        else
-            casillas.add(casilla);
+        
+        casillas.add(casilla);
     }
 
     void añadeJuez(){
