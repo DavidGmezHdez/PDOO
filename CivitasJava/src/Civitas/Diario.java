@@ -1,7 +1,4 @@
-package civitas;
-
-
-
+package Civitas;
 import java.util.ArrayList;
 
 public class Diario {
