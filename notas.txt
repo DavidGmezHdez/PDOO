@@ -1,0 +1,6 @@
+Acutalizar: git pull --all
+SUbir: git add --all
+	git commit
+	Escribir qué has ehcho ctrl O enter ctrl x enter
+	git push --all
+	
