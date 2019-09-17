@@ -1,4 +1,5 @@
 # encoding:utf-8
+module Civitas
 class Tablero
   def initialize(numero)
     @casillas = Array.new
@@ -20,6 +21,16 @@ class Tablero
   
   def correcto(num_casilla)
     return correcto && (num_casilla>=0 &&num_casilla<=20) 
+  end
+  
+  def get_por_salida
+    por_salida_anterior = @por_salida
+    if @por_salida == 0
+      @por_salida = @por_salida - 1
+      return por_salida_anterior
+    else
+      return @por_salida
+    end
   end
   
   def añade_casilla(casilla)
@@ -49,7 +60,5 @@ class Tablero
     
   end
   
-  
-  
-  
+end
 end

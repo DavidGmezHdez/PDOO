@@ -34,7 +34,13 @@ public class Tablero {
     }
     
     int getPorSalida(){
-        return porSalida;
+        int porSalidaAnterior = porSalida;
+        if(porSalida >0){
+            porSalida--;
+            return porSalida;
+        }
+        else
+            return porSalida;
     }
     
     void añadeCasilla(Casilla casilla){
