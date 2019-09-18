@@ -1,9 +1,11 @@
 # encoding:utf-8
+require_relative 'casilla'
 module Civitas
 class Tablero
   def initialize(numero)
     @casillas = Array.new
-    @casillas << Casilla.new("salida")
+    salida = Casilla.new("salida")
+    @casillas << salida
     if numero >= 1
       @num_casilla_carcel = numero
     else
