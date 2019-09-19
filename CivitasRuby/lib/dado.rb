@@ -1,5 +1,6 @@
 # encoding:utf-8
 require 'singleton'
+
 module Civitas
   class Dado
     include Singleton
@@ -12,7 +13,7 @@ module Civitas
     end
     
       
-      
+    
     def tirar
       if(!@debug)
         @ultimo_resultado = rand(6)+1
@@ -38,14 +39,13 @@ module Civitas
     
     
     def quien_empieza (n)
-      @primer_jugador = 0
       @primer_jugador = rand(n-1)+1
+      
       return @primer_jugador
     end
     
     
-    attr_writer :debug
-    attr_reader :ultimo_resultado
+    attr_accessor :ultimo_resultado, :primer_jugador, :debug
     
   end
 end

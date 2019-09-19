@@ -1,6 +1,6 @@
 Subir: git add --all
 	git commit
-	Escribir qué has ehcho ctrl O enter ctrl x enter
+	Escribir qué has hecho ctrl O enter ctrl x enter
 	git pull --all
 	git push --all
 	
