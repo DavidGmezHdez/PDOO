@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Dado {
     
-    static final private Dado instance = new Dado();
+    private static final  Dado instance = new Dado();
     private Random random;
     private int ultimoResultado;
     private boolean debug;
@@ -54,6 +54,10 @@ public class Dado {
 
     public int getUltimoResultado() {
         return ultimoResultado;
+    }
+
+    public boolean isDebug() {
+        return debug;
     }
     
     
