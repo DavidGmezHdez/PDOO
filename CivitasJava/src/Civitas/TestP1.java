@@ -14,7 +14,7 @@ public class TestP1 {
         //Apartado 1
         
         for(int i=0; i<5; i++){
-            dado.quienEmpieza(i);
+            System.out.println("Debug: " + dado.isDebug());
         }
         
         

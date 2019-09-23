@@ -5,14 +5,13 @@ import java.util.Random;
 public class Dado {
     
     private static final  Dado instance = new Dado();
-    private Random random;
     private int ultimoResultado;
     private boolean debug;
     private static int SalidaCarcel;
     
     private int valor;
     private boolean salir = false;
-    private int primerJugador;
+    
 
     static public Dado getInstance() {
         return instance;
@@ -20,14 +19,14 @@ public class Dado {
     
     private Dado() {
         SalidaCarcel = 5;
-        random = new Random();
         debug = false;
         ultimoResultado = 1;
     }
     
     int tirar() {
+        Random rand = new Random();
         if (!debug)
-            ultimoResultado = random.nextInt(6)+1;
+            ultimoResultado = rand.nextInt(6)+1;
         else
             ultimoResultado = 1;
             
@@ -43,7 +42,9 @@ public class Dado {
     }
     
     int quienEmpieza (int n){
-        primerJugador = random.nextInt(n-1)+1;
+        int primerJugador = 1;
+        Random rand = new Random();
+        primerJugador = rand.nextInt(n) + 1;
         return primerJugador;
     }
     

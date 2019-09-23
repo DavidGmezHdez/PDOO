@@ -12,7 +12,7 @@ module Civitas
       @@salida_carcel = 5
     end
     
-      
+    attr_accessor :ultimo_resultado, :debug
     
     def tirar
       if(!@debug)
@@ -38,14 +38,14 @@ module Civitas
     
     
     
-    def quien_empieza (n)
-      @primer_jugador = rand(n-1)+1
+    def quien_empieza(n)
+      primer_jugador = rand(n-1)+1
       
-      return @primer_jugador
+      return primer_jugador
     end
     
     
-    attr_accessor :ultimo_resultado, :primer_jugador, :debug
+    
     
   end
 end
