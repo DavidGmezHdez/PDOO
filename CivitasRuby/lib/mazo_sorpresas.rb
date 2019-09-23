@@ -12,13 +12,10 @@ module Civitas
       end 
     end
     
-    #La creacion de los atributos de abajo, se crean en el initialize y se 
-    #inicializan en init ????????
     def init
       @sorpresas = Array.new
       @cartas_especiales = Array.new
       @ultima_sorpresa
-      @sorpresas = Array.new
       @barajada = false
       @usadas = 0      
     end
@@ -73,21 +70,15 @@ module Civitas
     def habilitar_carta_especial(sorpresa)
       i=0
       for i in @sorpresas
-        if(@sorpresas[i]==sorpresa)
-          #Así ya se añadiría al final, y no hay ningún problema, porque
-          #se borra depués, no  ??????????
+        if(@cartas_especiales[i]==sorpresa)
           @sorpresas << sorpresa
-          @sorpresas.delete_at(i)
+          @cartas_especiales.delete_at(i)
           @diario.ocurre_evento("Carta habilitada")
         else
           @diario.ocurre_evento("Carta no habilitada")
         end
       end
     end
-    
-    
-    
-    
     
     
   end

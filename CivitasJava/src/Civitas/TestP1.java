@@ -1,12 +1,18 @@
 package Civitas;
+
 import Civitas.Dado;
+import java.util.ArrayList;
 
 public class TestP1 {
+
     private static Dado dado = Dado.getInstance();
     private static TipoCasilla mostrarCasilla;
     private static TipoSorpresa mostrarSorpresa;
     private static OperacionesJuego mostrarOperaciones;
     private static EstadosJuego mostrarEstados;
+    private static MazoSorpresas mazo;
+    private static Sorpresa sorp1;
+    private static Sorpresa sorp2;
 
 
     
@@ -42,7 +48,8 @@ public class TestP1 {
         System.out.println("Estados Juego: " + mostrarEstados);
         
         //Apartado 5
-              
+        
+        mazo.alMazo(s);
        
         
 

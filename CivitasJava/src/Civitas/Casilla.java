@@ -1,12 +1,13 @@
 package Civitas;
+
 public class Casilla {
     String nombre;
     
-    Casilla(String nom){
+    Casilla(String nom) {
         nombre = nom;
     }
-    
-    String getNombre(){
+
+    String getNombre() {
         return nombre;
-    }    
+    }
 }
