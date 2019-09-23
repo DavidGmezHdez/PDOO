@@ -1,6 +1,7 @@
 package Civitas;
 
 import Civitas.Dado;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class TestP1 {
     private static OperacionesJuego mostrarOperaciones;
     private static EstadosJuego mostrarEstados;
     private static MazoSorpresas mazo = new MazoSorpresas();
+    private static final Scanner in = new Scanner (System.in);
 
     
     public static void main(String[] args) {
@@ -59,15 +61,76 @@ public class TestP1 {
         System.out.println ("Leer evento: " + diario.leerEvento());
 
         //Apartado 7
-
+        System.out.println ("Introduce el tamaño del tablero");
+        int tamTablero = in.nextInt();
         
-        
+        System.out.println ("Introduce la posición de la cárcel");
+        int posCarcel = in.nextInt();
+        if(posCarcel>tamTablero){
+            posCarcel = tamTablero - 1;
+        }
 
-       
+        Tablero tablero = new Tablero(tamTablero);
+
+        Casilla calle_willyrex = new Casilla ("Calle Willyrex");
+        Casilla calle_guerrero = new Casilla ("Calle Guerrero");
+        Casilla calle_picaporte = new Casilla ("Calle Picaporte");
+        Casilla calle_cabra = new Casilla ("Calle Cabra");
+        Casilla calle_giorgio = new Casilla ("Calle Giorgio");
+        Casilla calle_potter = new Casilla ("Calle Potter");
+        Casilla calle_petunia = new Casilla ("Calle Petunia");
+        Casilla calle_motorola = new Casilla ("Calle Motorola");
+        Casilla calle_focus = new Casilla ("Calle Focus");
+        Casilla calle_rengar = new Casilla ("Calle Rengar");
+        Casilla calle_yisus = new Casilla ("Calle Yisus");
+        Casilla calle_ruby = new Casilla ("Calle Ruby");
+        Casilla calle_java = new Casilla ("Calle Java");
+        Casilla calle_diseño = new Casilla ("Calle Diseño");
+        Casilla calle_net = new Casilla ("Calle Net");
+        Casilla calle_anchoa = new Casilla ("Calle Anchoa");
+        Casilla calle_frijoles = new Casilla ("Calle Frijoles");
+        Casilla calle_caramelo = new Casilla ("Calle Caramelo");
+        Casilla calle_fideo = new Casilla ("Calle Fideo");
         
+        tablero.añadeCasilla(calle_willyrex);
+        tablero.añadeCasilla(calle_guerrero);
+        tablero.añadeCasilla(calle_picaporte);
+        tablero.añadeCasilla(calle_cabra);
+        tablero.añadeCasilla(calle_giorgio);
+        tablero.añadeCasilla(calle_potter);
+        tablero.añadeCasilla(calle_petunia);
+        tablero.añadeCasilla(calle_motorola);
+        tablero.añadeCasilla(calle_focus);
+        tablero.añadeCasilla(calle_rengar);
+        tablero.añadeCasilla(calle_yisus);
+        tablero.añadeCasilla(calle_ruby);
+        tablero.añadeCasilla(calle_java);
+        tablero.añadeCasilla(calle_diseño);
+        tablero.añadeCasilla(calle_net);
+        tablero.añadeCasilla(calle_anchoa);
+        tablero.añadeCasilla(calle_frijoles);
+        tablero.añadeCasilla(calle_caramelo);
+        tablero.añadeCasilla(calle_fideo);
+        
+        System.out.println("Calle 0: " + tablero.getCasilla(0).getNombre());
+        System.out.println("Calle 3: " + tablero.getCasilla(3).getNombre());
+        System.out.println("Calle 18: " + tablero.getCasilla(18).getNombre());
+        // NO SALE LA CÁRCEL
+        System.out.println("Calle 20: " + tablero.getCasilla(19).getNombre());
+//        
+//        int antes = dado.tirar();
+//        System.out.println("Antes: " + antes);
+//
+//        int despues = dado.tirar();
+//        System.out.println("Despues: " + despues);
+//
+//        int tirada = tablero.calcularTirada(antes, despues);
+//        
+//        System.out.println("Pos destino: " + tablero.nuevaPosicion(antes, tirada));
 
 
-        
+
+
         
         
         
