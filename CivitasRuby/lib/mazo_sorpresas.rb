@@ -80,6 +80,5 @@ module Civitas
       end
     end
     
-    
   end
 end
