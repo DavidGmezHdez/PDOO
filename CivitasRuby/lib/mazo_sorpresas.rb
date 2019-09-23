@@ -1,4 +1,5 @@
 # encoding:utf-8
+require_relative "sorpresa"
 require_relative "diario"
 
 module Civitas

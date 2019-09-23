@@ -4,21 +4,24 @@ require_relative 'tablero'
 require_relative 'tipo_casilla'
 require_relative 'tipo_sorpresa'
 require_relative 'operaciones_juego'
+require_relative 'estados_juego'
+require_relative 'mazo_sorpresas'
+
 
 module Civitas
   class TestP1
     def self.main
       @dado = Dado.instance
-      
-      
+      @diario = Diario.instance
+     
       i=0
       while i < 5
-        puts "Empieza el jugador " << @dado.quien_empieza(4).to_s << "\n"
+        puts "Empieza el jugador " + @dado.quien_empieza(4).to_s + "\n"
         i=i+1
       end
       
       @dado.tirar
-      puts "Último resultado "<< @dado.ultimo_resultado.to_s << "\n"
+      puts "Último resultado " + @dado.ultimo_resultado.to_s + "\n"
       
       if @dado.salgo_de_la_carcel
         puts "He salido de la cárcel"
@@ -26,8 +29,26 @@ module Civitas
         puts "No he salido de la cárcel"
       end
       
-      tipo_casilla = TipoCasilla::CALLE
-      puts <<  "Tipo Calle: " << TipoCasilla::CALLE.to_s
+      puts "Tipo casilla: " +  TipoCasilla::CALLE.to_s
+      puts "Tipo sorpresa: " + TipoSorpresa::IRCASILLA.to_s
+      puts "Operaciones juego: " + OperacionesJuego::AVANZAR.to_s
+      puts "Estados juego: " + EstadosJuego::INICIO_TURNO.to_s
+      
+      @mazo = MazoSorpresas.new(false)
+      
+      sorpresa1 = Sorpresa.new("sorpresa1")
+      sorpresa2 = Sorpresa.new("sorpresa2")
+      
+      @mazo.al_mazo(sorpresa1)
+      @mazo.al_mazo(sorpresa2)
+      
+      puts "Siguiente sorpresa: " + @mazo.siguiente.nombre
+      
+      @mazo.habilitar_carta_especial(sorpresa2)
+      @diario.leer_evento
+      
+      @mazo.inhabilitar_carta_especial(sorpresa2)
+      @diario.leer_evento
       
       
       
