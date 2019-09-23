@@ -12,11 +12,11 @@ public class TestP1 {
     
     public static void main(String[] args) {
         //Apartado 1
-        /*
+        
         for(int i=0; i<5; i++){
-            dado.quienEmpieza(i);
+            System.out.println("Debug: " + dado.isDebug());
         }
-        */
+        
         
         //Apartado 2
         dado.setDebug(false);
