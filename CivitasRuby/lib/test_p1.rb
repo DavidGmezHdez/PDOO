@@ -3,6 +3,8 @@ require_relative 'dado'
 require_relative 'tablero'
 require_relative 'tipo_casilla'
 require_relative 'tipo_sorpresa'
+require_relative 'operaciones_juego'
+
 module Civitas
   class TestP1
     def self.main
@@ -23,6 +25,10 @@ module Civitas
       else
         puts "No he salido de la cárcel"
       end
+      
+      tipo_casilla = TipoCasilla::CALLE
+      puts <<  "Tipo Calle: " << TipoCasilla::CALLE.to_s
+      
       
       
 #      

@@ -2,8 +2,10 @@
 
 module Civitas
   class Sorpresa
-    def initialize
-      
+    def initialize(nombre)
+      @nombre = nombre
     end
+    
+    attr_reader :nombre
   end
 end
