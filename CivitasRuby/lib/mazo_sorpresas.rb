@@ -57,7 +57,7 @@ module Civitas
       i=0
       for i in @sorpresas
         if(@sorpresas[i]==sorpresa)
-          @sorpresas.delete_at(i)
+          @sorpresas.delete_at(sorpresa)
           @cartas_especiales << sorpresa
           @diario.ocurre_evento("Carta inhabilitada")
         else
@@ -73,7 +73,7 @@ module Civitas
       for i in @sorpresas
         if(@cartas_especiales[i]==sorpresa)
           @sorpresas << sorpresa
-          @cartas_especiales.delete_at(i)
+          @cartas_especiales.delete_at(sorpresa)
           @diario.ocurre_evento("Carta habilitada")
         else
           @diario.ocurre_evento("Carta no habilitada")
