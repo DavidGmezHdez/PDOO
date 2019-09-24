@@ -54,14 +54,13 @@ module Civitas
     
     
     def inhabilitar_carta_especial(sorpresa)  
-      i=0
       for i in @sorpresas
-        if(@sorpresas[i]==sorpresa)
-          @sorpresas.delete_at(sorpresa)
+        if(i==sorpresa)
+          @sorpresas.delete(i)
           @cartas_especiales << sorpresa
-          @diario.ocurre_evento("Carta inhabilitada")
+          @@diario.ocurre_evento("Carta inhabilitada")
         else
-          @diario.ocurre_evento("Carta no inhabilitada")
+          @@diario.ocurre_evento("Carta no inhabilitada")
         end
       end
     end
@@ -69,14 +68,13 @@ module Civitas
     
     
     def habilitar_carta_especial(sorpresa)
-      i=0
-      for i in @sorpresas
-        if(@cartas_especiales[i]==sorpresa)
+      for i in @cartas_especiales
+        if(i==sorpresa)
           @sorpresas << sorpresa
-          @cartas_especiales.delete_at(sorpresa)
-          @diario.ocurre_evento("Carta habilitada")
+          @cartas_especiales.delete(sorpresa)
+          @@diario.ocurre_evento("Carta habilitada")
         else
-          @diario.ocurre_evento("Carta no habilitada")
+          @@diario.ocurre_evento("Carta no habilitada")
         end
       end
     end
