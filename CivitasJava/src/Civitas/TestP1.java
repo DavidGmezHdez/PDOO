@@ -22,6 +22,7 @@ public class TestP1 {
         for (int i = 0; i < 5; i++) {
             System.out.println("Empieza el jugador: " + dado.quienEmpieza(4));
         }
+        
         //Apartado 2
         dado.setDebug(false);
         System.out.println("Debug: " + dado.isDebug());
@@ -117,24 +118,15 @@ public class TestP1 {
         System.out.println("Calle 18: " + tablero.getCasilla(18).getNombre());
         // NO SALE LA CÁRCEL
         System.out.println("Calle 20: " + tablero.getCasilla(19).getNombre());
-//        
-//        int antes = dado.tirar();
-//        System.out.println("Antes: " + antes);
-//
-//        int despues = dado.tirar();
-//        System.out.println("Despues: " + despues);
-//
-//        int tirada = tablero.calcularTirada(antes, despues);
-//        
-//        System.out.println("Pos destino: " + tablero.nuevaPosicion(antes, tirada));
-
-
-
-
         
+        System.out.println("Ultimo resultado " + dado.getUltimoResultado());
         
+        int despues = dado.tirar();
+        System.out.println("Despues: " + despues);
+
+        int tirada = tablero.calcularTirada(dado.getUltimoResultado(), despues);
         
-        
+        System.out.println("Pos destino: " + tablero.nuevaPosicion(dado.getUltimoResultado(), tirada));
     
     }
 }
