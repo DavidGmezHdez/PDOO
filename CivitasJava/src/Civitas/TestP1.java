@@ -71,7 +71,7 @@ public class TestP1 {
             posCarcel = tamTablero - 1;
         }
 
-        Tablero tablero = new Tablero(tamTablero);
+        Tablero tablero = new Tablero(posCarcel);
 
         Casilla calle_willyrex = new Casilla ("Calle Willyrex");
         Casilla calle_guerrero = new Casilla ("Calle Guerrero");
@@ -113,11 +113,9 @@ public class TestP1 {
         tablero.añadeCasilla(calle_caramelo);
         tablero.añadeCasilla(calle_fideo);
         
-        System.out.println("Calle 0: " + tablero.getCasilla(0).getNombre());
-        System.out.println("Calle 3: " + tablero.getCasilla(3).getNombre());
-        System.out.println("Calle 18: " + tablero.getCasilla(18).getNombre());
-        // NO SALE LA CÁRCEL
-        System.out.println("Calle 20: " + tablero.getCasilla(19).getNombre());
+        for(int i=0; i < tamTablero; i++){
+            System.out.println("Casilla num " + i + ": " + tablero.getCasilla(i).getNombre());
+        }
         
         System.out.println("Ultimo resultado " + dado.getUltimoResultado());
         

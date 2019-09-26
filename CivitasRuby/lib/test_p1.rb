@@ -59,7 +59,7 @@ module Civitas
       numero_carcel = gets.chomp.to_i
       
       if numero_carcel > numero_casillas
-        numero_carcel = numero_casillas
+        numero_carcel = numero_casillas - 1
       end
       
       @tablero = Tablero.new(numero_carcel)
