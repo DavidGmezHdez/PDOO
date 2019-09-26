@@ -36,7 +36,7 @@ class Tablero
   end
   
   def añade_casilla(casilla)
-    carcel = new Casilla("carcel")
+    carcel = Casilla.new("carcel")
     if @casillas.size == @num_casilla_carcel
       @casillas<<carcel
       @casillas<<casilla
