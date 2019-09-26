@@ -83,33 +83,7 @@ module Civitas
       calle_frijoles = Casilla.new("Calle Frijoles")
       calle_caramelo = Casilla.new("Calle Caramelo")
       calle_fideo = Casilla.new("Calle Fideo")
-      
-<<<<<<< Updated upstream
-#      @tablero.añade_casilla(calle_willyrex)
-#      @tablero.añade_casilla(calle_guerrero)
-#      @tablero.añade_casilla(calle_picaporte)
-#      @tablero.añade_casilla(calle_cabra)
-#      @tablero.añade_casilla(calle_giorgio)
-#      @tablero.añade_casilla(calle_potter)
-#      @tablero.añade_casilla(calle_petunia)
-#      @tablero.añade_casilla(calle_motorola)
-#      @tablero.añade_casilla(calle_focus)
-#      @tablero.añade_casilla(calle_rengar)
-#      @tablero.añade_casilla(calle_yisus)
-#      @tablero.añade_casilla(calle_ruby)
-#      @tablero.añade_casilla(calle_java)
-#      @tablero.añade_casilla(calle_diseño)
-#      @tablero.añade_casilla(calle_net)
-#      @tablero.añade_casilla(calle_anchoa)
-#      @tablero.añade_casilla(calle_frijoles)
-#      @tablero.añade_casilla(calle_caramelo)
-#      @tablero.añade_casilla(calle_fideo)
-#      
-#      i = 0
-#      while i < 20
-#        puts "Casilla #" << i << ": " << @tablero.get_casilla(i) << "\n"
-#      end
-=======
+     
       @tablero.añade_casilla(calle_willyrex)
       @tablero.añade_casilla(calle_guerrero)
       @tablero.añade_casilla(calle_picaporte)
@@ -135,7 +109,7 @@ module Civitas
         puts "Casilla #" + i.to_s + ": " + @tablero.casillas[i].nombre + "\n"
         i=i+1
       end
->>>>>>> Stashed changes
+
     end
   end
   TestP1.main
