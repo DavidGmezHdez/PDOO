@@ -43,6 +43,7 @@ public class TituloPropiedad {
     private boolean esEsteElPropietario(Jugador jugador){
         return this.propietario == jugador;
     }
+    /*
     protected boolean cancelarHipoteca(Jugador jugador){
         if (this.hipotecado && esEsteElPropietario(jugador)){
             //Necesito jugador
@@ -50,7 +51,7 @@ public class TituloPropiedad {
         }
         
     }
-    
+    */
     @Override
     public String toString() {
         return "TituloPropiedad{" + "nombre=" + nombre 

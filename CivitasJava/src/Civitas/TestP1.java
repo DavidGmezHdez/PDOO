@@ -125,6 +125,20 @@ public class TestP1 {
         int tirada = tablero.calcularTirada(dado.getUltimoResultado(), despues);
         
         System.out.println("Pos destino: " + tablero.nuevaPosicion(dado.getUltimoResultado(), tirada));
+        
+        diario.ocurreEvento("hola");
+        diario.ocurreEvento("adios");
+        
+        //POR QUE SI PONGO EL BUCLE DE 0 A <2NO ME SALE EL ÚLTIMO EVENTO ????????????
+        for(int i = 0; i <= diario.getEventos().size();i++){
+            System.out.println("Evento " + i + ": " + diario.leerEvento());
+        }
+        
+        System.out.println("Eventos pendientes: " + diario.eventosPendientes());
+        
+        diario.ocurreEvento("Que tal");
+        System.out.println("Eventos pendientes: " + diario.eventosPendientes());
+
     
     }
 }

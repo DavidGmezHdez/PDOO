@@ -29,4 +29,10 @@ public class Diario {
     }
     return salida;
   }
+
+    public ArrayList<String> getEventos() {
+        return eventos;
+    }
+  
+  
 }
