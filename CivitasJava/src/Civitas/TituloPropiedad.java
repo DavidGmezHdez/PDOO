@@ -1,6 +1,7 @@
 
 package Civitas;
 public class TituloPropiedad {
+
     private String nombre;
     private float alquilerBase;
     private float factorInteresesHipoteca = (float) 1.1;
@@ -42,6 +43,10 @@ public class TituloPropiedad {
     
     private boolean esEsteElPropietario(Jugador jugador){
         return this.propietario == jugador;
+    }
+    
+    public String getNombre() {
+        return nombre;
     }
     /*
     protected boolean cancelarHipoteca(Jugador jugador){
