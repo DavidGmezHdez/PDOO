@@ -46,7 +46,7 @@ module Civitas
     
     def jugador_correcto(actual, todos)
       contenido=false
-      if todos.include?(actual)
+      if (actual >= 0 && actual < todos)
         contenido =true
       end
       
