@@ -157,8 +157,6 @@ module Civitas
     
     protected :debe_ser_encarcelado
     private :existe_la_propiedad, :puedo_salir_carcel_pagando, :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, :puedo_gastar
-    
-  
    
   end
 end
