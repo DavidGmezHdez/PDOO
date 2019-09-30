@@ -11,19 +11,19 @@ require_relative 'mazo_sorpresas'
 module Civitas
   class TestP1
     def self.main
-      @dado = Dado.instance
+      @@dado = Dado.instance
       @@diario = Diario.instance
      
       i=0
       while i < 5
-        puts "Empieza el jugador " + @dado.quien_empieza(4).to_s + "\n"
+        puts "Empieza el jugador " + @@dado.quien_empieza(4).to_s + "\n"
         i=i+1
       end
       
-      @dado.tirar
-      puts "Ultimo resultado " + @dado.ultimo_resultado.to_s + "\n"
+      @@dado.tirar
+      puts "Ultimo resultado " + @@dado.ultimo_resultado.to_s + "\n"
       
-      if @dado.salgo_de_la_carcel
+      if @@dado.salgo_de_la_carcel
         puts "He salido de la cárcel"
       else
         puts "No he salido de la cárcel"

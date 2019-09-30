@@ -1,5 +1,6 @@
 package Civitas;
 import java.util.ArrayList;
+import java.lang.Float;
 
 public class Jugador implements Comparable<Jugador> {
     static int CasasMax = 4;
@@ -43,27 +44,29 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean cancelarHipoteca(int ip){
-        
+        throw new UnsupportedOperationException("No implementado");  
     } 
     
     int cantidadCasasHoteles(){
-    
+        throw new UnsupportedOperationException("No implementado");
     }
     
+    @Override
     public int compareTo(Jugador otro){
-    
+        //this.getSaldo().compareTo(otro.getSaldo
+        throw new UnsupportedOperationException("No implementado");
     }
     
     boolean comprar(TituloPropiedad titulo){
-    
+        throw new UnsupportedOperationException("No implementado");
     } 
     
     boolean construirCasa(int ip){
-    
+        throw new UnsupportedOperationException("No implementado");
     } 
     
     boolean construirHotel(int ip){
-    
+        throw new UnsupportedOperationException("No implementado");
     } 
     
     protected boolean debeSerEncarcelado(){
@@ -92,7 +95,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     private boolean existeLaPropiedad(int ip){
-    
+        return this.propiedades.get(ip)!=null;
     }
     
 
@@ -137,7 +140,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean hipotecar(int ip){
-    
+        throw new UnsupportedOperationException("No implementado");
     }
     
     public boolean isEncarcelado() {
@@ -189,7 +192,9 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean pasaPorSalida(){
-    
+        this.modificarSaldo(PasoPorSalida);
+        diario.ocurreEvento("Jugador " + this.nombre + " pasa por salida");
+        return true;
     }
     
     private void perderSalvoConducto(){
@@ -211,11 +216,11 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     private boolean puedoEdificarCasa(TituloPropiedad propiedad){
-    
+        throw new UnsupportedOperationException("No implementado");
     }
     
     private boolean puedoEdificarHotel(TituloPropiedad propiedad){
-    
+        throw new UnsupportedOperationException("No implementado");
     }
     
     private boolean puedoGastar(float precio){
@@ -238,12 +243,16 @@ public class Jugador implements Comparable<Jugador> {
             diario.ocurreEvento("Jugador " + this.nombre + " sale de carcel pagando");
         }
         
-        return this.encarcelado;
+        return !this.encarcelado;
     }
     
     boolean salirCarcelTirando(){
+        if(this.encarcelado && dado.salgoDeLaCarcel()){
+            this.encarcelado = false;
+            diario.ocurreEvento("Jugador " + this.nombre + " sale de carcel tirando");
+        }
         
-    
+        return !this.encarcelado;
     }
     
     boolean tieneAlgoQueGestionar(){
@@ -266,9 +275,6 @@ public class Jugador implements Comparable<Jugador> {
         else 
             return false;
     }
-    
-    
-
     
     @Override
     public String toString() {
