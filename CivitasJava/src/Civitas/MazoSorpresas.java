@@ -1,6 +1,7 @@
 package Civitas;
 import java.util.ArrayList;
 import java.util.Collections;
+
 public class MazoSorpresas {
     private ArrayList<Sorpresa> sorpresas;
     private boolean barajada;

@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.lang.Float;
 
 public class Jugador implements Comparable<Jugador> {
-    static int CasasMax = 4;
-    static int HotelesMax = 4;
-    static int CasasPorHotel = 4;
-    static int PasoPorSalida = 1000;
-    static int PrecioLibertad = 200;
+    protected static int CasasMax = 4;
+    protected static int HotelesMax = 4;
+    protected static int CasasPorHotel = 4;
+    protected static int PasoPorSalida = 1000;
+    protected static int PrecioLibertad = 200;
     private static int SaldoInicial = 200;
     
     static final private Diario diario = Diario.getInstance();
