@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-
-package Civitas;
-public class Jugador {
-    private boolean encarcelado = false;
-
-    public boolean isEncarcelado() {
-        return encarcelado;
-    }
-}
-=======
 package Civitas;
 import java.util.ArrayList;
 import java.lang.Float;
@@ -93,7 +82,7 @@ public class Jugador implements Comparable<Jugador> {
     } 
     
     boolean enBancarrota(){
-    
+        return this.saldo <= 0;
     } 
     
     boolean encarcelar(int numCasillaCarcel){
@@ -293,4 +282,4 @@ public class Jugador implements Comparable<Jugador> {
     }
 
 }
->>>>>>> 325e2d86d15408eebf75a3ac587f3223de1af1ca
+
