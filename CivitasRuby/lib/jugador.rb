@@ -13,20 +13,20 @@ module Civitas
     @@dado = Dado.instance
     @@diario = Diario.instance
     
-    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvo_conducto, :num_casilla_actual, :propiedades
+    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, :num_casilla_actual, :propiedades
     
-    def initialize(nombre,encarcelado = false, saldo = @@SALDO_INICIAL, puede_comprar = true,salvo_conducto = nil, num_casilla = 0, propiedades = Array.new)
+    def initialize(nombre,encarcelado = false, saldo = @@SALDO_INICIAL, puede_comprar = true,salvoconducto = nil, num_casilla = 0, propiedades = Array.new)
          @encarcelado = encarcelado
          @nombre = nombre
          @saldo = saldo
          @puede_comprar = puede_comprar
-         @salvo_conducto = salvo_conducto
+         @salvoconducto = salvoconducto
          @num_casilla_actual= num_casilla
          @propiedades = propiedades
     end
    
     def self.copia(jugador)
-      self.new(jugador.nombre,jugador.encarcelado,jugador.saldo,jugador.puede_comprar,jugador.salvo_conducto,jugador.num_casilla_actual,jugador.propiedades)
+      self.new(jugador.nombre,jugador.encarcelado,jugador.saldo,jugador.puede_comprar,jugador.salvoconducto,jugador.num_casilla_actual,jugador.propiedades)
     end
     
     def cancelar_hipoteca(ip)
@@ -37,7 +37,19 @@ module Civitas
       
     end
     
-    #compareTo(otro : Jugador) : int
+    def <=>(otroJugador)
+      otro_saldo= otroJugador.saldo
+      mi_saldo = @saldo
+      if (otro_saldo>mi_saldo)
+        return 1 
+      end
+
+      if (otro_saldo<mi_saldo)
+        return -1 
+      end
+
+      return 0
+    end
     
     def comprar(titulo)
       
@@ -52,15 +64,29 @@ module Civitas
     end
     
     def debe_ser_encarcelado
-      
+      if !@encarcelado
+        return false
+      else
+        if tiene_salvoconducto
+          perder_salvoconducto
+          @@diario.ocurre_evento("Jugador " + @nombre + " tiene salvoconducto \n")
+          return false
+          else
+            return true
+          end
+        end
     end
     
     def en_bancarrota
       
     end
     
-    def encarcelar(numCasillaCarcel)
-      
+    def encarcelar(num_casilla_carcel)
+      if debe_ser_encarcelado
+        mover_a_casilla(num_casilla_carcel)
+        @encarcelado = true
+      end
+      return @encacelado
     end
     
     def existe_la_propiedad(ip)
@@ -72,43 +98,73 @@ module Civitas
     end
     
     def modificar_saldo(cantidad)
-      
+      @saldo = @saldo + cantidad
+      @@diario.ocurre_evento("Modificado el saldo del jugador " + @nombre + " con  " + cantidad )
+      return true
     end
     
-    def mover_a_casilla(numCasilla)
-      
+    def mover_a_casilla(num_casilla)
+      if @encarcelado
+        return false
+      else 
+        @num_casilla_actual = num_casilla
+        @puede_comprar = false
+        @@diario.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla )
+        return true
+      end
     end
     
     def obtener_salvoconducto(sorpresa)
-      
+      if @encarcelado
+        return false
+      else
+        salvoconducto = sorpresa
+        return true
+      end
     end
     
     def paga(cantidad)
-      
+      return modificar_saldo(cantidad*-1)
     end
     
     def paga_alquiler(cantidad)
-      
+      if @encarcelado = true
+        return false
+      else
+        return paga(cantidad)
+      end
     end
     
     def paga_impuesto(cantidad)
-      
+      if @encarcelado
+        return false
+      else
+        return paga(cantidad)
+      end
     end
     
     def pasa_por_salida
-      
+      modificar_saldo(@@PASO_POR_SALIDA)
+      @@diario.ocurre_evento("Jugador " + @nombre + " pasa por salida")
+      return true
     end
     
     def perder_salvoconducto
-      
+      @salvoconducto.usada
+      @salvoconducto = nil
     end
     
     def puede_comprar_casilla
-      
+      if @encarcelado 
+        @puede_comprar = false
+      else
+        @puede_comprar = true
+      end
+      return @puede_comprar
     end
     
     def puede_salir_carcel_pagando
-      
+      return @saldo >= @@PRECIO_LIBERTAD
     end
     
     def puedo_edificar_casa(propiedad)
@@ -120,27 +176,44 @@ module Civitas
     end
     
     def puedo_gastar(precio)
-      
+      if @encarcelado 
+        return false
+      else
+        return @saldo >= precio
+      end
     end
     
     def recibe(cantidad)
-      
+      if @encarcelado
+        return false
+      else
+        return modificar_saldo(cantidad)
+      end
     end
     
     def salir_carcel_pagando
+      if @encarcelado && puede_salir_carcel_pagando
+        @encarcelado = false
+        @@diario.ocurre_evento("Jugador " + @nombre + " sale de carcel pagando")
+      end
       
+      return !@encarcelado
     end
     
     def salir_carcel_tirando
-      
+      if @encarcelado && @@dado.salgo_de_la_carcel
+        @encarcelado = false
+        @@diario.ocurre_evento("Jugador " + @nombre + " sale de carcel tirando")
+      end
+      return !@encarcelado
     end
     
     def tiene_algo_que_gestionar
-      
+      return !@propiedades.empty?
     end
     
     def tiene_salvoconducto
-      
+      return @salvoconducto!=nil
     end
     
     def to_s
@@ -151,6 +224,17 @@ module Civitas
     end
     
     def vender(ip)
+      if @encarcelado
+        return false
+      else
+        if existe_la_propiedad(ip) && @propiedades.index(ip).vender(this)
+          @@diario.ocurre_evento("Propiedad " + @propiedades.index(ip).nombre + " vendida por el jugador " + @nombre)
+          @propiedades.delete_at(ip)
+          return true
+        else
+          return false
+        end
+      end
       
     end
     
