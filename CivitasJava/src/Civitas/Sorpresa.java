@@ -60,9 +60,25 @@ public class Sorpresa {
         return es_correcto;
     }
     
-    //NO SE COMO SE HACE LO DE COGER GETINSTANCE DE DIARIO Y AÑADIRLO ???????
+    void aplicarAJugador(int actual, ArrayList<Jugador> todos) {
+        switch(this.tipo){
+            case IRCARCEL:
+                aplicarAJugador_irCarcel(actual, todos);
+            case IRCASILLA:
+                aplicarAJugador_irACasilla (actual, todos);
+            case PAGARCOBRAR:
+                aplicarAJugador_pagarCobrar(actual, todos);
+            case PORCASAHOTEL:
+                aplicarAJugador_porCasaHotel(actual, todos);
+            case PORJUGADOR:
+                aplicarAJugador_porJugador(actual, todos);
+            case SALIRCARCEL:
+                aplicarAJugador_salirCarcel (actual, todos);       
+        }
+    }
+
     void informe(int actual, ArrayList<Jugador> todos){
-        
+        Diario.getInstance().ocurreEvento("Aplicando sorpresa al jugador " + todos.get(actual).getNombre());
     }
     
     private void aplicarAJugador_irCarcel(int actual, ArrayList<Jugador> todos){
@@ -102,7 +118,7 @@ public class Sorpresa {
     
     
     //ESTÁ BIENN ????????
-    private void aplicarAJugador_porJugador (int actual, ArrayList<Jugador> todos){
+    private void aplicarAJugador_porJugador(int actual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(actual, todos)){
             informe(actual, todos);
             

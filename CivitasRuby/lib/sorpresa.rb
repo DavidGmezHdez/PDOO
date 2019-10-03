@@ -1,16 +1,4 @@
 # encoding:utf-8
-
-module Civitas
-  class Sorpresa
-    def initialize(nombre)
-      @nombre = nombre
-    end
-    
-    attr_reader :nombre
-  end
-end
-=======
-# encoding:utf-8
 require_relative "mazo_sorpresas"
 require_relative "tablero"
 require_relative "jugador"
@@ -65,17 +53,19 @@ module Civitas
       return contenido
     end
     
-    #HACERLOOOOOOOOOO ?????????
+    #PORQUE NO ME SALE NOMBRE EN todos[actual].nombre?????????
     def informe(actual, todos)
-      nombre_jug=todos[actual]
-      diario
+      diario.ocurre_evento("Aplicando sorpresa al jugador" + todos[actual].nombre)
     end
     
     def aplicar_a_jugador(actual, todos)
       
     end
     
+    def aplicar_a_jugador_ir_a_casilla(actual, todos)
+      
+    end
+    
     
   end
 end
->>>>>>> 325e2d86d15408eebf75a3ac587f3223de1af1ca
