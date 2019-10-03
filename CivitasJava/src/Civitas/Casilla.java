@@ -1,36 +1,53 @@
-<<<<<<< HEAD
 package Civitas;
 
-public class Casilla {
-    String nombre;
-    
-    Casilla(String nom) {
-        nombre = nom;
-    }
-
-    String getNombre() {
-        return nombre;
-    }
-}
-=======
-package Civitas;
+import java.util.ArrayList;
 
 public class Casilla {
-    String nombre;
-    float importe;
+    private String nombre;
+    private static int carcel;
+    private float importe;
     
-    Casilla(String nom) {
-        nombre = nom;
+    private TipoCasilla tipo;
+    private TituloPropiedad tituloPropiedad;
+    private Sorpresa sorpresa;
+    private MazoSorpresas mazo;
+    
+    Casilla(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    Casilla(TituloPropiedad titulo){
+        tituloPropiedad = titulo;
+    }
+    
+    Casilla(float cantidad, String nombre){
+        importe = cantidad;
+        this.nombre = nombre;
+    }
+    
+    Casilla(int numCasillaCarcel, String nombre){
+        this.nombre = nombre;
+        carcel = numCasillaCarcel;
+    }
+    
+    Casilla(MazoSorpresas mazo, String nombre){
+        this.mazo = mazo;
+        this.nombre = nombre;
+    }
+    
+    private void informe(int actual, ArrayList<Jugador> todos){
+        toString();
     }
 
-    String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public float getImporte() {
-        return importe;
+    TituloPropiedad getTituloPropiedad() {
+        return tituloPropiedad;
     }
     
     
+    
+    
 }
->>>>>>> 325e2d86d15408eebf75a3ac587f3223de1af1ca

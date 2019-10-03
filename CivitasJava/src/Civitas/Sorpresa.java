@@ -13,14 +13,18 @@ public class Sorpresa {
     private Jugador jugador;
     private Casilla casillaActual;
     
+    private Sorpresa sorpresa;
+    
     //Constructor para la sorpresa que envía a la cárcel
     Sorpresa(TipoSorpresa tipo, Tablero tablero){
+        init();
         this.tipo = tipo;
         this.tablero = tablero;
     }
     
     //Constructor para la sorpresa que envía al jugador a otra casilla
     Sorpresa(TipoSorpresa tipo, Tablero tablero, int valor, String texto){
+        init();      
         this.tipo = tipo;
         this.tablero = tablero;
         this.valor = valor;
@@ -29,6 +33,7 @@ public class Sorpresa {
     
     //Constructor para el resto de sorpresas
     Sorpresa(TipoSorpresa tipo, int valor, String texto){
+        init();
         this.tipo=tipo;
         this.valor=valor;
         this.texto=texto;
@@ -36,6 +41,7 @@ public class Sorpresa {
     
     //Constructor para sorpresa que permite evitar la carcel
     Sorpresa(TipoSorpresa tipo, MazoSorpresas mazo){
+        init();
         this.tipo = tipo;
         this.mazo = mazo;        
     }
@@ -93,5 +99,58 @@ public class Sorpresa {
             todos.get(actual).modificarSaldo(nuevoValor);        
         }     
     }
-  
+    
+    
+    //ESTÁ BIENN ????????
+    private void aplicarAJugador_porJugador (int actual, ArrayList<Jugador> todos){
+        if(jugadorCorrecto(actual, todos)){
+            informe(actual, todos);
+            
+            for(int i=0; i < todos.size(); i++){
+                if(i==actual){
+                    tipo = tipo.PAGARCOBRAR;
+                    valor *= (todos.size()-1);
+                    todos.get(i).recibe(valor);
+                }else{
+                    tipo = tipo.PAGARCOBRAR;
+                    valor *= -1;
+                    todos.get(i).recibe(valor);
+                }            
+            }        
+        }    
+    }
+    
+    private void aplicarAJugador_salirCarcel (int actual, ArrayList<Jugador> todos){
+        if(jugadorCorrecto(actual, todos)){
+            informe(actual,todos);
+            int nadieSalvoconducto = 0;
+            for(int i=0; i<todos.size(); i++){
+                if(todos.get(i).tieneSalvoconducto())
+                    nadieSalvoconducto++;
+            }
+            
+            //Si nadie tiene Salvoconducto
+            if(nadieSalvoconducto==0){
+                //SE LE METE POR PARÁMETRO SORPaCTUAL ??????????
+                todos.get(actual).obtenerSalvoconducto(sorpresa);
+                salirDelMazo();
+            }
+        }    
+    }
+    
+    void salirDelMazo(){
+        if(tipo==tipo.SALIRCARCEL)
+            mazo.inhabilitarCartaEspecial(sorpresa);
+    }
+    
+    void usada(){
+        if(tipo==tipo.SALIRCARCEL)
+            mazo.habilitarCartaEspecial(sorpresa);
+    }
+    
+    @Override
+    public String toString(){
+        return "Sorpresa{ " + "nombre= " + texto + "valor= " + valor + '}';
+    }
+    
 }
