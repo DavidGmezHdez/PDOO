@@ -38,7 +38,9 @@ public class Jugador implements Comparable<Jugador> {
         this.numCasillaActual = jug.numCasillaActual;
         this.puedeComprar = jug.puedeComprar;
         this.encarcelado = jug.encarcelado;
-        this.propiedades = jug.propiedades;
+        for(int i=0;i<jug.propiedades.size();i++){
+            this.propiedades.add(jug.propiedades.get(i));
+        }
         this.saldo = jug.saldo;
     }
     
