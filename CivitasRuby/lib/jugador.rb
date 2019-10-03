@@ -78,7 +78,7 @@ module Civitas
     end
     
     def en_bancarrota
-      
+      return @saldo <= 0
     end
     
     def encarcelar(num_casilla_carcel)

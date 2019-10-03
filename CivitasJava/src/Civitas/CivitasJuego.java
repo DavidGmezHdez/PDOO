@@ -44,7 +44,7 @@ public class CivitasJuego {
     }
     
     public boolean comprar(){
-    
+        //return this.jugadores.get(this.indiceJugadorActual).comprar(titulo);
     }
     
     public boolean construirCasa(int ip){
@@ -83,7 +83,7 @@ public class CivitasJuego {
     }
     
     public String infoJugadorTexto(){
-    
+        return jugadores.get(indiceJugadorActual).toString();
     }
     
     private void inicializarMazoSorpresas(Tablero tablero){
