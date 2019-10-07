@@ -95,8 +95,7 @@ public class Sorpresa {
             int tirada = tablero.calcularTirada(casillaActualNum, valor);
             int nuevaPosicion = tablero.nuevaPosicion(casillaActualNum, tirada);
             todos.get(actual).moverACasilla(nuevaPosicion);
-            //ESTO ESTARIA BIEEEEN ????????????????
-            casillaActual.recibeJugador(actual,todos);
+            tablero.getCasilla(nuevaPosicion).recibeJugador(actual,todos);
         }
     } 
     
