@@ -3,6 +3,7 @@ require_relative "mazo_sorpresas"
 require_relative "tablero"
 require_relative "jugador"
 require_relative "tipo_sorpresa"
+require_relative "diario"
 
 module Civitas
   class Sorpresa
@@ -56,7 +57,8 @@ module Civitas
     
     
     def informe(actual, todos)
-      diario.ocurre_evento("Aplicando sorpresa al jugador " + todos[actual].nombre)
+      #COMO LLAMO A DIARIOOOO ????????????? 
+      @diario.instance.ocurre_evento("Aplicando sorpresa al jugador " + todos[actual].nombre)
     end
     
     

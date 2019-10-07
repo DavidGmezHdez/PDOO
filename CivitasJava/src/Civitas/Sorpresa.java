@@ -10,10 +10,6 @@ public class Sorpresa {
     private TipoSorpresa tipo;
     private MazoSorpresas mazo;
     
-    private Jugador jugador;
-    //private Casilla casillaActual;
-    
-    
     
     //Constructor para la sorpresa que envía a la cárcel
     Sorpresa(TipoSorpresa tipo, Tablero tablero){
