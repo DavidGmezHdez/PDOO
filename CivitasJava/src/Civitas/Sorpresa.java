@@ -11,9 +11,9 @@ public class Sorpresa {
     private MazoSorpresas mazo;
     
     private Jugador jugador;
-    private Casilla casillaActual;
+    //private Casilla casillaActual;
     
-    private Sorpresa sorpresa;
+    
     
     //Constructor para la sorpresa que envía a la cárcel
     Sorpresa(TipoSorpresa tipo, Tablero tablero){
@@ -89,13 +89,14 @@ public class Sorpresa {
     }
     
     private void aplicarAJugador_irACasilla (int actual, ArrayList<Jugador> todos){
-        int casillaActual = todos.get(actual).getNumCasillaActual();
+        int casillaActualNum = todos.get(actual).getNumCasillaActual();
         if(jugadorCorrecto(actual,todos)){
             informe(actual,todos);
-            int tirada = tablero.calcularTirada(casillaActual, valor);
-            int nuevaPosicion = tablero.nuevaPosicion(casillaActual, tirada);
+            int tirada = tablero.calcularTirada(casillaActualNum, valor);
+            int nuevaPosicion = tablero.nuevaPosicion(casillaActualNum, tirada);
             todos.get(actual).moverACasilla(nuevaPosicion);
-            //ME FALTAA LA ÚLTIMA PARTE ????????????????
+            //ESTO ESTARIA BIEEEEN ????????????????
+            casillaActual.recibeJugador(actual,todos);
         }
     } 
     
@@ -147,8 +148,7 @@ public class Sorpresa {
             
             //Si nadie tiene Salvoconducto
             if(nadieSalvoconducto==0){
-                //SE LE METE POR PARÁMETRO SORPaCTUAL ??????????
-                todos.get(actual).obtenerSalvoconducto(sorpresa);
+                todos.get(actual).obtenerSalvoconducto(this);
                 salirDelMazo();
             }
         }    
@@ -156,12 +156,12 @@ public class Sorpresa {
     
     void salirDelMazo(){
         if(tipo==tipo.SALIRCARCEL)
-            mazo.inhabilitarCartaEspecial(sorpresa);
+            mazo.inhabilitarCartaEspecial(this);
     }
     
     void usada(){
         if(tipo==tipo.SALIRCARCEL)
-            mazo.habilitarCartaEspecial(sorpresa);
+            mazo.habilitarCartaEspecial(this);
     }
     
     @Override

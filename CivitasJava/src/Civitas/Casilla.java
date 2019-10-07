@@ -1,3 +1,4 @@
+
 package Civitas;
 
 import java.util.ArrayList;
@@ -47,7 +48,9 @@ public class Casilla {
         return tituloPropiedad;
     }
     
-    
+    private void init(){
+        
+    }
     
     
 }
