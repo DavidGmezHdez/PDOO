@@ -45,6 +45,7 @@ public class CivitasJuego {
     
     public boolean comprar(){
         //return this.jugadores.get(this.indiceJugadorActual).comprar(titulo);
+        throw new UnsupportedOperationException("No implementado");  
     }
     
     public boolean construirCasa(int ip){
@@ -140,7 +141,7 @@ public class CivitasJuego {
     }
     
     private ArrayList<Jugador >ranking(){
-    
+        throw new UnsupportedOperationException("No implementado");  
     }
     
     private boolean salirCarcelPagando(){
@@ -152,7 +153,7 @@ public class CivitasJuego {
     }
     
     public OperacionesJuego siguientePaso(){
-    
+        throw new UnsupportedOperationException("No implementado");  
     }
     
     public void siguientePasoCompletado(OperacionesJuego operacion){
