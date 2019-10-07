@@ -38,6 +38,7 @@ module Civitas
       new("¡Genial! Has conseguido la carta para evitar la cárcel", nil, -1, mazo, tipo)
     end
     
+    
     def init
       @valor = -1
       @mazo = nil
@@ -95,9 +96,10 @@ module Civitas
         nueva_posicion = @tablero.nueva_posicion(casilla_actual,tirada)
         todos[actual].mover_a_casilla(nueva_posicion)
         # FALTAAAAAAAAAA UNA PARTE ??????
-        casilla_actual.recibe_jugador(actual,todos)
+        @tablero.casillas[nueva_posicion].recibe_jugador(actual,todos)
       end
     end
+    
     
     def aplicar_a_jugador_pagar_cobrar(actual,todos)
       if(jugador_correcto(actual,todos))
@@ -105,6 +107,7 @@ module Civitas
         todos[actual].modificar_saldo(@valor)
       end
     end
+    
     
     def aplicar_a_jugador_por_casa_hotel(actual,todos)
       num_propiedades = todos[actual].propiedades.size()
@@ -114,6 +117,7 @@ module Civitas
         todos[actual].modificar_saldo(nuevo_valor)
       end
     end
+    
     
     def aplicar_a_jugador_por_jugador(actual,todos)
       if(jugador_correcto(actual,todos))
@@ -132,6 +136,7 @@ module Civitas
       end
     end
     
+    
     def aplicar_a_jugador_salir_carcel(actual,todos)
       if(jugador_correcto(actual,todos))
         informe(actual,todos)
@@ -145,10 +150,32 @@ module Civitas
         
         if(nadie_salvo_conducto==0)
           todos[actual].obtener_salvoconducto(self)
+          salir_del_mazo
         end
         
       end
     end
+    
+    
+    def salir_del_mazo
+      if(@tipo==TipoSorpresa::SALIRCARCEL)
+        @mazo.inhabilitarCartaEspecial(self)
+      end
+    end
+    
+    
+    def usada
+      if(@tipo==TipoSorpresa::SALIRCARCEL)
+        @mazo.habilitarCartaEspecial(self)
+      end
+    end
+    
+    
+    def to_s
+      "Numero casilla: \n #{@texto}  \n Valor: #{@valor} }"
+    end
+    
+    attr_writer :texto, :valor
     
   end
 end

@@ -125,6 +125,7 @@ public class Sorpresa {
             for(int i=0; i < todos.size(); i++){
                 if(i==actual){
                     tipo = tipo.PAGARCOBRAR;
+                    //tipo=TipoSorpresa.PAGARCOBRAR ????????????
                     valor *= (todos.size()-1);
                     todos.get(i).recibe(valor);
                 }else{
@@ -154,12 +155,12 @@ public class Sorpresa {
     }
     
     void salirDelMazo(){
-        if(tipo==tipo.SALIRCARCEL)
+        if(tipo==TipoSorpresa.SALIRCARCEL)
             mazo.inhabilitarCartaEspecial(this);
     }
     
     void usada(){
-        if(tipo==tipo.SALIRCARCEL)
+        if(tipo==TipoSorpresa.SALIRCARCEL)
             mazo.habilitarCartaEspecial(this);
     }
     
