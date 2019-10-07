@@ -10,10 +10,6 @@ public class Sorpresa {
     private TipoSorpresa tipo;
     private MazoSorpresas mazo;
     
-    private Jugador jugador;
-    private Casilla casillaActual;
-    
-    private Sorpresa sorpresa;
     
     //Constructor para la sorpresa que envía a la cárcel
     Sorpresa(TipoSorpresa tipo, Tablero tablero){
@@ -89,13 +85,13 @@ public class Sorpresa {
     }
     
     private void aplicarAJugador_irACasilla (int actual, ArrayList<Jugador> todos){
-        int casillaActual = todos.get(actual).getNumCasillaActual();
+        int casillaActualNum = todos.get(actual).getNumCasillaActual();
         if(jugadorCorrecto(actual,todos)){
             informe(actual,todos);
-            int tirada = tablero.calcularTirada(casillaActual, valor);
-            int nuevaPosicion = tablero.nuevaPosicion(casillaActual, tirada);
+            int tirada = tablero.calcularTirada(casillaActualNum, valor);
+            int nuevaPosicion = tablero.nuevaPosicion(casillaActualNum, tirada);
             todos.get(actual).moverACasilla(nuevaPosicion);
-            //ME FALTAA LA ÚLTIMA PARTE ????????????????
+            tablero.getCasilla(nuevaPosicion).recibeJugador(actual,todos);
         }
     } 
     
@@ -125,6 +121,7 @@ public class Sorpresa {
             for(int i=0; i < todos.size(); i++){
                 if(i==actual){
                     tipo = tipo.PAGARCOBRAR;
+                    //tipo=TipoSorpresa.PAGARCOBRAR ????????????
                     valor *= (todos.size()-1);
                     todos.get(i).recibe(valor);
                 }else{
@@ -147,21 +144,20 @@ public class Sorpresa {
             
             //Si nadie tiene Salvoconducto
             if(nadieSalvoconducto==0){
-                //SE LE METE POR PARÁMETRO SORPaCTUAL ??????????
-                todos.get(actual).obtenerSalvoconducto(sorpresa);
+                todos.get(actual).obtenerSalvoconducto(this);
                 salirDelMazo();
             }
         }    
     }
     
     void salirDelMazo(){
-        if(tipo==tipo.SALIRCARCEL)
-            mazo.inhabilitarCartaEspecial(sorpresa);
+        if(tipo==TipoSorpresa.SALIRCARCEL)
+            mazo.inhabilitarCartaEspecial(this);
     }
     
     void usada(){
-        if(tipo==tipo.SALIRCARCEL)
-            mazo.habilitarCartaEspecial(sorpresa);
+        if(tipo==TipoSorpresa.SALIRCARCEL)
+            mazo.habilitarCartaEspecial(this);
     }
     
     @Override

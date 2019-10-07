@@ -70,7 +70,7 @@ public class Tablero {
     int nuevaPosicion(int actual, int tirada){
         int posicion;
         if(!correcto())
-            return posicion = -1;
+            return  -1;
         else{
             posicion = (actual+tirada)%20; 
         }
@@ -81,8 +81,8 @@ public class Tablero {
         return posicion;
     }
     
-    int calcularTirada(int actual, int destino){
-        return destino - actual + 20;
+    int calcularTirada(int origen, int destino){
+        return destino - origen + 20;
     }
     
 }

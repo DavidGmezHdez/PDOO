@@ -17,6 +17,28 @@ class Tablero
   
   attr_reader :casillas, :num_casilla_carcel, :por_salida, :tiene_juez
   
+  def añade_casilla(casilla)
+    carcel = Casilla.new("carcel")
+    if @casillas.size == @num_casilla_carcel
+      @casillas<<carcel
+      @casillas<<casilla
+    else
+      @casillas<<casillareturn
+    end
+  end
+  
+  def añade_juez
+    juez = new Casilla("juez")
+    if @tiene_juez == false
+      @casillas<<juez
+    end
+    @tiene_juez = true
+  end
+  
+  def calcular_tirada(origen,destino)
+    return destino - origen + 20
+  end
+  
   def correcto
     return @casillas.size > @num_casilla_carcel && @tiene_juez
   end
@@ -35,32 +57,29 @@ class Tablero
     end
   end
   
-  def añade_casilla(casilla)
-    carcel = Casilla.new("carcel")
-    if @casillas.size == @num_casilla_carcel
-      @casillas<<carcel
-      @casillas<<casilla
-    else
-      @casillas<<casilla
-    end
-  end
-  
-  def añade_juez
-    juez = new Casilla("juez")
-    if @tiene_juez == false
-      @casillas<<juez
-    end
-    @tiene_juez = true
-  end
-  
+
   def get_casilla(num_casilla)
     if num_casilla >= 0 && num_casilla <= @casillas.size
       return @casillas[num_casilla]
     else
-      return null
+      return nil
     end
     
   end
   
+  def nueva_posicion(actual,tirada)
+    if !correcto
+      return -1
+    else
+      posicion = (actual+tirada)%20
+    end
+    
+    if actual+tirada != posicion
+      @por_salida = @por_salida+1
+    end
+    return posicion
+  end
+  
+  private :correcto
 end
 end

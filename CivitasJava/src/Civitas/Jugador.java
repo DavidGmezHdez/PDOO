@@ -55,7 +55,7 @@ public class Jugador implements Comparable<Jugador> {
     
     @Override
     public int compareTo(Jugador otro){
-        //this.getSaldo().compareTo(otro.getSaldo
+        //new Boolean(this.getSaldo()).compareTo(new Boolean(otro.getSaldo()));
         throw new UnsupportedOperationException("No implementado");
     }
     
