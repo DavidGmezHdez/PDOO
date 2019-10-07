@@ -39,7 +39,7 @@ module Civitas
          return false
        end 
     end
-    
+    tiene_propietario
     def cantidad_casas_hoteles()
         return @num_casas + @num_hoteles
     end
@@ -141,8 +141,5 @@ module Civitas
     
     private :propietario_encarcelado, :es_este_el_propietario, :get_precio_venta
 
-    
-    
-    
   end
 end
