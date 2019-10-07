@@ -4,7 +4,7 @@ module Civitas
 class Tablero
   def initialize(numero)
     @casillas = Array.new
-    salida = Casilla.new("salida")
+    salida = Casilla.new_nombre("Salida")
     @casillas << salida
     if numero >= 1
       @num_casilla_carcel = numero
@@ -23,7 +23,7 @@ class Tablero
       @casillas<<carcel
       @casillas<<casilla
     else
-      @casillas<<casillareturn
+      @casillas<<casilla
     end
   end
   

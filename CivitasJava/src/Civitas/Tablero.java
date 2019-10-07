@@ -44,11 +44,10 @@ public class Tablero {
     }
     
     void añadeCasilla(Casilla casilla){
-        Casilla carcel = new Casilla("Carcel");
+        Casilla carcel = new Casilla(numCasillaCarcel,"Carcel");
         if(casillas.size() == numCasillaCarcel){           
             casillas.add(carcel);
         }
-        
         casillas.add(casilla);
     }
 

@@ -44,7 +44,6 @@ public class CivitasJuego {
     }
     
     public boolean comprar(){
-        //return this.jugadores.get(this.indiceJugadorActual).comprar(titulo);
         throw new UnsupportedOperationException("No implementado");  
     }
     
@@ -59,7 +58,7 @@ public class CivitasJuego {
     private void contabilizarPasosPorSalida(Jugador jugadorActual){
         if(tablero.getPorSalida()>0)
             for(int i=0;i<tablero.getPorSalida();i++)
-                jugadores.get(indiceJugadorActual).pasaPorSalida();
+                jugadorActual.pasaPorSalida();
     }
     
     public boolean finalDelJuego(){
@@ -88,7 +87,6 @@ public class CivitasJuego {
     }
     
     private void inicializarMazoSorpresas(Tablero tablero){
-        //Leer las reglas para saber la cantidad de cartas sorpresa
         mazo.alMazo(new Sorpresa (TipoSorpresa.IRCARCEL,tablero));
 
         mazo.alMazo(new Sorpresa (TipoSorpresa.IRCASILLA, tablero,10,"Pides un Uber que te lleva la casilla mitad del tablero"));
@@ -109,51 +107,29 @@ public class CivitasJuego {
 
         mazo.alMazo(new Sorpresa (TipoSorpresa.SALIRCARCEL,mazo));
 
-        
     }
     
     private void inicializarTablero(MazoSorpresas mazo){
         this.tablero = new Tablero(14);
         
-        Casilla calle_willyrex = new Casilla ("Calle Willyrex");
-        Casilla calle_guerrero = new Casilla ("Calle Guerrero");
-        Casilla calle_picaporte = new Casilla ("Calle Picaporte");
-        Casilla calle_cabra = new Casilla ("Calle Cabra");
-        Casilla calle_giorgio = new Casilla ("Calle Giorgio");
-        Casilla calle_potter = new Casilla ("Calle Potter");
-        Casilla calle_petunia = new Casilla ("Calle Petunia");
-        Casilla calle_motorola = new Casilla ("Calle Motorola");
-        Casilla calle_focus = new Casilla ("Calle Focus");
-        Casilla calle_rengar = new Casilla ("Calle Rengar");
-        Casilla calle_yisus = new Casilla ("Calle Yisus");
-        Casilla calle_ruby = new Casilla ("Calle Ruby");
-        Casilla calle_java = new Casilla ("Calle Java");
-        Casilla calle_diseño = new Casilla ("Calle Diseño");
-        Casilla calle_net = new Casilla ("Calle Net");
-        Casilla calle_anchoa = new Casilla ("Calle Anchoa");
-        Casilla calle_frijoles = new Casilla ("Calle Frijoles");
-        Casilla calle_caramelo = new Casilla ("Calle Caramelo");
-        Casilla calle_fideo = new Casilla ("Calle Fideo");
-        
-        this.tablero.añadeCasilla(calle_willyrex);
-        this.tablero.añadeCasilla(calle_guerrero);
-        this.tablero.añadeCasilla(calle_picaporte);
-        this.tablero.añadeCasilla(calle_cabra);
-        this.tablero.añadeCasilla(calle_giorgio);
-        this.tablero.añadeCasilla(calle_potter);
-        this.tablero.añadeCasilla(calle_petunia);
-        this.tablero.añadeCasilla(calle_motorola);
-        this.tablero.añadeCasilla(calle_focus);
-        this.tablero.añadeCasilla(calle_rengar);
-        this.tablero.añadeCasilla(calle_yisus);
-        this.tablero.añadeCasilla(calle_ruby);
-        this.tablero.añadeCasilla(calle_java);
-        this.tablero.añadeCasilla(calle_diseño);
-        this.tablero.añadeCasilla(calle_net);
-        this.tablero.añadeCasilla(calle_anchoa);
-        this.tablero.añadeCasilla(calle_frijoles);
-        this.tablero.añadeCasilla(calle_caramelo);
-        this.tablero.añadeCasilla(calle_fideo);
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Willyrex", 625, 75, 12, 350, 400)));
+        this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Guerrero", 700, 50, 10, 550, 250)));
+        this.tablero.añadeJuez();
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Picaporte", 740, 55, 19, 300, 575)));
+        this.tablero.añadeCasilla(new Casilla("Parking: Coche Seguro, Precio !Barato"));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Petunia", 925, 90, 17, 875, 600)));
+        this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Ruby", 500, 95, 14, 175, 275)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Focus", 830, 100, 16, 675, 500)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Motorola", 777, 85, 15, 750, 470)));
+        this.tablero.añadeCasilla(new Casilla(500,"Impuesto"));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Rengar", 900, 80, 12, 200, 450)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Potter", 675, 60, 20, 475, 750)));
+        this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Jesucristo", 1000, 60, 11, 250, 325)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Giorgio", 890, 65, 13, 1000, 300)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Fideo", 550, 80, 15, 600, 750)));
     }
     
     private void pasarTurno(){
@@ -169,7 +145,7 @@ public class CivitasJuego {
     }
     
     public boolean salirCarcelTirando(){
-        return this.jugadores.get(this.indiceJugadorActual).salirCarcelPagando();
+        return this.jugadores.get(this.indiceJugadorActual).salirCarcelTirando();
     }
     
     public OperacionesJuego siguientePaso(){

@@ -253,7 +253,6 @@ public class Jugador implements Comparable<Jugador> {
             this.encarcelado = false;
             diario.ocurreEvento("Jugador " + this.nombre + " sale de carcel tirando");
         }
-        
         return !this.encarcelado;
     }
     
