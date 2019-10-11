@@ -118,17 +118,20 @@ public class Sorpresa {
         if(jugadorCorrecto(actual, todos)){
             informe(actual, todos);
             
+            String text = "Pagar al jugador" + todos.get(actual).getNombre();
+            Sorpresa sorp = new Sorpresa(TipoSorpresa.PAGARCOBRAR, this.valor, text);
+            int valorAux = 0;
+            
             for(int i=0; i < todos.size(); i++){
                 if(i==actual){
-                    tipo = tipo.PAGARCOBRAR;
-                    //tipo=TipoSorpresa.PAGARCOBRAR ????????????
-                    valor *= (todos.size()-1);
-                    todos.get(i).recibe(valor);
+                    valorAux = valorAux * (todos.size()-1);
+                    sorp.setValor(valorAux);
+                    sorp.aplicarAJugador_pagarCobrar(actual,todos);
                 }else{
-                    tipo = tipo.PAGARCOBRAR;
-                    valor *= -1;
-                    todos.get(i).recibe(valor);
-                }            
+                    valorAux = valorAux * -1;
+                    sorp.setValor(valorAux);
+                    sorp.aplicarAJugador_pagarCobrar(i, todos);
+                } 
             }        
         }    
     }
@@ -164,5 +167,10 @@ public class Sorpresa {
     public String toString(){
         return "Sorpresa{ " + "nombre= " + texto + "valor= " + valor + '}';
     }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+    
     
 }

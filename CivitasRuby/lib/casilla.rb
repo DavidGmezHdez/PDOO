@@ -11,8 +11,8 @@ module Civitas
     
     #SORPRESA COMO SE PONDRÍA AQUÍ, COMO ATRIBUTO LOCAL
     def self.new_nombre(nombre)
-      init()
-      new(nombre, NOSE, NOSE, NOSE, NOSE)
+      
+      new(nombre, nil, NOSE, NOSE, NOSE)
     end
     
     
@@ -41,8 +41,8 @@ module Civitas
     
     
     def informe(iactual, todos)
-      @diario.instance().ocurre_evento("Ha caído en la casilla el jugador" + todos[iactual].nombre)
-      to_s
+      @diario.instance().ocurre_evento("Ha caído en la casilla " + self.to_s + "el jugador" + todos[iactual].nombre)
+      
     end
     
     

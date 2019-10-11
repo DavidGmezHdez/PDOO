@@ -63,7 +63,7 @@ public class Casilla {
     
     
     private void init(){
-        //NO SE A QUE INICIALIZARLOO ??????????
+        
     }
     
     

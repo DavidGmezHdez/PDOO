@@ -13,7 +13,6 @@ public class Jugador implements Comparable<Jugador> {
     static final private Diario diario = Diario.getInstance();
     static final private Dado dado = Dado.getInstance();
 
-
     
     private String nombre;
     private int numCasillaActual;
@@ -46,13 +45,17 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean cancelarHipoteca(int ip){
-        throw new UnsupportedOperationException("No implementado");  
-    } 
-    
-    int cantidadCasasHoteles(){
         throw new UnsupportedOperationException("No implementado");
     }
-    
+
+    int cantidadCasasHoteles() {
+        int total = 0;
+        for (TituloPropiedad propiedad : propiedades) {
+            total = total + propiedad.getNumCasas() + propiedad.getNumHoteles();
+        }
+        return total;
+    }
+
     @Override
     public int compareTo(Jugador otro){
         //new Boolean(this.getSaldo()).compareTo(new Boolean(otro.getSaldo()));
