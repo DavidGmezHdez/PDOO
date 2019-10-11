@@ -1,7 +1,9 @@
 package Civitas;
 import java.util.ArrayList;
+
 public class CivitasJuego {
     private int indiceJugadorActual;
+    
     private ArrayList<Jugador> jugadores;
     private MazoSorpresas mazo;
     private Tablero tablero;
@@ -15,22 +17,22 @@ public class CivitasJuego {
             jugadores.add(new Jugador(nombres.get(i)));
         }
         
-        
         gestorEstados = new GestorEstados();
         gestorEstados.estadoInicial();
+        
         this.indiceJugadorActual = dado.quienEmpieza(nombres.size());
         mazo = new MazoSorpresas();
         
         this.inicializarTablero(mazo);
         this.inicializarMazoSorpresas(tablero);
         
-        
     }
     
     
     private void avanzaJugador(){
-        
+        throw new UnsupportedOperationException("No implementado");
     }
+    
     
     public void actualizarInfo(){
         if(jugadores.get(indiceJugadorActual).enBancarrota())
@@ -38,6 +40,7 @@ public class CivitasJuego {
         else
             System.out.println(jugadores.get(indiceJugadorActual).toString());
     }
+    
     
     public boolean cancelarHipoteca(int ip){
         return this.jugadores.get(this.indiceJugadorActual).cancelarHipoteca(ip);
@@ -140,7 +143,7 @@ public class CivitasJuego {
         throw new UnsupportedOperationException("No implementado");  
     }
     
-    private boolean salirCarcelPagando(){
+    public boolean salirCarcelPagando(){
         return this.jugadores.get(this.indiceJugadorActual).salirCarcelPagando();
     }
     
@@ -156,7 +159,7 @@ public class CivitasJuego {
         this.estado = this.gestorEstados.siguienteEstado(jugadores.get(indiceJugadorActual), this.estado, operacion);
     }
     
-    boolean vender(int ip){
+    public boolean vender(int ip){
         return this.jugadores.get(this.indiceJugadorActual).vender(ip);
     }
 }

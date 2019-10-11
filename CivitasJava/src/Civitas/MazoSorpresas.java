@@ -7,10 +7,10 @@ public class MazoSorpresas {
     private boolean barajada;
     private int usadas;
     private boolean debug;
-    private ArrayList<Sorpresa> cartasEspeciales;
     private Sorpresa ultimaSorpresa;
     
-    static final private Diario diario = Diario.getInstance();
+    private ArrayList<Sorpresa> cartasEspeciales;
+    //static final private Diario diario = Diario.getInstance();
     
     
     private void init(){
@@ -24,7 +24,7 @@ public class MazoSorpresas {
         debug = estado;
         init();
         if(debug)
-            diario.ocurreEvento("debug on");
+            Diario.getInstance().ocurreEvento("debug on");
     }
     
     MazoSorpresas(){
@@ -55,20 +55,20 @@ public class MazoSorpresas {
         if(sorpresas.contains(sorpresa)){
             sorpresas.remove(sorpresa);
             cartasEspeciales.add(sorpresa);
-            diario.ocurreEvento("Carta inhabilitada");
+            Diario.getInstance().ocurreEvento("Carta inhabilitada");
         }
         else
-            diario.ocurreEvento("Carta no inhabilitada");
+            Diario.getInstance().ocurreEvento("Carta no inhabilitada");
     }
     
     void habilitarCartaEspecial(Sorpresa sorpresa){
         if(cartasEspeciales.contains(sorpresa)){
             cartasEspeciales.remove(sorpresa);
             sorpresas.add(sorpresas.size(), sorpresa);
-            diario.ocurreEvento("Carta habilitada");
+            Diario.getInstance().ocurreEvento("Carta habilitada");
         }
         else
-            diario.ocurreEvento("Carta no habilitada");
+            Diario.getInstance().ocurreEvento("Carta no habilitada");
     }
 
     

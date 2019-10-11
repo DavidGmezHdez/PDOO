@@ -47,8 +47,8 @@ public class Casilla {
     
     
     private void informe(int iactual, ArrayList<Jugador> todos){
-        Diario.getInstance().ocurreEvento("Ha caído en la casilla el jugador " + todos.get(iactual).getNombre());
-        toString();
+        Diario.getInstance().ocurreEvento("Ha caído en la casilla " + this.toString() + 
+                "el jugador " + todos.get(iactual).getNombre());
     }
 
     
@@ -63,7 +63,13 @@ public class Casilla {
     
     
     private void init(){
-        
+        nombre = "calle";
+        carcel = 0;
+        importe = 0;
+        tituloPropiedad = null;
+        tipo = null;
+        sorpresa = null;
+        mazo = null;
     }
     
     
@@ -109,7 +115,8 @@ public class Casilla {
     
     @Override
     public String toString(){
-        return "Casilla {" + "Nombre= " + nombre + ", importe=" + importe + '}';
+        return "Casilla {" + "Nombre= " + nombre + ", importe=" + importe 
+                + ", carcel = " + carcel +'}';
     }
     
 }

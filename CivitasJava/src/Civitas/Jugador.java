@@ -6,19 +6,18 @@ public class Jugador implements Comparable<Jugador> {
     protected static int CasasMax = 4;
     protected static int HotelesMax = 4;
     protected static int CasasPorHotel = 4;
-    protected static int PasoPorSalida = 1000;
-    protected static int PrecioLibertad = 200;
-    private static int SaldoInicial = 200;
+    protected static float PasoPorSalida = 1000;
+    protected static float PrecioLibertad = 200;
+    private static float SaldoInicial = 200;
     
-    static final private Diario diario = Diario.getInstance();
-    static final private Dado dado = Dado.getInstance();
-
     
     private String nombre;
     private int numCasillaActual;
     private boolean puedeComprar;
     private float saldo; 
-    boolean encarcelado;
+    protected boolean encarcelado;
+    
+    
     private ArrayList<TituloPropiedad> propiedades;
     private Sorpresa salvoconducto;
     
@@ -79,8 +78,8 @@ public class Jugador implements Comparable<Jugador> {
             return false;
         else if(this.tieneSalvoconducto()){
             this.perderSalvoConducto();
-            diario.ocurreEvento("Jugador usa salvoconducto, no entra en la cárcel");
-            return false;   
+            Diario.getInstance().ocurreEvento("Jugador usa salvoconducto, no entra en la cárcel");
+            return false;
         }
         else
             return true;
@@ -94,13 +93,17 @@ public class Jugador implements Comparable<Jugador> {
         if(this.debeSerEncarcelado()){
             this.moverACasilla(numCasillaCarcel);
             this.encarcelado = true;
-            diario.ocurreEvento("Jugador encarcelado, movido a cárcel");
+            Diario.getInstance().ocurreEvento("Jugador encarcelado, movido a cárcel");
         }
         return this.encarcelado;
     }
     
     private boolean existeLaPropiedad(int ip){
-        return this.propiedades.get(ip)!=null;
+        boolean existe=false;
+        if(this.propiedades.get(ip) != null){
+            existe=true;
+        }
+        return existe;
     }
     
 
@@ -124,11 +127,11 @@ public class Jugador implements Comparable<Jugador> {
         return numCasillaActual;
     }
     
-    private static int getPasoPorSalida() {
+    private static float getPasoPorSalida() {
         return PasoPorSalida;
     }
 
-    private static int getPrecioLibertad() {
+    private static float getPrecioLibertad() {
         return PrecioLibertad;
     }
     
@@ -154,7 +157,7 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean modificarSaldo(float cantidad){
         this.saldo+=cantidad;
-        diario.ocurreEvento("Saldo del jugador modificado: " + cantidad);
+        Diario.getInstance().ocurreEvento("Saldo del jugador modificado: " + cantidad);
         return true;
     }
     
@@ -164,7 +167,7 @@ public class Jugador implements Comparable<Jugador> {
         else{
             this.numCasillaActual = numCasilla;
             this.puedeComprar = false;
-            diario.ocurreEvento("Jugador moviendose a casilla " + numCasilla);
+            Diario.getInstance().ocurreEvento("Jugador moviendose a casilla " + numCasilla);
             return true;
         }
     }
@@ -178,8 +181,8 @@ public class Jugador implements Comparable<Jugador> {
         }
     }
     
-    boolean paga(float paga){
-        return this.modificarSaldo(paga*-1);
+    boolean paga(float cantidad){
+        return this.modificarSaldo(cantidad*-1);
     }
     
     boolean pagaAlquiler(float cantidad){
@@ -198,7 +201,7 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean pasaPorSalida(){
         this.modificarSaldo(PasoPorSalida);
-        diario.ocurreEvento("Jugador " + this.nombre + " pasa por salida");
+        Diario.getInstance().ocurreEvento("Jugador " + this.nombre + " pasa por salida");
         return true;
     }
     
@@ -243,20 +246,24 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean salirCarcelPagando(){
+        boolean salir=false;
         if(this.encarcelado && this.puedeSalirCarcelPagando()){
+            // FALTA LO DE PAGA()
             this.encarcelado = false;
-            diario.ocurreEvento("Jugador " + this.nombre + " sale de carcel pagando");
+            Diario.getInstance().ocurreEvento("Jugador " + this.nombre + " sale de carcel pagando");
+            salir=true;
         }
-        
-        return !this.encarcelado;
+        return salir;
     }
     
     boolean salirCarcelTirando(){
-        if(this.encarcelado && dado.salgoDeLaCarcel()){
+        boolean salir=false;
+        if(this.encarcelado && Dado.getInstance().salgoDeLaCarcel()){
             this.encarcelado = false;
-            diario.ocurreEvento("Jugador " + this.nombre + " sale de carcel tirando");
+            Diario.getInstance().ocurreEvento("Jugador " + this.nombre + " sale de carcel tirando");
+            salir=true;
         }
-        return !this.encarcelado;
+        return salir;
     }
     
     boolean tieneAlgoQueGestionar(){
@@ -268,21 +275,23 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean vender(int ip){
-        if(this.encarcelado)
+        if(this.encarcelado){
             return false;
-        else if(this.existeLaPropiedad(ip) && this.propiedades.get(ip).vender(this)){
-            diario.ocurreEvento("Propiedad " + this.propiedades.get(ip).getNombre() + " vendida por el jugador " + this.nombre );
+        } else if(this.existeLaPropiedad(ip) && this.propiedades.get(ip).vender(this)){
+            Diario.getInstance().ocurreEvento("Propiedad " + this.propiedades.get(ip).getNombre() + " vendida por el jugador " + this.nombre );
             this.propiedades.remove(ip);
             return true;
-            
-        }
-        else 
+        } else {
             return false;
+        }            
     }
     
     @Override
     public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", numCasillaActual=" + numCasillaActual + ", puedeComprar=" + puedeComprar + ", saldo=" + saldo + ", encarcelado=" + encarcelado + ", propiedades=" + propiedades + '}';
+        return "Jugador{" + "nombre=" + nombre + ", numCasillaActual=" + 
+                numCasillaActual + ", puedeComprar=" + puedeComprar + ", saldo=" + 
+                saldo + ", encarcelado=" + encarcelado + ", propiedades=" + 
+                propiedades + '}';
     }
 
 }

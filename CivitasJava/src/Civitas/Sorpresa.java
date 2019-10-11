@@ -74,7 +74,7 @@ public class Sorpresa {
     }
 
     void informe(int actual, ArrayList<Jugador> todos){
-        Diario.getInstance().ocurreEvento("Aplicando sorpresa al jugador " + todos.get(actual).getNombre());
+        Diario.getInstance().ocurreEvento("Aplicando sorpresa" + this.toString() + " al jugador " + todos.get(actual).toString());
     }
     
     private void aplicarAJugador_irCarcel(int actual, ArrayList<Jugador> todos){
@@ -88,7 +88,7 @@ public class Sorpresa {
         int casillaActualNum = todos.get(actual).getNumCasillaActual();
         if(jugadorCorrecto(actual,todos)){
             informe(actual,todos);
-            int tirada = tablero.calcularTirada(casillaActualNum, valor);
+            int tirada = tablero.calcularTirada(casillaActualNum, this.valor);
             int nuevaPosicion = tablero.nuevaPosicion(casillaActualNum, tirada);
             todos.get(actual).moverACasilla(nuevaPosicion);
             tablero.getCasilla(nuevaPosicion).recibeJugador(actual,todos);
@@ -99,13 +99,13 @@ public class Sorpresa {
     private void aplicarAJugador_pagarCobrar(int actual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(actual,todos)){
             informe(actual,todos);
-            todos.get(actual).modificarSaldo(valor);        
+            todos.get(actual).modificarSaldo(this.valor);        
         }    
     }
     
     private void aplicarAJugador_porCasaHotel(int actual, ArrayList<Jugador> todos){
-        int numPropiedades = todos.get(actual).getPropiedades().size();
-        int nuevoValor = valor*numPropiedades;
+        int numPropiedades = todos.get(actual).cantidadCasasHoteles();
+        int nuevoValor = this.valor*numPropiedades;
         if(jugadorCorrecto(actual,todos)){
             informe(actual,todos);
             todos.get(actual).modificarSaldo(nuevoValor);        
@@ -113,25 +113,23 @@ public class Sorpresa {
     }
     
     
-    //ESTÁ BIENN ????????
     private void aplicarAJugador_porJugador(int actual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(actual, todos)){
             informe(actual, todos);
-            
+            int valorActual = 0;
+            int valorOtros = 0;
             String text = "Pagar al jugador" + todos.get(actual).getNombre();
-            Sorpresa sorp = new Sorpresa(TipoSorpresa.PAGARCOBRAR, this.valor, text);
-            int valorAux = 0;
-            
+            valorActual = valorActual * (todos.size()-1);
+            valorOtros = valorOtros * -1;
+            Sorpresa sorpActual = new Sorpresa(TipoSorpresa.PAGARCOBRAR, valorActual, text);
+            Sorpresa sorpOtros =  new Sorpresa(TipoSorpresa.PAGARCOBRAR, valorOtros, text);
+
             for(int i=0; i < todos.size(); i++){
                 if(i==actual){
-                    valorAux = valorAux * (todos.size()-1);
-                    sorp.setValor(valorAux);
-                    sorp.aplicarAJugador_pagarCobrar(actual,todos);
+                    sorpActual.aplicarAJugador_pagarCobrar(actual,todos);
                 }else{
-                    valorAux = valorAux * -1;
-                    sorp.setValor(valorAux);
-                    sorp.aplicarAJugador_pagarCobrar(i, todos);
-                } 
+                    sorpOtros.aplicarAJugador_pagarCobrar(i, todos);
+                }
             }        
         }    
     }
@@ -154,13 +152,13 @@ public class Sorpresa {
     }
     
     void salirDelMazo(){
-        if(tipo==TipoSorpresa.SALIRCARCEL)
-            mazo.inhabilitarCartaEspecial(this);
+        if(this.tipo==TipoSorpresa.SALIRCARCEL)
+            this.mazo.inhabilitarCartaEspecial(this);
     }
     
     void usada(){
-        if(tipo==TipoSorpresa.SALIRCARCEL)
-            mazo.habilitarCartaEspecial(this);
+        if(this.tipo==TipoSorpresa.SALIRCARCEL)
+            this.mazo.habilitarCartaEspecial(this);
     }
     
     @Override

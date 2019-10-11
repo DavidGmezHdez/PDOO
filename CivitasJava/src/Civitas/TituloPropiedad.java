@@ -3,7 +3,7 @@ public class TituloPropiedad {
 
     private String nombre;
     private float alquilerBase;
-    private float factorInteresesHipoteca = (float) 1.1;
+    private static float factorInteresesHipoteca = (float) 1.1;
     private float factorRevalorización;
     private float hipotecaBase;
     private boolean hipotecado;
@@ -15,8 +15,8 @@ public class TituloPropiedad {
     Jugador propietario;
 
 
-
-    public TituloPropiedad(String nombre, float alquilerBase, float factorRevalorización, float hipotecaBase, float precioCompra, float precioEdificar) {
+    public TituloPropiedad(String nombre, float alquilerBase, float factorRevalorización, 
+            float hipotecaBase, float precioCompra, float precioEdificar) {
         this.nombre = nombre;
         this.alquilerBase = alquilerBase;
         this.factorRevalorización = factorRevalorización;
@@ -134,7 +134,8 @@ public class TituloPropiedad {
     }
     
     private float getPrecioVenta(){
-        return this.getPrecioCompra() + (this.cantidadCasasHoteles() * this.precioEdificar * this.factorRevalorización);
+        return this.getPrecioCompra() + 
+                (this.cantidadCasasHoteles() * this.precioEdificar * this.factorRevalorización);
     }
 
 

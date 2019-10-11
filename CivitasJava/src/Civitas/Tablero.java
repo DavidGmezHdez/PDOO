@@ -65,6 +65,11 @@ public class Tablero {
         else
             return null;
     }
+
+    public ArrayList<Casilla> getCasillas() {
+        return casillas;
+    }
+    
     
     int nuevaPosicion(int actual, int tirada){
         int posicion;

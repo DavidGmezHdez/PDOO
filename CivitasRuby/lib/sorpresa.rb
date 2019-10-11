@@ -17,26 +17,22 @@ module Civitas
     
     #Constructor para la sorpresa que envía a la cárcel
     def self.new_a_carcel(tipo, tablero)
-      init()
-      new("¡Directo a la cárcel!", tablero, -1, nil, tipo)
+      new("¡Directo a la cárcel!", tablero, 0, nil, tipo)
     end
     
     #Constructor para la sorpresa que envía al jugador a otra casilla
     def self.new_otra_casilla(tipo, tablero, valor, texto) 
-      init()
       new(texto, tablero, valor, nil, tipo)
     end 
     
     #Constructor para el resto de sorpresas
     def self.new_sorpresas(tipo, valor, texto)
-      init()
       new(texto, nil, valor, nil, tipo)
     end
     
     #Constructor para sorpresa que permite evitar la carcel
     def self.new_evitar_carcel(tipo, mazo)
-      init()
-      new("¡Genial! Has conseguido la carta para evitar la cárcel", nil, -1, mazo, tipo)
+      new("¡Genial! Has conseguido la carta para evitar la cárcel", nil, 0, mazo, tipo)
     end
     
     
@@ -64,9 +60,9 @@ module Civitas
     
     def aplicar_a_jugador(actual, todos)
       case(@tipo)
-      when TipoSorpresa::IRACARCEL
+      when TipoSorpresa::IRCARCEL
         aplicar_a_jugador_ir_a_carcel(actual,todos)
-      when TipoSorpresa::IRACASILLA
+      when TipoSorpresa::IRCASILLA
         aplicar_a_jugador_ir_a_casilla(actual, todos)
       when TipoSorpresa::PAGARCOBRAR
         aplicar_a_jugador_pagar_cobrar(actual, todos)

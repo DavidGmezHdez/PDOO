@@ -87,7 +87,7 @@ class GestorEstados {
           siguiente = EstadosJuego.INICIO_TURNO;
         break;
     }
-
+    
     Diario.getInstance().ocurreEvento("De: "+estado.toString()+ " con "+operacion.toString()+ " sale: "+siguiente.toString());
 
     return siguiente;
