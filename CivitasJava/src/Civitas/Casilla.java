@@ -63,13 +63,13 @@ public class Casilla {
     
     
     private void init(){
-        nombre = "calle";
-        carcel = 0;
-        importe = 0;
-        tituloPropiedad = null;
-        tipo = null;
-        sorpresa = null;
-        mazo = null;
+        this.nombre = " ";
+        this.carcel = 0;
+        this.importe = 0;
+        this.tituloPropiedad = null;
+        this.tipo = null;
+        this.sorpresa = null;
+        this.mazo = null;
     }
     
     
