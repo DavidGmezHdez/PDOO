@@ -80,7 +80,7 @@ public class Sorpresa {
     private void aplicarAJugador_irCarcel(int actual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(actual,todos)){
             informe(actual,todos);
-            todos.get(actual).encarcelar(tablero.getCarcel());
+            todos.get(actual).encarcelar(this.tablero.getCarcel());
         }
     }
     

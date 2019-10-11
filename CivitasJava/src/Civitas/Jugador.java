@@ -57,8 +57,8 @@ public class Jugador implements Comparable<Jugador> {
 
     @Override
     public int compareTo(Jugador otro){
-        //new Boolean(this.getSaldo()).compareTo(new Boolean(otro.getSaldo()));
-        throw new UnsupportedOperationException("No implementado");
+        int otroSaldo = (int) otro.getSaldo();
+        return otroSaldo - (int)this.saldo;
     }
     
     boolean comprar(TituloPropiedad titulo){
@@ -99,11 +99,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     private boolean existeLaPropiedad(int ip){
-        boolean existe=false;
-        if(this.propiedades.get(ip) != null){
-            existe=true;
-        }
-        return existe;
+        return propiedades.get(ip) != null;
     }
     
 
@@ -127,7 +123,7 @@ public class Jugador implements Comparable<Jugador> {
         return numCasillaActual;
     }
     
-    private static float getPasoPorSalida() {
+    private static float getPremioPasoPorSalida() {
         return PasoPorSalida;
     }
 
@@ -224,11 +220,11 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     private boolean puedoEdificarCasa(TituloPropiedad propiedad){
-        throw new UnsupportedOperationException("No implementado");
+        return propiedad.getNumCasas()<4 && this.saldo>propiedad.getPrecioEdificar();
     }
     
     private boolean puedoEdificarHotel(TituloPropiedad propiedad){
-        throw new UnsupportedOperationException("No implementado");
+        return propiedad.getNumCasas() == 4 && this.saldo>propiedad.getPrecioEdificar();
     }
     
     private boolean puedoGastar(float precio){
@@ -248,7 +244,7 @@ public class Jugador implements Comparable<Jugador> {
     boolean salirCarcelPagando(){
         boolean salir=false;
         if(this.encarcelado && this.puedeSalirCarcelPagando()){
-            // FALTA LO DE PAGA()
+            this.paga(PrecioLibertad);
             this.encarcelado = false;
             Diario.getInstance().ocurreEvento("Jugador " + this.nombre + " sale de carcel pagando");
             salir=true;

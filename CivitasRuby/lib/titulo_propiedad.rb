@@ -136,7 +136,12 @@ module Civitas
     end
     
     def vender(jugador)
-        
+        if es_este_el_propietario(jugador) && !@hipotecado
+          jugador.recibe(get_precio_venta)
+          return true
+        else
+          return false
+        end
     end
     
     private :propietario_encarcelado, :es_este_el_propietario, :get_precio_venta

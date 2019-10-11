@@ -13,7 +13,7 @@ module Civitas
     @@dado = Dado.instance
     @@diario = Diario.instance
     
-    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, :num_casilla_actual, :propiedades
+    
     
     def initialize(nombre,encarcelado = false, saldo = @@SALDO_INICIAL, puede_comprar = true,salvoconducto = nil, num_casilla = 0, propiedades = Array.new)
          @encarcelado = encarcelado
@@ -25,6 +25,8 @@ module Civitas
          @propiedades = propiedades
     end
    
+    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, :num_casilla_actual, :propiedades
+    
     def self.copia(jugador)
       self.new(jugador.nombre,jugador.encarcelado,jugador.saldo,jugador.puede_comprar,jugador.salvoconducto,jugador.num_casilla_actual,jugador.propiedades)
     end
@@ -34,7 +36,11 @@ module Civitas
     end
     
     def cantidad_casas_hoteles
-      
+      total = 0
+      for i in @propiedades
+        total = total + i.num_casas + i.num_hoteles
+      end
+      return total
     end
     
     def <=>(otroJugador)
@@ -47,7 +53,6 @@ module Civitas
       if (otro_saldo<mi_saldo)
         return -1 
       end
-
       return 0
     end
     
@@ -90,7 +95,7 @@ module Civitas
     end
     
     def existe_la_propiedad(ip)
-      
+      return @propiedades[ip] != nil
     end
     
     def hipotecar(ip)
@@ -168,11 +173,11 @@ module Civitas
     end
     
     def puedo_edificar_casa(propiedad)
-      
+      return propiedad.num_casas<4 && @saldo>propiedad.precio_edificar
     end
     
     def puedo_edificar_hotel(propiedad)
-      
+      return propiedad.num_casas==4 && @saldo>propiedad.precio_edificar
     end
     
     def puedo_gastar(precio)
@@ -193,6 +198,7 @@ module Civitas
     
     def salir_carcel_pagando
       if @encarcelado && puede_salir_carcel_pagando
+        paga(@PRECIO_LIBERTAD)
         @encarcelado = false
         @@diario.ocurre_evento("Jugador " + @nombre + " sale de carcel pagando")
       end
@@ -237,8 +243,7 @@ module Civitas
       end
       
     end
-    
-    
+     
     protected :debe_ser_encarcelado
     private :existe_la_propiedad, :puedo_salir_carcel_pagando, :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, :puedo_gastar
    

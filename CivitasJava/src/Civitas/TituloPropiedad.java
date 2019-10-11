@@ -194,7 +194,6 @@ public class TituloPropiedad {
     boolean vender(Jugador jugador){
         if(this.esEsteElPropietario(jugador) && !this.hipotecado){
             jugador.recibe(this.getPrecioVenta());
-            this.hipotecado = true;
             return true;
         }
         else
