@@ -89,8 +89,6 @@ module Civitas
     
     
     def aplicar_a_jugador_ir_a_casilla(actual,todos)
-      # NO SE SI ESTA BIEN HECHO LO DE CASILLA ACTUAL ???????
-      casilla_actual = new Casilla
       casilla_actual = todos[actual].num_casilla_actual
       if(jugador_correcto(actual,todos))
         informe(actual,todos)
@@ -178,6 +176,10 @@ module Civitas
     end
     
     attr_writer :texto, :valor
+    private :informe, :init, :aplicar_a_jugador_ir_a_carcel, 
+      :aplicar_a_jugador_ir_a_casilla, :aplicar_a_jugador_pagar_cobrar, 
+      :aplicar_a_jugador_por_casa_hotel, :aplicar_a_jugador_por_jugador,
+      :aplicar_a_jugador_salir_carcel
     
   end
 end

@@ -92,5 +92,8 @@ module Civitas
       "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe} }"
     end
     
+    private :init, :informe, :recibe_jugador_sorpresa, :recibe_jugador_juez,
+      :recibe_jugador_impuesto, :recibe_jugador_calle
+    
   end
 end

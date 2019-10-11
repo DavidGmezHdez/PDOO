@@ -63,7 +63,7 @@ public class Casilla {
     
     
     private void init(){
-        //NO SE A QUE INICIALIZARLOOOOOOOOOOOOO
+        //NO SE A QUE INICIALIZARLOO ??????????
     }
     
     
@@ -85,7 +85,7 @@ public class Casilla {
         throw new UnsupportedOperationException("No implementado");
     }
     
-    
+   
     private void recibeJugador_impuesto(int iactual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(iactual,todos)){
             informe(iactual,todos);

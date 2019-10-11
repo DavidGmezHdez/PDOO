@@ -33,6 +33,8 @@ module Civitas
     
     def siguiente
       if(!@barajada || @usadas==@sorpresas.size() && !@debug)
+        #ESTA BIEN BARAJADA ASI ????????????'
+        @sorpresas.shuffle
         @usadas=0
         @barajada = true
       end
