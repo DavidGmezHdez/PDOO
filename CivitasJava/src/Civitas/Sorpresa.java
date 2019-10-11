@@ -116,8 +116,8 @@ public class Sorpresa {
     private void aplicarAJugador_porJugador(int actual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(actual, todos)){
             informe(actual, todos);
-            int valorActual = 0;
-            int valorOtros = 0;
+            int valorActual = this.valor;
+            int valorOtros = this.valor;
             String text = "Pagar al jugador" + todos.get(actual).getNombre();
             valorActual = valorActual * (todos.size()-1);
             valorOtros = valorOtros * -1;
