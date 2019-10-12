@@ -38,14 +38,11 @@ module Civitas
     end
     
     
-    
     def quien_empieza(n)
       primer_jugador = rand(n-1)+1
       
       return primer_jugador
     end
-    
-    
     
     
   end

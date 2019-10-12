@@ -6,11 +6,13 @@ class Tablero
     @casillas = Array.new
     salida = Casilla.new_nombre("Salida")
     @casillas << salida
+    
     if numero >= 1
       @num_casilla_carcel = numero
     else
       @num_casilla_carcel = 1
     end
+    
     @por_salida = 0
     @tiene_juez = false
   end
@@ -21,10 +23,8 @@ class Tablero
     carcel = Casilla.new("carcel")
     if @casillas.size == @num_casilla_carcel
       @casillas<<carcel
-      @casillas<<casilla
-    else
-      @casillas<<casilla
     end
+    @casillas<<casilla
   end
   
   def añade_juez
@@ -44,12 +44,12 @@ class Tablero
   end
   
   def correcto(num_casilla)
-    return correcto && (num_casilla>=0 &&num_casilla<=20) 
+    return correcto && (num_casilla>=0 && num_casilla<=@casillas.size) 
   end
   
   def get_por_salida
     por_salida_anterior = @por_salida
-    if @por_salida == 0
+    if @por_salida > 0
       @por_salida = @por_salida - 1
       return por_salida_anterior
     else

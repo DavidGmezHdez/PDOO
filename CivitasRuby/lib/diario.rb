@@ -6,7 +6,7 @@ module Civitas
     include Singleton
 
     def initialize
-      @eventos = []
+      @eventos = Array.new
     end
 
     def ocurre_evento(e)

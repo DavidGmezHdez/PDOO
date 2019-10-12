@@ -6,7 +6,7 @@ module Civitas
   class CivitasJuego
     
     def initialize(nombres)
-      @indice_jugador_actual = @dado.instance.quien_empieza(nombres.size)
+      @indice_jugador_actual = Dado.instance.quien_empieza(nombres.size)
       
       @jugadores = Array.new
       for i in nombres

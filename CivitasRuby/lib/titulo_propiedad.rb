@@ -15,7 +15,8 @@ module Civitas
       @propietario = nil
     end
     
-    attr_accessor :nombre, :hipotecado, :hipoteca_base, :num_casas, :num_hoteles, :precio_compra, :precio_edificar, :propietario
+    attr_accessor :nombre, :hipotecado, :hipoteca_base, :num_casas, :num_hoteles, 
+      :precio_compra, :precio_edificar, :propietario
     
     def to_s
       "TituloPropiedad: #{@nombre} \n Alquiler base #{@alquiler_base} \n 
@@ -31,53 +32,68 @@ module Civitas
     end
     
     def cancelar_hipoteca(jugador)
-       if @hipotecado && es_este_el_propietario(jugador)
-         jugador.paga(get_importe_cancelar_hipoteca)
-         @hipotecado = false
-         return true
-       else
-         return false
-       end 
+      raise NotImplementedError
     end
-    tiene_propietario
+#    def cancelar_hipoteca(jugador)
+#       if @hipotecado && es_este_el_propietario(jugador)
+#         jugador.paga(get_importe_cancelar_hipoteca)
+#         @hipotecado = false
+#         return true
+#       else
+#         return false
+#       end 
+#    end
+    
+    
     def cantidad_casas_hoteles()
         return @num_casas + @num_hoteles
     end
     
     def comprar(jugador)
-      if tiene_propietario
-        return false
-      else
-        @propietario = jugador
-        @jugador.paga(@precio_compra)
-        return true
-      end
-        
+      raise NotImplementedError
     end
     
     def construir_casa(jugador)
-        resultado = false
-        if este_es_el_propietario(jugador)
-          jugador.paga(@precio_edificar)
-          @num_casas = @num_casas + 1
-          resultado = true
-        end
-      return resultado
+      raise NotImplementedError
     end
     
     def construir_hotel(jugador)
-        resultado = false
-        if este_es_el_propietario(jugador)
-          jugador.paga(@precio_edificar)
-          @num_casas = @num_casas + 1
-          resultado = true
-        end
-      return resultado
-        
+      raise NotImplementedError
     end
     
+#    def comprar(jugador)
+#      if tiene_propietario
+#        return false
+#      else
+#        @propietario = jugador
+#        @jugador.paga(@precio_compra)
+#        return true
+#      end
+#        
+#    end
+#    
+#    def construir_casa(jugador)
+#        resultado = false
+#        if es_este_el_propietario(jugador)
+#          jugador.paga(@precio_edificar)
+#          @num_casas = @num_casas + 1
+#          resultado = true
+#        end
+#      return resultado
+#    end
+#    
+#    def construir_hotel(jugador)
+#        resultado = false
+#        if es_este_el_propietario(jugador)
+#          jugador.paga(@precio_edificar)
+#          @num_hoteles = @num_hoteles + 1
+#          resultado = true
+#        end
+#      return resultado
+#    end
+    
     def derruir_casas(n,jugador)
-      if este_es_el_propietario(jugador) && @num_casas >= n
+      if es_este_el_propietario(jugador) && @num_casas >= n
         @num_casas = @num_casas - n
         return true
       else
@@ -109,16 +125,18 @@ module Civitas
     end
 
 
-    
     def hipotecar(jugador)
-        if !@hipotecado && es_este_el_propietario(jugador)
-          @jugador.recibe(@hipoteca_base)
-          @hipotecado = true
-          return true
-        else
-          return false
-        end
+      raise NotImplementedError
     end
+#    def hipotecar(jugador)
+#        if !@hipotecado && es_este_el_propietario(jugador)
+#          @jugador.recibe(@hipoteca_base)
+#          @hipotecado = true
+#          return true
+#        else
+#          return false
+#        end
+#    end
     
     def propietario_encarcelado
       return @propietario.encarcelado

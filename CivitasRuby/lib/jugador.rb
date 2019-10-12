@@ -1,6 +1,7 @@
 # encoding:utf-8
 require_relative 'dado'
 require_relative 'diario'
+
 module Civitas
   class Jugador
     @@CASAS_MAX = 4
@@ -10,9 +11,10 @@ module Civitas
     @@PRECIO_LIBERTAD = 200
     @@SALDO_INICIAL = 7500
     
-    @@dado = Dado.instance
     
-    def initialize(nombre,encarcelado = false, saldo = @@SALDO_INICIAL, puede_comprar = true,salvoconducto = nil, num_casilla = 0, propiedades = Array.new)
+    def initialize(nombre, encarcelado = false, saldo = @@SALDO_INICIAL, 
+        puede_comprar = true,salvoconducto = nil, num_casilla = 0, 
+        propiedades = Array.new)
          @encarcelado = encarcelado
          @nombre = nombre
          @saldo = saldo
@@ -22,14 +24,15 @@ module Civitas
          @propiedades = propiedades
     end
    
-    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, :num_casilla_actual, :propiedades
+    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, 
+      :num_casilla_actual, :propiedades
     
     def self.copia(jugador)
       self.new(jugador.nombre,jugador.encarcelado,jugador.saldo,jugador.puede_comprar,jugador.salvoconducto,jugador.num_casilla_actual,jugador.propiedades)
     end
     
     def cancelar_hipoteca(ip)
-      
+      raise NotImplementedError
     end
     
     def cantidad_casas_hoteles
@@ -54,24 +57,25 @@ module Civitas
     end
     
     def comprar(titulo)
-      
+      raise NotImplementedError
     end
     
     def construir_casa(ip)
-      
+      raise NotImplementedError
     end
     
     def construir_hotel(ip)
-      
+      raise NotImplementedError
     end
     
     def debe_ser_encarcelado
-      if !@encarcelado
+      if @encarcelado
         return false
       else
         if tiene_salvoconducto
           perder_salvoconducto
-          Diario.instance.ocurre_evento("Jugador " + @nombre + " tiene salvoconducto \n")
+          Diario.instance.ocurre_evento("Jugador " + @nombre + 
+              " tiene salvoconducto, no entra en la carcek \n")
           return false
           else
             return true
@@ -87,14 +91,14 @@ module Civitas
       if debe_ser_encarcelado
         mover_a_casilla(num_casilla_carcel)
         @encarcelado = true
+        Diario.instance.ocurreEvento("Jugador encarcelado, movido a cárcel");
       end
-      return @encacelado
+      return @encarcelado
     end
     
     def existe_la_propiedad(ip)
       return @propiedades[ip] != nil
     end
-    
     
     def self.getCasas_Max
       return @@CASAS_MAX
@@ -121,7 +125,7 @@ module Civitas
     end
     
     def hipotecar(ip)
-      
+      raise NotImplementedError
     end
     
     def modificar_saldo(cantidad)
@@ -155,7 +159,7 @@ module Civitas
     end
     
     def paga_alquiler(cantidad)
-      if @encarcelado = true
+      if @encarcelado
         return false
       else
         return paga(cantidad)
@@ -219,21 +223,25 @@ module Civitas
     end
     
     def salir_carcel_pagando
+      salir=false
       if @encarcelado && puede_salir_carcel_pagando
         paga(@PRECIO_LIBERTAD)
         @encarcelado = false
         Diario.instance.ocurre_evento("Jugador " + @nombre + " sale de carcel pagando")
+        salir=true
       end
       
-      return !@encarcelado
+      return salir
     end
     
     def salir_carcel_tirando
-      if @encarcelado && @@dado.salgo_de_la_carcel
+      salir=false
+      if @encarcelado && Dado.instance.salgo_de_la_carcel
         @encarcelado = false
         Diario.instance.ocurre_evento("Jugador " + @nombre + " sale de carcel tirando")
+        salir=true
       end
-      return !@encarcelado
+      return salir
     end
     
     def tiene_algo_que_gestionar
@@ -241,7 +249,23 @@ module Civitas
     end
     
     def tiene_salvoconducto
-      return @salvoconducto!=nil
+      return @salvoconducto != nil
+    end
+    
+    def vender(ip)
+      if @encarcelado
+        return false
+      else
+        if existe_la_propiedad(ip) && @propiedades.index(ip).vender(self)
+          Diario.instance.ocurre_evento("Propiedad " + @propiedades.index(ip).nombre + 
+              " vendida por el jugador " + @nombre)
+          @propiedades.delete_at(ip)
+          return true
+        else
+          return false
+        end
+      end
+      
     end
     
     def to_s
@@ -251,23 +275,12 @@ module Civitas
       casilla actual: #{@num_casilla_actual}\n salvoconducto: #{@salvoconducto}\n"
     end
     
-    def vender(ip)
-      if @encarcelado
-        return false
-      else
-        if existe_la_propiedad(ip) && @propiedades.index(ip).vender(this)
-          Diario.instance.ocurre_evento("Propiedad " + @propiedades.index(ip).nombre + " vendida por el jugador " + @nombre)
-          @propiedades.delete_at(ip)
-          return true
-        else
-          return false
-        end
-      end
-      
-    end
+    
      
     protected :debe_ser_encarcelado
-    private :existe_la_propiedad, :getCasas_Max , :puedo_salir_carcel_pagando, :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, :puedo_gastar
+    private :existe_la_propiedad, :getCasas_Max , :getHoteles_max, :puedo_salir_carcel_pagando, 
+      :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, 
+      :puedo_gastar
    
   end
 end

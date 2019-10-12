@@ -46,7 +46,7 @@ module Civitas
     
     
     def informe(iactual, todos)
-      @diario.instance.ocurre_evento("Ha caído en la casilla " + self.to_s + 
+      Diario.instance.ocurre_evento("Ha caído en la casilla " + self.to_s + 
           "el jugador" + todos[iactual].nombre)
     end
     

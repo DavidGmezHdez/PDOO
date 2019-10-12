@@ -53,8 +53,8 @@ module Civitas
     
     
     def informe(actual, todos)
-      #COMO LLAMO A DIARIOOOO ????????????? 
-      @diario.instance.ocurre_evento("Aplicando sorpresa al jugador " + todos[actual].nombre)
+      Diario.instance.ocurre_evento("Aplicando sorpresa " + self.to_s + 
+        "al jugador " + todos[actual].nombre)
     end
     
     
@@ -91,7 +91,6 @@ module Civitas
         tirada = @tablero.calcular_tirada(casilla_actual,@valor)
         nueva_posicion = @tablero.nueva_posicion(casilla_actual,tirada)
         todos[actual].mover_a_casilla(nueva_posicion)
-        # FALTAAAAAAAAAA UNA PARTE ??????
         @tablero.casillas[nueva_posicion].recibe_jugador(actual,todos)
       end
     end
@@ -106,7 +105,7 @@ module Civitas
     
     
     def aplicar_a_jugador_por_casa_hotel(actual,todos)
-      num_propiedades = todos[actual].propiedades.size()
+      num_propiedades = todos[actual].cantidad_casas_hoteles
       nuevo_valor = @valor*num_propiedades
       if(jugador_correcto(actual,todos))
         informe(actual,todos)
@@ -117,18 +116,23 @@ module Civitas
     
     def aplicar_a_jugador_por_jugador(actual,todos)
       if(jugador_correcto(actual,todos))
+        valor_actual = @valor
+        valor_otros = @valor
+        text = "Pagar al jugador" + todos[actual].nombre
+        valor_actual = valor_actual * (todos.size-1)
+        valor_otros = valor_otros * -1
+        
+        sorp_actual = Sorpresa.new(TipoSorpresa::PAGARCOBRAR, valor_actual,text)
+        sorp_otros = Sorpresa.new(TipoSorpresa::PAGARCOBRAR, valor_otros,text)
+
         
         for i in (todos.size())
           if(i==actual)
-            @tipo=TipoSorpresa::PAGARCOBRAR
-            @valor *= (todos.size()-1)
-            todos[i].recibe(@valor)
+            sorp_actual.aplicar_a_jugador_pagar_cobrar(actual,todos)
           else
-            @tipo=TipoSorpresa::PAGARCOBRAR
-            @valor *= -1
-            todos[i].recibe(@valor)
+            sorp_otros.aplicar_a_jugador_pagar_cobrar(actual,todos)
           end
-        end        
+        end       
       end
     end
     
@@ -144,6 +148,7 @@ module Civitas
           end
         end
         
+        # Si naide tiene salvo conducto
         if(nadie_salvo_conducto==0)
           todos[actual].obtener_salvoconducto(self)
           salir_del_mazo
@@ -168,10 +173,12 @@ module Civitas
     
     
     def to_s
-      "Numero casilla: \n #{@texto}  \n Valor: #{@valor} }"
+      "Sorpresa: \n #{@nombre}  \n Valor: #{@valor} }"
     end
     
-    attr_writer :texto, :valor
+    attr_writer :texto
+    attr_accessor :valor
+    
     private :informe, :init, :aplicar_a_jugador_ir_a_carcel, 
       :aplicar_a_jugador_ir_a_casilla, :aplicar_a_jugador_pagar_cobrar, 
       :aplicar_a_jugador_por_casa_hotel, :aplicar_a_jugador_por_jugador,
