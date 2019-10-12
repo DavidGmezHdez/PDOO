@@ -1,5 +1,8 @@
 package Civitas;
+
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class CivitasJuego {
     private int indiceJugadorActual;
@@ -45,6 +48,7 @@ public class CivitasJuego {
     public boolean cancelarHipoteca(int ip){
         return this.jugadores.get(this.indiceJugadorActual).cancelarHipoteca(ip);
     }
+
     
     public boolean comprar(){
         throw new UnsupportedOperationException("No implementado");  
@@ -162,4 +166,5 @@ public class CivitasJuego {
     public boolean vender(int ip){
         return this.jugadores.get(this.indiceJugadorActual).vender(ip);
     }
+    
 }
