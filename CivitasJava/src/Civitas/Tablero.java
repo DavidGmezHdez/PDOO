@@ -1,4 +1,5 @@
 package Civitas;
+
 import java.util.ArrayList;
 
 public class Tablero {
@@ -6,6 +7,7 @@ public class Tablero {
     private int numCasillaCarcel;
     private int porSalida;
     private boolean tieneJuez;
+    
     
     Tablero(int numero){
         if(numero>=1)
@@ -25,13 +27,16 @@ public class Tablero {
         return casillas.size() > numCasillaCarcel && tieneJuez;
     }
 
+    
     private boolean correcto(int numCasilla){
         return correcto() && (numCasilla >=0 && numCasilla<= casillas.size());
     }
     
+    
     int getCarcel(){
         return numCasillaCarcel;
     }
+    
     
     int getPorSalida(){
         int porSalidaAnterior = porSalida;
@@ -43,6 +48,7 @@ public class Tablero {
             return porSalida;
     }
     
+    
     void añadeCasilla(Casilla casilla){
         Casilla carcel = new Casilla(numCasillaCarcel,"Carcel");
         if(casillas.size() == numCasillaCarcel){           
@@ -51,6 +57,7 @@ public class Tablero {
         casillas.add(casilla);
     }
 
+    
     void añadeJuez(){
         Casilla Juez = new Casilla("Juez");
         if(!tieneJuez)    
@@ -59,12 +66,14 @@ public class Tablero {
         tieneJuez = true;
     }
     
+    
     Casilla getCasilla(int numCasilla){
         if(numCasilla >= 0 && numCasilla <= casillas.size())
             return casillas.get(numCasilla);
         else
             return null;
     }
+    
 
     public ArrayList<Casilla> getCasillas() {
         return casillas;
@@ -84,6 +93,7 @@ public class Tablero {
              
         return posicion;
     }
+    
     
     int calcularTirada(int origen, int destino){
         return destino - origen + 20;

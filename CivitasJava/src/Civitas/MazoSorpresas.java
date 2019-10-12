@@ -1,4 +1,5 @@
 package Civitas;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -10,7 +11,6 @@ public class MazoSorpresas {
     private Sorpresa ultimaSorpresa;
     
     private ArrayList<Sorpresa> cartasEspeciales;
-    //static final private Diario diario = Diario.getInstance();
     
     
     private void init(){
@@ -20,6 +20,7 @@ public class MazoSorpresas {
         usadas = 0;
     }
     
+    
     MazoSorpresas(boolean estado){
         debug = estado;
         init();
@@ -27,15 +28,18 @@ public class MazoSorpresas {
             Diario.getInstance().ocurreEvento("debug on");
     }
     
+    
     MazoSorpresas(){
         debug = false;
         init();
     }
     
+    
     void alMazo(Sorpresa s){
         if(!barajada)
             sorpresas.add(s);
     }
+    
     
     Sorpresa siguiente(){
         if((!barajada || usadas == sorpresas.size()) && !debug ){
@@ -51,6 +55,7 @@ public class MazoSorpresas {
         return ultimaSorpresa;
     }
     
+    
     void inhabilitarCartaEspecial(Sorpresa sorpresa){
         if(sorpresas.contains(sorpresa)){
             sorpresas.remove(sorpresa);
@@ -60,6 +65,7 @@ public class MazoSorpresas {
         else
             Diario.getInstance().ocurreEvento("Carta no inhabilitada");
     }
+    
     
     void habilitarCartaEspecial(Sorpresa sorpresa){
         if(cartasEspeciales.contains(sorpresa)){
@@ -71,5 +77,4 @@ public class MazoSorpresas {
             Diario.getInstance().ocurreEvento("Carta no habilitada");
     }
 
-    
 }

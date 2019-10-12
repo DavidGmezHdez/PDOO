@@ -1,4 +1,5 @@
 package Civitas;
+
 import java.util.ArrayList;
 import java.lang.Float;
 
@@ -31,6 +32,7 @@ public class Jugador implements Comparable<Jugador> {
         this.propiedades = new ArrayList<>();
     }
     
+    
     protected Jugador(Jugador jug){
         this.nombre = jug.nombre;
         this.numCasillaActual = jug.numCasillaActual;
@@ -46,6 +48,7 @@ public class Jugador implements Comparable<Jugador> {
     boolean cancelarHipoteca(int ip){
         throw new UnsupportedOperationException("No implementado");
     }
+    
 
     int cantidadCasasHoteles() {
         int total = 0;
@@ -54,23 +57,28 @@ public class Jugador implements Comparable<Jugador> {
         }
         return total;
     }
+    
 
     @Override
     public int compareTo(Jugador otro){
         return (new Float(this.getSaldo()).compareTo(otro.getSaldo()));
     }
     
+    
     boolean comprar(TituloPropiedad titulo){
         throw new UnsupportedOperationException("No implementado");
     } 
+    
     
     boolean construirCasa(int ip){
         throw new UnsupportedOperationException("No implementado");
     } 
     
+    
     boolean construirHotel(int ip){
         throw new UnsupportedOperationException("No implementado");
     } 
+    
     
     protected boolean debeSerEncarcelado(){
         if (this.encarcelado)
@@ -84,9 +92,11 @@ public class Jugador implements Comparable<Jugador> {
             return true;
     } 
     
+    
     boolean enBancarrota(){
         return this.saldo <= 0;
     } 
+    
     
     boolean encarcelar(int numCasillaCarcel){
         if(this.debeSerEncarcelado()){
@@ -97,6 +107,7 @@ public class Jugador implements Comparable<Jugador> {
         return this.encarcelado;
     }
     
+    
     private boolean existeLaPropiedad(int ip){
         return propiedades.get(ip) != null;
     }
@@ -106,55 +117,68 @@ public class Jugador implements Comparable<Jugador> {
         return CasasMax;
     }
 
+    
     static int getCasasPorHotel() {
         return CasasPorHotel;
     }
+    
 
     private static int getHotelesMax() {
         return HotelesMax;
     }
     
+    
     protected String getNombre() {
         return nombre;
     }
+    
 
     int getNumCasillaActual() {
         return numCasillaActual;
     }
     
+    
     private static float getPremioPasoPorSalida() {
         return PasoPorSalida;
     }
+    
 
     private static float getPrecioLibertad() {
         return PrecioLibertad;
     }
     
+    
     protected ArrayList<TituloPropiedad> getPropiedades() {
         return propiedades;
     }
     
+    
     boolean getPuedeComprar() {
         return puedeComprar;
     }
+    
 
     protected float getSaldo() {
         return saldo;
     }
     
+    
     boolean hipotecar(int ip){
         throw new UnsupportedOperationException("No implementado");
     }
     
+    
     public boolean isEncarcelado() {
         return encarcelado;
     }
+    
     
     boolean modificarSaldo(float cantidad){
         this.saldo+=cantidad;
         Diario.getInstance().ocurreEvento("Saldo del jugador modificado: " + cantidad);
         return true;
     }
+    
     
     boolean moverACasilla(int numCasilla){
         if(this.encarcelado)
@@ -167,6 +191,7 @@ public class Jugador implements Comparable<Jugador> {
         }
     }
     
+    
     boolean obtenerSalvoconducto(Sorpresa sorpresa){
         if(this.encarcelado)
             return false;
@@ -176,9 +201,11 @@ public class Jugador implements Comparable<Jugador> {
         }
     }
     
+    
     boolean paga(float cantidad){
         return this.modificarSaldo(cantidad*-1);
     }
+    
     
     boolean pagaAlquiler(float cantidad){
         if(this.encarcelado)
@@ -187,6 +214,7 @@ public class Jugador implements Comparable<Jugador> {
             return this.paga(cantidad);
     }
     
+    
     boolean pagaImpuesto(float cantidad){
         if(this.encarcelado)
             return false;
@@ -194,16 +222,19 @@ public class Jugador implements Comparable<Jugador> {
             return this.paga(cantidad);
     }
     
+    
     boolean pasaPorSalida(){
         this.modificarSaldo(PasoPorSalida);
         Diario.getInstance().ocurreEvento("Jugador " + this.nombre + " pasa por salida");
         return true;
     }
     
+    
     private void perderSalvoConducto(){
         this.salvoconducto.usada();
         this.salvoconducto = null;
     }
+    
     
     boolean puedeComprarCasilla(){
         if(this.encarcelado)
@@ -214,17 +245,21 @@ public class Jugador implements Comparable<Jugador> {
         return this.puedeComprar;
     }
     
+    
     private boolean puedeSalirCarcelPagando(){
         return this.saldo >= PrecioLibertad;
     }
+    
     
     private boolean puedoEdificarCasa(TituloPropiedad propiedad){
         return propiedad.getNumCasas()<4 && this.saldo>propiedad.getPrecioEdificar();
     }
     
+    
     private boolean puedoEdificarHotel(TituloPropiedad propiedad){
         return propiedad.getNumCasas() == 4 && this.saldo>propiedad.getPrecioEdificar();
     }
+    
     
     private boolean puedoGastar(float precio){
         if(this.encarcelado)
@@ -233,12 +268,14 @@ public class Jugador implements Comparable<Jugador> {
             return this.saldo >= precio;
     }
     
+    
     boolean recibe(float cantidad){
         if(this.encarcelado)
             return false;
         else
             return this.modificarSaldo(cantidad);
     }
+    
     
     boolean salirCarcelPagando(){
         boolean salir=false;
@@ -251,6 +288,7 @@ public class Jugador implements Comparable<Jugador> {
         return salir;
     }
     
+    
     boolean salirCarcelTirando(){
         boolean salir=false;
         if(this.encarcelado && Dado.getInstance().salgoDeLaCarcel()){
@@ -261,13 +299,16 @@ public class Jugador implements Comparable<Jugador> {
         return salir;
     }
     
+    
     boolean tieneAlgoQueGestionar(){
         return !this.propiedades.isEmpty();
     }
     
+    
     boolean tieneSalvoconducto(){
         return this.salvoconducto != null;
     }
+    
     
     boolean vender(int ip){
         if(this.encarcelado){
@@ -280,6 +321,7 @@ public class Jugador implements Comparable<Jugador> {
             return false;
         }            
     }
+    
     
     @Override
     public String toString() {

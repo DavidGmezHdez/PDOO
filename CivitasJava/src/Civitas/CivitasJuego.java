@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
 
-
 public class CivitasJuego {
     private int indiceJugadorActual;
     
@@ -55,18 +54,22 @@ public class CivitasJuego {
         throw new UnsupportedOperationException("No implementado");  
     }
     
+    
     public boolean construirCasa(int ip){
         return this.jugadores.get(this.indiceJugadorActual).construirCasa(ip);
     }
+    
     
     public boolean construirHotel(int ip){
         return this.jugadores.get(this.indiceJugadorActual).construirHotel(ip);
     }
     
+    
     private void contabilizarPasosPorSalida(Jugador jugadorActual){
         while(this.tablero.getPorSalida() > 0)
                 jugadorActual.pasaPorSalida();
     }
+    
     
     public boolean finalDelJuego(){
         boolean fin = false;
@@ -77,21 +80,26 @@ public class CivitasJuego {
         return fin;
     }
     
+    
     public Casilla getCasillaActual(){
         return this.tablero.getCasilla(this.jugadores.get(indiceJugadorActual).getNumCasillaActual());
     }
+    
     
     public Jugador getJugadorActual(){
         return this.jugadores.get(indiceJugadorActual);
     }
     
+    
     public boolean hipotecar(int ip){
         return this.jugadores.get(this.indiceJugadorActual).hipotecar(ip);
     }
     
+    
     public String infoJugadorTexto(){
         return jugadores.get(indiceJugadorActual).toString();
     }
+    
     
     private void inicializarMazoSorpresas(Tablero tablero){
         mazo.alMazo(new Sorpresa (TipoSorpresa.IRCARCEL,tablero));
@@ -116,6 +124,7 @@ public class CivitasJuego {
 
     }
     
+    
     private void inicializarTablero(MazoSorpresas mazo){
         this.tablero = new Tablero(14);
         
@@ -139,30 +148,37 @@ public class CivitasJuego {
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Fideo", 550, 80, 15, 600, 750)));
     }
     
+    
     private void pasarTurno(){
         this.indiceJugadorActual = (this.indiceJugadorActual+1)%this.jugadores.size();
     }
+    
     
     private ArrayList<Jugador >ranking(){
         Collections.sort(jugadores);
         return jugadores;
     }
     
+    
     public boolean salirCarcelPagando(){
         return this.jugadores.get(this.indiceJugadorActual).salirCarcelPagando();
     }
+    
     
     public boolean salirCarcelTirando(){
         return this.jugadores.get(this.indiceJugadorActual).salirCarcelTirando();
     }
     
+    
     public OperacionesJuego siguientePaso(){
         throw new UnsupportedOperationException("No implementado");  
     }
     
+    
     public void siguientePasoCompletado(OperacionesJuego operacion){
         this.estado = this.gestorEstados.siguienteEstado(jugadores.get(indiceJugadorActual), this.estado, operacion);
     }
+    
     
     public boolean vender(int ip){
         return this.jugadores.get(this.indiceJugadorActual).vender(ip);

@@ -1,4 +1,5 @@
 package Civitas;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -59,6 +60,7 @@ public class Dado {
     int getUltimoResultado() {
         return ultimoResultado;
     }
+    
 
     public boolean isDebug() {
         return debug;

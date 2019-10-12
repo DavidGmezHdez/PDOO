@@ -13,6 +13,7 @@ public class Casilla {
     private Sorpresa sorpresa;
     private MazoSorpresas mazo;
     
+    
     Casilla(String nombre) {
         init();
         this.nombre = nombre;
@@ -124,7 +125,8 @@ public class Casilla {
     @Override
     public String toString(){
         return "Casilla {" + "Nombre= " + nombre + ", importe=" + importe 
-                + ", carcel = " + carcel +'}';
+                + ", carcel = " + carcel + "tituloPropiedad= " + tituloPropiedad +
+                "tipo= " + tipo + '}';
     }
     
 }
