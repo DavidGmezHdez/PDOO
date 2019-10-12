@@ -137,7 +137,10 @@ module Civitas
     
     def vender(jugador)
         if es_este_el_propietario(jugador) && !@hipotecado
-          jugador.recibe(get_precio_venta)
+          @propietario.recibe(get_precio_venta)
+          @propietario = nil
+          @num_casas = 0
+          @num_hoteles = 0
           return true
         else
           return false

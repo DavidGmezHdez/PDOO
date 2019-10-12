@@ -11,7 +11,7 @@ module Civitas
     @@SALDO_INICIAL = 2000
     
     @@dado = Dado.instance
-    @@diario = Diario.instance
+    
     
     
     
@@ -74,7 +74,7 @@ module Civitas
       else
         if tiene_salvoconducto
           perder_salvoconducto
-          @@diario.ocurre_evento("Jugador " + @nombre + " tiene salvoconducto \n")
+          Diario.instance.ocurre_evento("Jugador " + @nombre + " tiene salvoconducto \n")
           return false
           else
             return true
@@ -98,13 +98,38 @@ module Civitas
       return @propiedades[ip] != nil
     end
     
+    
+    def self.getCasas_Max
+      return @@CASAS_MAX
+    end
+    
+    def self.getCasas_Por_Hotel
+      return @@CASAS_POR_HOTEL
+    end
+    
+    def self.getHoteles_Max
+      return @@HOTELES_MAX
+    end
+    
+    def self.getPaso_Por_Salida
+      return @@PASO_POR_SALIDA
+    end
+    
+    def self.getPrecio_Libertad
+      return @@PRECIO_LIBERTAD
+    end
+    
+    def self.getSaldo_Inicial
+      return @@SALDO_INICIAL
+    end
+    
     def hipotecar(ip)
       
     end
     
     def modificar_saldo(cantidad)
       @saldo = @saldo + cantidad
-      @@diario.ocurre_evento("Modificado el saldo del jugador " + @nombre + " con  " + cantidad )
+      Diario.instance.ocurre_evento("Modificado el saldo del jugador " + @nombre + " con  " + cantidad )
       return true
     end
     
@@ -114,7 +139,7 @@ module Civitas
       else 
         @num_casilla_actual = num_casilla
         @puede_comprar = false
-        @@diario.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla )
+        Diario.instance.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla )
         return true
       end
     end
@@ -150,7 +175,7 @@ module Civitas
     
     def pasa_por_salida
       modificar_saldo(@@PASO_POR_SALIDA)
-      @@diario.ocurre_evento("Jugador " + @nombre + " pasa por salida")
+      Diario.instance.ocurre_evento("Jugador " + @nombre + " pasa por salida")
       return true
     end
     
@@ -200,7 +225,7 @@ module Civitas
       if @encarcelado && puede_salir_carcel_pagando
         paga(@PRECIO_LIBERTAD)
         @encarcelado = false
-        @@diario.ocurre_evento("Jugador " + @nombre + " sale de carcel pagando")
+        Diario.instance.ocurre_evento("Jugador " + @nombre + " sale de carcel pagando")
       end
       
       return !@encarcelado
@@ -209,7 +234,7 @@ module Civitas
     def salir_carcel_tirando
       if @encarcelado && @@dado.salgo_de_la_carcel
         @encarcelado = false
-        @@diario.ocurre_evento("Jugador " + @nombre + " sale de carcel tirando")
+        Diario.instance.ocurre_evento("Jugador " + @nombre + " sale de carcel tirando")
       end
       return !@encarcelado
     end
@@ -234,7 +259,7 @@ module Civitas
         return false
       else
         if existe_la_propiedad(ip) && @propiedades.index(ip).vender(this)
-          @@diario.ocurre_evento("Propiedad " + @propiedades.index(ip).nombre + " vendida por el jugador " + @nombre)
+          Diario.instance.ocurre_evento("Propiedad " + @propiedades.index(ip).nombre + " vendida por el jugador " + @nombre)
           @propiedades.delete_at(ip)
           return true
         else
@@ -245,7 +270,7 @@ module Civitas
     end
      
     protected :debe_ser_encarcelado
-    private :existe_la_propiedad, :puedo_salir_carcel_pagando, :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, :puedo_gastar
+    private :existe_la_propiedad, :getCasas_Max , :puedo_salir_carcel_pagando, :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, :puedo_gastar
    
   end
 end

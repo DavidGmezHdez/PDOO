@@ -192,8 +192,11 @@ public class TituloPropiedad {
     }
     
     boolean vender(Jugador jugador){
-        if(this.esEsteElPropietario(jugador) && !this.hipotecado){
-            jugador.recibe(this.getPrecioVenta());
+        if(this.esEsteElPropietario(jugador) && !this.getHipotecado()){
+            this.propietario.recibe(this.getPrecioVenta());
+            this.propietario = null;
+            this.numCasas = 0;
+            this.numHoteles = 0;
             return true;
         }
         else

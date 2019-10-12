@@ -57,8 +57,7 @@ public class Jugador implements Comparable<Jugador> {
 
     @Override
     public int compareTo(Jugador otro){
-        int otroSaldo = (int) otro.getSaldo();
-        return otroSaldo - (int)this.saldo;
+        return (new Float(this.getSaldo()).compareTo(otro.getSaldo()));
     }
     
     boolean comprar(TituloPropiedad titulo){

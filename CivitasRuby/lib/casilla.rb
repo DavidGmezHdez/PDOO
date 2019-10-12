@@ -7,36 +7,46 @@ module Civitas
       @importe = cantidad
       @titulo = titulo
       @mazo = mazo
+      @tipo = nil
     end
     
     #SORPRESA COMO SE PONDRÍA AQUÍ, COMO ATRIBUTO LOCAL
     def self.new_nombre(nombre)
       
       new(nombre, nil, NOSE, NOSE, NOSE)
+      if @nombre == "Juez"
+        @tipo = TipoCasilla::JUEZ
+      else
+        @tipo = TipoCasilla::DESCANSO
+      end
     end
     
     
     def self.new_titulo(titulo)
       init()
       new(NOSE, titulo, NOSE, NOSE, NOSE)
+      @tipo = TipoCasilla::CALLE
     end
     
     
     def self.new_cantidad(cantidad, nombre)
       init()
       new(nombre, NOSE, cantidad, NOSE, NOSE)
+      @tipo = TipoCasilla::IMPUESTO
     end
     
     
     def self.new_carcel(num_casilla_carcel, nombre)
       init()
       new(nombre, NOSE, NOSE, num_casilla_carcel, NOSE)
+      @tipo = TipoCasilla::CARCEL
     end
     
     
     def self.new_mazo(mazo, nombre)
       init()
       new(nombre, NOSE, NOSE, NOSE, mazo)
+      @tipo = TipoCasilla::SORPRESA
     end
     
     
@@ -85,7 +95,7 @@ module Civitas
       raise NotImplementedError
     end
     
-    attr_reader :nombre, :titulo
+    attr_reader :nombre, :titulo, :tipo
     
     
     def to_s

@@ -16,17 +16,23 @@ public class Casilla {
     Casilla(String nombre) {
         init();
         this.nombre = nombre;
+        if(this.nombre == "Juez")
+            this.tipo = TipoCasilla.JUEZ;
+        else
+            this.tipo = TipoCasilla.DESCANSO;
     }
     
     
     Casilla(TituloPropiedad titulo){
         init();
+        tipo = TipoCasilla.CALLE;
         tituloPropiedad = titulo;
     }
     
     
     Casilla(float cantidad, String nombre){
         init();
+        this.tipo = TipoCasilla.IMPUESTO;
         importe = cantidad;
         this.nombre = nombre;
     }
@@ -34,6 +40,7 @@ public class Casilla {
     
     Casilla(int numCasillaCarcel, String nombre){
         init();
+        this.tipo = TipoCasilla.CARCEL;
         this.nombre = nombre;
         carcel = numCasillaCarcel;
     }
@@ -41,6 +48,7 @@ public class Casilla {
     
     Casilla(MazoSorpresas mazo, String nombre){
         init();
+        this.tipo = TipoCasilla.SORPRESA;
         this.mazo = mazo;
         this.nombre = nombre;
     }
