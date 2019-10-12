@@ -13,7 +13,6 @@ public class CivitasJuego {
     private GestorEstados gestorEstados;
     private EstadosJuego estado;
     
-    private static Dado dado = Dado.getInstance();
     
     CivitasJuego(ArrayList<String> nombres){
         for(int i=0; i<nombres.size(); i++){
@@ -23,7 +22,7 @@ public class CivitasJuego {
         gestorEstados = new GestorEstados();
         gestorEstados.estadoInicial();
         
-        this.indiceJugadorActual = dado.quienEmpieza(nombres.size());
+        this.indiceJugadorActual = Dado.getInstance().quienEmpieza(nombres.size());
         mazo = new MazoSorpresas();
         
         this.inicializarTablero(mazo);

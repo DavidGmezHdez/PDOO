@@ -23,8 +23,8 @@ module Civitas
       
       inicializar_tablero(@mazo)
       inicializar_mazo_sorpresas(@tablero)
-      
     end
+    
     
     def avanza_jugador
       raise NotImplementedError
@@ -37,7 +37,6 @@ module Civitas
       else
         puts @jugadores[@indice_jugador_actual].to_s
       end
-      
     end
     
     
@@ -45,17 +44,21 @@ module Civitas
       return @jugadores[@indice_jugador_actual].cancelar_hipoteca(ip)
     end
     
+    
     def comprar
       raise NotImplementedError
     end
+    
     
     def construir_casa(ip)
       return @jugadores[@indice_jugador_actual].construir_casa(ip)
     end
     
+    
     def construir_hotel(ip)
       return @jugadores[@indice_jugador_actual].construir_hotel(ip)
     end
+    
     
     def contabilizar_pasos_por_salida(jugador_actual)
       i=0
@@ -75,21 +78,26 @@ module Civitas
       return fin
     end
     
+    
     def get_casilla_actual
       return @tablero.get_casilla(@jugadores[@indice_jugador_actual].num_casilla_actual)
     end
+    
     
     def get_jugador_actual
       return @jugadores[@indice_jugador_actual]
     end
     
+    
     def hipotecar(ip)
       return @jugadores[@indice_jugador_actual].hipotecar(ip)
     end
     
+    
     def info_jugador_texto
       return @jugadores[@indice_jugador_actual].to_s
     end
+    
     
     def inicializar_mazo_sorpresas(tablero)
       @mazo.al_mazo(Sorpresa.new_a_carcel(TipoSorpresa::IRCARCEL,tablero))
@@ -103,6 +111,7 @@ module Civitas
       @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORCASAHOTEL, 500,"Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros"))
       @mazo.al_mazo(Sorpresa.new_evitar_carcel(TipoSorpresa::SALIRCARCEL, @mazo))
     end
+    
     
     def inicializar_tablero(mazo)
       @tablero.new(14)
@@ -126,34 +135,42 @@ module Civitas
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Fideo", 550, 80, 15, 600, 750)))
     end
     
+    
     def pasar_turno
       @indice_jugador_actual = (@indice_jugador_actual+1)%@jugadores.size
     end
+    
     
     def ranking
       @jugadores = @jugadores.sort
       return @jugadores
     end
     
+    
     def salir_carcel_pagando
       return @jugadores[@indice_jugador_actual].salir_carcel_pagando
     end
+    
     
     def salir_carcel_tirando
       return @jugadores[@indice_jugador_actual].salir_carcel_tirando
     end
     
+    
     def siguiente_paso
       raise NotImplementedError
     end
+    
     
     def siguiente_paso_completado(operacion)
       @estado = @gestor_estados.siguiente_estado(@jugadores[@indice_jugador_actual], @estado, operacion)
     end
     
+    
     def vender(ip)
       @jugadores[@indice_jugador_actual].vender(ip)
     end
+    
     
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
     

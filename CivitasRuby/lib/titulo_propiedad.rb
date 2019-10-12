@@ -1,6 +1,8 @@
 # encoding:utf-8
+
 module Civitas
   class TituloPropiedad
+    
     def initialize(nombre,alquiler_base,factor_revalorizacion,hipoteca_base,precio_compra,precio_edificar)
       @nombre = nombre
       @alquiler_base = alquiler_base
@@ -15,21 +17,15 @@ module Civitas
       @propietario = nil
     end
     
+    
     attr_accessor :nombre, :hipotecado, :hipoteca_base, :num_casas, :num_hoteles, 
       :precio_compra, :precio_edificar, :propietario
-    
-    def to_s
-      "TituloPropiedad: #{@nombre} \n Alquiler base #{@alquiler_base} \n 
-      Factor Revalorizacion: #{@factor_revalorizacion} \n Hipoteca Base: #{@hipoteca_base} \n 
-      Precio Compra: #{@precio_compra} \n 
-      Precio Edificar: #{@precio_edificar}\n Hipotecado: #{@hipotecado}\n Num Casas: #{@num_casas}\n
-      Num Hoteles: #{@num_hoteles}\n Propietario: #{@hpropietario}\n"
-    end
     
     
     def actualiza_propietario_por_conversion(jugador)
     
     end
+    
     
     def cancelar_hipoteca(jugador)
       raise NotImplementedError
@@ -49,13 +45,16 @@ module Civitas
         return @num_casas + @num_hoteles
     end
     
+    
     def comprar(jugador)
       raise NotImplementedError
     end
     
+    
     def construir_casa(jugador)
       raise NotImplementedError
     end
+    
     
     def construir_hotel(jugador)
       raise NotImplementedError
@@ -92,6 +91,7 @@ module Civitas
 #      return resultado
 #    end
     
+    
     def derruir_casas(n,jugador)
       if es_este_el_propietario(jugador) && @num_casas >= n
         @num_casas = @num_casas - n
@@ -100,6 +100,7 @@ module Civitas
         return false
       end
     end
+    
     
     def es_este_el_propietario(jugador)
         return @propietario == jugador
@@ -142,9 +143,11 @@ module Civitas
       return @propietario.encarcelado
     end
     
+    
     def tiene_propietario
         return @propietario != nil
     end
+    
     
     def tramitar_alquiler(jugador)
       if tiene_propietario && !es_este_el_propietario(jugador)
@@ -152,6 +155,7 @@ module Civitas
         @propietario.recibe(@alquiler_base)
       end
     end
+    
     
     def vender(jugador)
         if es_este_el_propietario(jugador) && !@hipotecado
@@ -165,7 +169,17 @@ module Civitas
         end
     end
     
+    
     private :propietario_encarcelado, :es_este_el_propietario, :get_precio_venta
 
+    
+    def to_s
+      "TituloPropiedad: #{@nombre} \n Alquiler base #{@alquiler_base} \n 
+      Factor Revalorizacion: #{@factor_revalorizacion} \n Hipoteca Base: #{@hipoteca_base} \n 
+      Precio Compra: #{@precio_compra} \n 
+      Precio Edificar: #{@precio_edificar}\n Hipotecado: #{@hipotecado}\n Num Casas: #{@num_casas}\n
+      Num Hoteles: #{@num_hoteles}\n Propietario: #{@hpropietario}\n"
+    end
+    
   end
 end

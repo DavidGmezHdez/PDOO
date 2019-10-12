@@ -1,4 +1,5 @@
 # encoding:utf-8
+
 module Civitas
   module EstadosJuego
 		INICIO_TURNO = :inicio_turno  

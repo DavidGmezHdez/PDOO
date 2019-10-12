@@ -7,6 +7,7 @@ require_relative "diario"
 
 module Civitas
   class Sorpresa
+    
     def initialize(texto, tablero, valor, mazo, tipo)
       @texto = texto
       @tablero = tablero
@@ -15,20 +16,28 @@ module Civitas
       @tipo = tipo
     end
     
+    
+    attr_writer :texto
+    attr_accessor :valor
+    
+    
     #Constructor para la sorpresa que envía a la cárcel
     def self.new_a_carcel(tipo, tablero)
       new("¡Directo a la cárcel!", tablero, 0, nil, tipo)
     end
+    
     
     #Constructor para la sorpresa que envía al jugador a otra casilla
     def self.new_otra_casilla(tipo, tablero, valor, texto) 
       new(texto, tablero, valor, nil, tipo)
     end 
     
+    
     #Constructor para el resto de sorpresas
     def self.new_sorpresas(tipo, valor, texto)
       new(texto, nil, valor, nil, tipo)
     end
+    
     
     #Constructor para sorpresa que permite evitar la carcel
     def self.new_evitar_carcel(tipo, mazo)
@@ -125,7 +134,6 @@ module Civitas
         sorp_actual = Sorpresa.new(TipoSorpresa::PAGARCOBRAR, valor_actual,text)
         sorp_otros = Sorpresa.new(TipoSorpresa::PAGARCOBRAR, valor_otros,text)
 
-        
         for i in (todos.size())
           if(i==actual)
             sorp_actual.aplicar_a_jugador_pagar_cobrar(actual,todos)
@@ -153,7 +161,6 @@ module Civitas
           todos[actual].obtener_salvoconducto(self)
           salir_del_mazo
         end
-        
       end
     end
     
@@ -176,8 +183,6 @@ module Civitas
       "Sorpresa: \n #{@nombre}  \n Valor: #{@valor} }"
     end
     
-    attr_writer :texto
-    attr_accessor :valor
     
     private :informe, :init, :aplicar_a_jugador_ir_a_carcel, 
       :aplicar_a_jugador_ir_a_casilla, :aplicar_a_jugador_pagar_cobrar, 

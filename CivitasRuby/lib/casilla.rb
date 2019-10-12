@@ -1,6 +1,8 @@
 # encoding:utf-8
+
 module Civitas
   class Casilla
+    
     def initialize(nombre, titulo, cantidad, num_casilla_carcel, mazo)
       @nombre = nombre
       @carcel = num_casilla_carcel
@@ -10,6 +12,10 @@ module Civitas
       @sorpresa = nil
       @tipo = nil
     end
+    
+    
+    attr_reader :nombre, :titulo, :tipo
+    
     
     def self.new_nombre(nombre)
       new(nombre, nil, 0, 0, nil)
@@ -49,12 +55,7 @@ module Civitas
       Diario.instance.ocurre_evento("Ha caído en la casilla " + self.to_s + 
           "el jugador" + todos[iactual].nombre)
     end
-    
-    
-    def init
-      #NO SE A QUE INCIALIZAR ?????????????
-    end
-    
+      
     
     def jugador_correcto(iactual,todos)
       es_correcto=false
@@ -69,9 +70,11 @@ module Civitas
       raise NotImplementedError
     end
     
+    
     def recibe_jugador_calle(iactual,todos)
       raise NotImplementedError
     end
+    
     
     def recibe_jugador_impuesto(iactual,todos)
       if(jugador_correcto(iactual,todos))
@@ -93,14 +96,13 @@ module Civitas
       raise NotImplementedError
     end
     
-
-    attr_reader :nombre, :titulo, :tipo
     
     def to_s
       "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe}  \n Carcel #{@carcel} }"
     end
     
-    private :init, :informe, :recibe_jugador_sorpresa, :recibe_jugador_juez,
+    
+    private :informe, :recibe_jugador_sorpresa, :recibe_jugador_juez,
       :recibe_jugador_impuesto, :recibe_jugador_calle
     
   end

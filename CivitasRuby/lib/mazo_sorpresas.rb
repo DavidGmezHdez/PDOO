@@ -4,6 +4,7 @@ require_relative "diario"
 
 module Civitas
   class MazoSorpresas
+    
     def initialize (debug=false)
       @debug = debug
       init()
@@ -11,6 +12,7 @@ module Civitas
         Diario.instance.ocurre_evento("debug on")
       end 
     end
+    
     
     def init
       @sorpresas = Array.new
@@ -21,13 +23,11 @@ module Civitas
     end
     
     
-    
     def al_mazo(s)
       if(!@barajada)
         @sorpresas << s
       end
     end
-    
     
     
     def siguiente
@@ -45,7 +45,6 @@ module Civitas
     end
     
     
-    
     def inhabilitar_carta_especial(sorpresa)  
       for i in @sorpresas
         if(i==sorpresa)
@@ -57,7 +56,6 @@ module Civitas
         end
       end
     end
-    
     
     
     def habilitar_carta_especial(sorpresa)

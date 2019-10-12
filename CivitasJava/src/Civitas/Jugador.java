@@ -85,7 +85,8 @@ public class Jugador implements Comparable<Jugador> {
             return false;
         else if(this.tieneSalvoconducto()){
             this.perderSalvoConducto();
-            Diario.getInstance().ocurreEvento("Jugador usa salvoconducto, no entra en la cárcel");
+            Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
+                    "usa salvoconducto, no entra en la cárcel");
             return false;
         }
         else
@@ -102,7 +103,8 @@ public class Jugador implements Comparable<Jugador> {
         if(this.debeSerEncarcelado()){
             this.moverACasilla(numCasillaCarcel);
             this.encarcelado = true;
-            Diario.getInstance().ocurreEvento("Jugador encarcelado, movido a cárcel");
+            Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
+                    " encarcelado, movido a cárcel");
         }
         return this.encarcelado;
     }
@@ -175,7 +177,8 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean modificarSaldo(float cantidad){
         this.saldo+=cantidad;
-        Diario.getInstance().ocurreEvento("Saldo del jugador modificado: " + cantidad);
+        Diario.getInstance().ocurreEvento("Saldo del jugador " + this.nombre + ""
+                + "modificado: " + cantidad);
         return true;
     }
     
@@ -186,7 +189,8 @@ public class Jugador implements Comparable<Jugador> {
         else{
             this.numCasillaActual = numCasilla;
             this.puedeComprar = false;
-            Diario.getInstance().ocurreEvento("Jugador moviendose a casilla " + numCasilla);
+            Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
+                    "moviendose a casilla " + numCasilla);
             return true;
         }
     }

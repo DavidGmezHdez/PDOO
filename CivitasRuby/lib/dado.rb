@@ -12,8 +12,10 @@ module Civitas
       @@salida_carcel = 5
     end
     
+    
     attr_accessor :debug
     attr_reader :ultimo_resultado
+    
     
     def tirar
       if(!@debug)
@@ -24,7 +26,6 @@ module Civitas
       
       return @ultimo_resultado
     end    
-    
     
     
     def salgo_de_la_carcel
@@ -43,7 +44,6 @@ module Civitas
       
       return primer_jugador
     end
-    
     
   end
 end
