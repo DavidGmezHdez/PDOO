@@ -99,7 +99,7 @@ module Civitas
         if @hipotecado || propietario_encarcelado
           return 0
         else
-          return 1234
+          return @alquiler_base * (1+(@num_casas*0.5)+(@num_hoteles*0.5))
         end
     end
 

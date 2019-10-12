@@ -58,11 +58,9 @@ module Civitas
     end
     
     def contabilizar_pasos_por_salida(jugador_actual)
-      if (@tablero.por_salida > 0)
-        i=0
-        while i < @tablero.por_salida
-          jugador_actual.pasa_por_salida
-        end
+      i=0
+      while i < @tablero.por_salida
+        jugador_actual.pasa_por_salida
       end
     end
     
@@ -126,8 +124,6 @@ module Civitas
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Jesucristo", 1000, 60, 11, 250, 325)))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Giorgio", 890, 65, 13, 1000, 300)))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Fideo", 550, 80, 15, 600, 750)))
-      
-      
     end
     
     def pasar_turno
@@ -135,7 +131,8 @@ module Civitas
     end
     
     def ranking
-      
+      @jugadores = @jugadores.sort
+      return @jugadores
     end
     
     def salir_carcel_pagando
@@ -159,12 +156,6 @@ module Civitas
     end
     
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
-    
-    
-    
-    
-    
-    
     
   end
 end

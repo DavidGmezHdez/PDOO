@@ -8,7 +8,7 @@ public class Jugador implements Comparable<Jugador> {
     protected static int CasasPorHotel = 4;
     protected static float PasoPorSalida = 1000;
     protected static float PrecioLibertad = 200;
-    private static float SaldoInicial = 200;
+    private static float SaldoInicial = 7500;
     
     
     private String nombre;

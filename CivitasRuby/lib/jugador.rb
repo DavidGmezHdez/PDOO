@@ -8,12 +8,9 @@ module Civitas
     @@CASAS_POR_HOTEL = 4
     @@PASO_POR_SALIDA = 1000
     @@PRECIO_LIBERTAD = 200
-    @@SALDO_INICIAL = 2000
+    @@SALDO_INICIAL = 7500
     
     @@dado = Dado.instance
-    
-    
-    
     
     def initialize(nombre,encarcelado = false, saldo = @@SALDO_INICIAL, puede_comprar = true,salvoconducto = nil, num_casilla = 0, propiedades = Array.new)
          @encarcelado = encarcelado

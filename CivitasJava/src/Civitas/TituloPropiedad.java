@@ -140,7 +140,7 @@ public class TituloPropiedad {
         if(this.hipotecado || this.propietarioEncarcelado())
             return 0;
         else
-            return 1234;
+            return new Float(this.alquilerBase*(1+(this.numCasas*0.5)+(this.numHoteles*0.5)));
     }
 
     float getPrecioCompra() {

@@ -37,7 +37,7 @@ public class Tablero {
         int porSalidaAnterior = porSalida;
         if(porSalida >0){
             porSalida--;
-            return porSalida;
+            return porSalidaAnterior;
         }
         else
             return porSalida;

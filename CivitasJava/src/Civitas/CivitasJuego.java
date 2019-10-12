@@ -2,6 +2,7 @@ package Civitas;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
 
 
 public class CivitasJuego {
@@ -63,8 +64,7 @@ public class CivitasJuego {
     }
     
     private void contabilizarPasosPorSalida(Jugador jugadorActual){
-        if(tablero.getPorSalida()>0)
-            for(int i=0;i<tablero.getPorSalida();i++)
+        while(this.tablero.getPorSalida() > 0)
                 jugadorActual.pasaPorSalida();
     }
     
@@ -144,7 +144,8 @@ public class CivitasJuego {
     }
     
     private ArrayList<Jugador >ranking(){
-        throw new UnsupportedOperationException("No implementado");  
+        Collections.sort(jugadores);
+        return jugadores;
     }
     
     public boolean salirCarcelPagando(){
