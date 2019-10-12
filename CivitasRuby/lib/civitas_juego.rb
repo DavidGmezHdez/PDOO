@@ -1,27 +1,35 @@
 # encoding:utf-8
+require_relative 'dado'
+require_relative 'diario'
+
 module Civitas
   class CivitasJuego
-    @@diario = Diario.instance
+    
     def initialize(nombres)
-      @indice_jugador_actual = @@dado.quien_empieza(nombres.size)
+      @indice_jugador_actual = @dado.instance.quien_empieza(nombres.size)
       
       @jugadores = Array.new
       for i in nombres
         @jugadores << nombres[i]
       end
+      
       @estado = EstadosJuego.new
       @gestor_estados = Gestor_estados.new
       @gestor_estados.estado_inicial
+      
       @mazo = MazoSorpesas.new
-      @tablero
+      
+      @tablero = nil
+      
       inicializar_tablero(@mazo)
       inicializar_mazo_sorpresas(@tablero)
       
     end
     
     def avanza_jugador
-      
+      raise NotImplementedError
     end
+    
     
     def actualizar_info
       if @jugadores[@indice_jugador_actual].en_bancarrota
@@ -38,7 +46,7 @@ module Civitas
     end
     
     def comprar
-      
+      raise NotImplementedError
     end
     
     def construir_casa(ip)
@@ -50,13 +58,14 @@ module Civitas
     end
     
     def contabilizar_pasos_por_salida(jugador_actual)
-      if @tablero.por_salida > 0
+      if (@tablero.por_salida > 0)
         i=0
         while i < @tablero.por_salida
           jugador_actual.pasa_por_salida
         end
       end
     end
+    
     
     def final_del_juego
       fin = false
@@ -138,7 +147,7 @@ module Civitas
     end
     
     def siguiente_paso
-      
+      raise NotImplementedError
     end
     
     def siguiente_paso_completado(operacion)
@@ -146,7 +155,7 @@ module Civitas
     end
     
     def vender(ip)
-      
+      @jugadores[@indice_jugador_actual].vender(ip)
     end
     
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking

@@ -12,7 +12,8 @@ module Civitas
       @@salida_carcel = 5
     end
     
-    attr_accessor :ultimo_resultado, :debug
+    attr_accessor :debug
+    attr_reader :ultimo_resultado
     
     def tirar
       if(!@debug)
