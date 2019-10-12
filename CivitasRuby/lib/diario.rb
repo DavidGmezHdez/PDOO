@@ -1,4 +1,6 @@
+# encoding:utf-8
 require 'singleton'
+
 module Civitas
   class Diario
     include Singleton
@@ -19,6 +21,8 @@ module Civitas
       e = @eventos.shift
       return e
     end
+    
+    attr_reader :eventos
 
   end
 end

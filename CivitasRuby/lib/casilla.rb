@@ -7,42 +7,38 @@ module Civitas
       @importe = cantidad
       @titulo = titulo
       @mazo = mazo
+      @sorpresa = nil
+      @tipo = nil
     end
     
-    #SORPRESA COMO SE PONDRÍA AQUÍ, COMO ATRIBUTO LOCAL
     def self.new_nombre(nombre)
-      
-      new(nombre, nil, NOSE, NOSE, NOSE)
+      new(nombre, nil, 0, 0, nil)
     end
     
     
     def self.new_titulo(titulo)
-      init()
-      new(NOSE, titulo, NOSE, NOSE, NOSE)
+      new(" ", titulo, 0, 0, nil)
     end
     
     
     def self.new_cantidad(cantidad, nombre)
-      init()
-      new(nombre, NOSE, cantidad, NOSE, NOSE)
+      new(nombre, nil, cantidad, 0, nil)
     end
     
     
     def self.new_carcel(num_casilla_carcel, nombre)
-      init()
-      new(nombre, NOSE, NOSE, num_casilla_carcel, NOSE)
+      new(nombre, nil, 0, num_casilla_carcel, nil)
     end
     
     
     def self.new_mazo(mazo, nombre)
-      init()
-      new(nombre, NOSE, NOSE, NOSE, mazo)
+      new(nombre, nil, 0, 0, mazo)
     end
     
     
     def informe(iactual, todos)
-      @diario.instance().ocurre_evento("Ha caído en la casilla " + self.to_s + "el jugador" + todos[iactual].nombre)
-      
+      @diario.instance.ocurre_evento("Ha caído en la casilla " + self.to_s + 
+          "el jugador" + todos[iactual].nombre)
     end
     
     
@@ -53,17 +49,20 @@ module Civitas
     
     def jugador_correcto(iactual,todos)
       es_correcto=false
-      if(iactual>=0 && iactual>todos.size())
+      if(iactual>=0 && iactual<todos.size())
         es_correcto=true
       end
       return es_correcto
     end
     
     
-    def recibe_jugador_calle(iactual,todos)
+    def recibe_jugador(iactual,todos)
       raise NotImplementedError
     end
     
+    def recibe_jugador_calle(iactual,todos)
+      raise NotImplementedError
+    end
     
     def recibe_jugador_impuesto(iactual,todos)
       if(jugador_correcto(iactual,todos))
@@ -85,12 +84,12 @@ module Civitas
       raise NotImplementedError
     end
     
-    attr_reader :nombre, :titulo
-    
     
     def to_s
-      "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe} }"
+      "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe}  \n Carcel #{@carcel} }"
     end
+    
+    attr_reader :nombre, :titulo
     
     private :init, :informe, :recibe_jugador_sorpresa, :recibe_jugador_juez,
       :recibe_jugador_impuesto, :recibe_jugador_calle

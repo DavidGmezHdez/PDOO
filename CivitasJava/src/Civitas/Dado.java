@@ -10,9 +10,6 @@ public class Dado {
     private boolean debug;
     private static int SalidaCarcel;
     
-    private int valor;
-    private boolean salir = false;
-
     
     static public Dado getInstance() {
         return instance;
@@ -37,6 +34,8 @@ public class Dado {
     
     
     boolean salgoDeLaCarcel (){
+        int valor;
+        boolean salir = false;
         valor = tirar();
         if (valor >= 5)
             salir = true;
