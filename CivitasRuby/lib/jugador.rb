@@ -265,7 +265,7 @@ module Civitas
     def salir_carcel_pagando
       salir=false
       if @encarcelado && puede_salir_carcel_pagando
-        paga(@PRECIO_LIBERTAD)
+        paga(@@PRECIO_LIBERTAD)
         @encarcelado = false
         Diario.instance.ocurre_evento("Jugador " + @nombre + " sale de carcel pagando")
         salir=true
