@@ -151,16 +151,14 @@ module Civitas
       @@civitas = CivitasJuego.new(nombres)
            
       
-#      puts "\nMostramos el tablero: "
-#      for i in 1..@@civitas.tablero.casillas.size
-#        puts @@civitas.tablero.casillas[i].titulo.to_s
-#      end
+      puts "\nMostramos el tablero: "
+      @@civitas.tablero.to_s
       
-      puts "\nMostramos el mazo: "
-      for i in 0..@@civitas.mazo.sorpresas.size
-        puts @@civitas.mazo.sorpresas[i].to_s
-        puts "\n\n"
-      end
+#      puts "\nMostramos el mazo: "
+#      for i in 0..@@civitas.mazo.sorpresas.size
+#        puts @@civitas.mazo.sorpresas[i].to_s
+#        puts "\n\n"
+#      end
       
       puts "Casilla cárcel: #{@@civitas.tablero.num_casilla_carcel} \n"
       

@@ -34,7 +34,7 @@ module Civitas
   
   
     def añade_juez
-      juez = Casilla.new_nombre("Juez")
+      juez = Casilla.new_carcel(@num_casilla_carcel,"Juez")
       if @tiene_juez == false
         @casillas<<juez
       end
@@ -88,6 +88,10 @@ module Civitas
         @por_salida = @por_salida+1
       end
       return posicion
+    end
+    
+    def to_s
+      puts @casillas.to_s
     end
   
     private :correcto

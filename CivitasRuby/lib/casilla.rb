@@ -8,14 +8,14 @@ require_relative 'mazo_sorpresas'
 module Civitas
   class Casilla
     
-    def initialize(nombre, titulo, cantidad, num_casilla_carcel, mazo)
+    def initialize(tipo,nombre = nil, titulo = nil, cantidad = 0, num_casilla_carcel = 0, mazo = nil)
       @nombre = nombre
       @@carcel = num_casilla_carcel
       @importe = cantidad
       @titulo = titulo
       @mazo = mazo
       @sorpresa = nil
-      @tipo = nil
+      @tipo = tipo
     end
     
     
@@ -23,36 +23,28 @@ module Civitas
     
     
     def self.new_nombre(nombre)
-      new(nombre, nil, 0, 0, nil)
-      if nombre == "Juez"
-        @tipo = TipoCasilla::JUEZ
-      else
-        @tipo = TipoCasilla::DESCANSO
-      end
+      new(TipoCasilla::DESCANSO,nombre)
     end
     
     
     def self.new_titulo(titulo)
-      new(" ", titulo, 0, 0, nil)
-      @tipo = TipoCasilla::CALLE
+      new(TipoCasilla::CALLE,titulo.nombre, titulo)
     end
     
     
     def self.new_cantidad(cantidad, nombre)
-      new(nombre, nil, cantidad, 0, nil)
-      @tipo = TipoCasilla::IMPUESTO
+      new(TipoCasilla::IMPUESTO,nombre,nil,cantidad)
+      
     end
     
     
     def self.new_carcel(num_casilla_carcel, nombre)
-      new(nombre, nil, 0, num_casilla_carcel, nil)
-      @tipo = TipoCasilla::CARCEL
+      new(TipoCasilla::JUEZ,nombre,nil,0,num_casilla_carcel)
     end
     
     
     def self.new_mazo(mazo, nombre)
-      new(nombre, nil, 0, 0, mazo)
-      @tipo = TipoCasilla::SORPRESA
+      new(TipoCasilla::SORPRESA,nombre,nil,0, 0,mazo)
     end
     
     
@@ -100,6 +92,7 @@ module Civitas
     def recibe_jugador_sorpresa(iactual,todos)
       raise NotImplementedError
     end
+    
     
     
     def to_s
