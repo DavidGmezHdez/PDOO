@@ -19,13 +19,13 @@ module Civitas
     def initialize(nombre, encarcelado = false, saldo = @@SALDO_INICIAL, 
         puede_comprar = true,salvoconducto = nil, num_casilla = 0, 
         propiedades = Array.new)
-        @encarcelado = encarcelado
-        @nombre = nombre
-        @saldo = saldo
-        @puede_comprar = puede_comprar
-        @salvoconducto = salvoconducto
-        @num_casilla_actual= num_casilla
-        @propiedades = propiedades
+         @encarcelado = encarcelado
+         @nombre = nombre
+         @saldo = saldo
+         @puede_comprar = puede_comprar
+         @salvoconducto = salvoconducto
+         @num_casilla_actual= num_casilla
+         @propiedades = propiedades
     end
     
    

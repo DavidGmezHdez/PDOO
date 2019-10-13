@@ -168,11 +168,82 @@ module Civitas
 #      puts @@civitas.get_jugador_actual.to_s
 
 #      
-#      puts "\n"
-#      puts @@civitas.info_jugador_texto
+      puts "\n"
+      puts @@civitas.info_jugador_texto
+#      
+#      puts "asassasasass"
+#      sorp=@@civitas.tablero.casillas[2].ultima_sorpresa
+#      puts @@civitas.tablero.casillas[2].mazo.habilitar_carta_especial(sorp)
       
+      puts "\n Puede comprar casilla"
+      puts @@civitas.get_jugador_actual.puede_comprar_casilla
+      
+      puts "\n Tiene algo que gestionar"
+      puts @@civitas.get_jugador_actual.tiene_algo_que_gestionar
+      
+      puts "\n Saliar carcel tirando"
+      puts @@civitas.get_jugador_actual.salir_carcel_tirando
+      
+      puts "\n Recibe 100 euros"
+      puts @@civitas.get_jugador_actual.recibe(100)
+      puts @@civitas.info_jugador_texto
+      
+      puts "\n Paga impuesto 150 euros"
+      puts @@civitas.get_jugador_actual.paga_impuesto(150)
+      puts @@civitas.info_jugador_texto
+      
+      puts "\n Paga alquiler 150 euros"
+      puts @@civitas.get_jugador_actual.paga_alquiler(150)
+      puts @@civitas.info_jugador_texto
+      
+      puts "\n Paga 100 euros"
+      puts @@civitas.get_jugador_actual.paga(100)
+      puts @@civitas.info_jugador_texto
+      
+      puts "\n Tiene salvoconducto"
+      puts @@civitas.get_jugador_actual.tiene_salvoconducto
+      
+      puts "\n Modifica saldo -140 euros"
+      puts @@civitas.get_jugador_actual.modificar_saldo(140)
+      puts @@civitas.info_jugador_texto
+      
+      puts "\n Esta encarcelado?"
+      puts @@civitas.get_jugador_actual.encarcelado
+      
+<<<<<<< HEAD
+      puts "\n Encarcelar al jugador"
+      puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
+=======
       puts @@civitas.tablero.casillas[1].titulo.get_precio_venta
+>>>>>>> f6c0aad362c59648ee8d129a5d939fc84d15f9ce
       
+      puts "\n Esta encarcelado?"
+      puts @@civitas.get_jugador_actual.encarcelado
+      
+      puts "\n Salir carcel pagando"
+      puts @@civitas.get_jugador_actual.salir_carcel_pagando
+      
+      puts "\n Casilla actual del jugador"
+      puts @@civitas.get_jugador_actual.num_casilla_actual
+      
+      puts "\n Mover jugador a casilla 3"
+      puts @@civitas.get_jugador_actual.mover_a_casilla(3)
+      
+      puts "\n Casilla actual del jugador"
+      puts @@civitas.get_jugador_actual.num_casilla_actual
+      
+      puts "\n Esta en bancarrota?"
+      puts @@civitas.get_jugador_actual.en_bancarrota
+      
+      puts "\n Cantidad de casas y hoteles"
+      puts @@civitas.get_jugador_actual.cantidad_casas_hoteles
+      
+      puts "\n Pasa por salida"
+      puts @@civitas.get_jugador_actual.pasa_por_salida
+      
+      
+      
+
       
     end
   end
