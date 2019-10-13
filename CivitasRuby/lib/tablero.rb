@@ -11,7 +11,7 @@ module Civitas
       @casillas << salida
     
       if numero >= 1
-        @num_casilla_carcel = numero
+        @num_casilla_carcel = numero-1
       else
         @num_casilla_carcel = 1
       end
@@ -25,7 +25,7 @@ module Civitas
   
   
     def añade_casilla(casilla)
-      carcel = Casilla.new("carcel")
+      carcel = Casilla.new_carcel(@num_casilla_carcel,"carcel")
       if @casillas.size == @num_casilla_carcel
         @casillas<<carcel
       end
@@ -34,7 +34,7 @@ module Civitas
   
   
     def añade_juez
-      juez = new Casilla("juez")
+      juez = Casilla.new_nombre("Juez")
       if @tiene_juez == false
         @casillas<<juez
       end

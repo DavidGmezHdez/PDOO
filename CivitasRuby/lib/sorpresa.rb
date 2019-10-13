@@ -179,9 +179,8 @@ module Civitas
       end
     end
     
-    
     def to_s
-      "Sorpresa: \n #{@nombre}  \n Valor: #{@valor} }"
+      "Sorpresa: { \n Texto: #{@texto}  \n Tipo: #{@tipo}   \n Valor: #{@valor} }"
     end
     
     

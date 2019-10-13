@@ -6,6 +6,7 @@ require_relative 'estados_juego'
 require_relative 'gestor_estados'
 require_relative 'tablero'
 require_relative 'mazo_sorpresas'
+require_relative 'tipo_sorpresa'
 
 module Civitas
   class CivitasJuego
@@ -14,17 +15,15 @@ module Civitas
       @indice_jugador_actual = Dado.instance.quien_empieza(nombres.size)
       
       @jugadores = Array.new
-      for i in nombres
-        @jugadores << nombres[i]
+      nombres.each do |nombre|
+        @jugadores << Jugador.new(nombre)
       end
       
-      @estado = EstadosJuego.new
-      @gestor_estados = Gestor_estados.new
-      @gestor_estados.estado_inicial
+      @gestor_estados = GestorEstados.new
+      @estado = @gestor_estados.estado_inicial
       
-      @mazo = MazoSorpesas.new
-      
-      @tablero = nil
+      @mazo = MazoSorpresas.new(false)
+      @tablero = Tablero.new(15)
       
       inicializar_tablero(@mazo)
       inicializar_mazo_sorpresas(@tablero)
@@ -106,8 +105,8 @@ module Civitas
     
     def inicializar_mazo_sorpresas(tablero)
       @mazo.al_mazo(Sorpresa.new_a_carcel(TipoSorpresa::IRCARCEL,tablero))
-      @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRACASILLA, tablero, 10,"Pides un Uber que te lleva la casilla mitad del tablero"))
-      @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRACASILLA, tablero, 5,"Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río"))
+      @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRCASILLA, tablero, 10,"Pides un Uber que te lleva la casilla mitad del tablero"))
+      @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRCASILLA, tablero, 5,"Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río"))
       @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORJUGADOR, 200,"Pides a la gente que te de dinero para comprar un regalo en común, pero acabas quedándotelo tu para ir a Pedro"))
       @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORJUGADOR, -50,"Dijiste que invitarías a chupitos pero no lo hiciste, pagas 50 euros a cada uno"))
       @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PAGARCOBRAR, 500,"Recibes un sobre con la letra B escrita, recibes 500 euros"))
@@ -119,7 +118,6 @@ module Civitas
     
     
     def inicializar_tablero(mazo)
-      @tablero.new(14)
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 75, 12, 350, 400)))
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 50, 10, 550, 250)))
@@ -176,7 +174,7 @@ module Civitas
       @jugadores[@indice_jugador_actual].vender(ip)
     end
     
-    
+    attr_reader :tablero, :mazo
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
     
   end

@@ -14,6 +14,7 @@ module Civitas
       end 
     end
     
+    attr_reader :sorpresas
     
     def init
       @sorpresas = Array.new

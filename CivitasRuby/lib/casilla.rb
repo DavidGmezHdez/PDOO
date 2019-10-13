@@ -19,12 +19,12 @@ module Civitas
     end
     
     
-    attr_reader :nombre, :titulo, :tipo
+    attr_reader :nombre, :titulo, :tipo, :carcel, :importe
     
     
     def self.new_nombre(nombre)
       new(nombre, nil, 0, 0, nil)
-      if @nombre == "Juez"
+      if nombre == "Juez"
         @tipo = TipoCasilla::JUEZ
       else
         @tipo = TipoCasilla::DESCANSO
