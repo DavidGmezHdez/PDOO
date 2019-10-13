@@ -34,7 +34,6 @@ module Civitas
     
     def self.new_cantidad(cantidad, nombre)
       new(TipoCasilla::IMPUESTO,nombre,nil,cantidad)
-      
     end
     
     

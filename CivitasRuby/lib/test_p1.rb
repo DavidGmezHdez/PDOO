@@ -165,15 +165,14 @@ module Civitas
 #      puts @@civitas.get_casilla_actual.to_s
 #      
 #      puts "\n Empieza el jugador: " 
-#      puts @@dado.quien_empieza(numero_jug)
-#      
-#      puts @@civitas.get_jugador_actual
+#      puts @@civitas.get_jugador_actual.to_s
+
 #      
 #      puts "\n"
 #      puts @@civitas.info_jugador_texto
       
-      puts "Aplicar sorpresa al jugador actual"
-      @@civitas.tablero.casillas[1].sorpresa.to_s
+#      puts "Aplicar sorpresa al jugador actual"
+#      puts @@civitas.tablero.casillas[2].sorpresa.to_s
       
       
     end

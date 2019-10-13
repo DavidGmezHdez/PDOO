@@ -29,7 +29,7 @@ module Civitas
     end
     
    
-    attr_accessor :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, 
+    attr_reader :nombre, :saldo, :encarcelado, :puede_comprar, :salvoconducto, 
       :num_casilla_actual, :propiedades
     
     

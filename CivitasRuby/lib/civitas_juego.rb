@@ -26,8 +26,9 @@ module Civitas
       @mazo = MazoSorpresas.new(false)
       @tablero = Tablero.new(15)
       
-      inicializar_tablero(@mazo)
       inicializar_mazo_sorpresas(@tablero)
+      inicializar_tablero(@mazo)
+      
     end
     
     
