@@ -209,9 +209,16 @@ module Civitas
       
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
+<<<<<<< HEAD
       puts "\n Encarcelar al jugador"
       puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
       
+=======
+
+      puts "\n Encarcelar al jugador"
+      puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
+            
+>>>>>>> 165f9482715fb1ddf6b74e5db99f447d11677af5
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
       
@@ -237,6 +244,8 @@ module Civitas
       puts @@civitas.get_jugador_actual.pasa_por_salida
       
       
+      puts @@civitas.tablero.casillas[1].titulo.get_precio_venta
+
       
 
       
