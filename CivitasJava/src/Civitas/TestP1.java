@@ -1,23 +1,37 @@
 package Civitas;
-
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TestP1 {
 
     private static Dado dado = Dado.getInstance();
     private static Diario diario = Diario.getInstance();
-    private static TipoCasilla mostrarCasilla;
+    private static final Scanner in = new Scanner (System.in);
+   /* private static TipoCasilla mostrarCasilla;
     private static TipoSorpresa mostrarSorpresa;
     private static OperacionesJuego mostrarOperaciones;
     private static EstadosJuego mostrarEstados;
     private static MazoSorpresas mazo = new MazoSorpresas();
     private static final Scanner in = new Scanner (System.in);
+*/
+    private static ArrayList<String> getNombreJugadores(){
+        ArrayList<String> lista = new ArrayList<>();
+        int num_jugadores;
 
-    
+        System.out.println("Introduce el numero de jugadores:");
+        num_jugadores = in.nextInt();
+
+        for(int i=0; i<num_jugadores; i++){
+            System.out.println("Introduce el nombre del jugador:");
+            String s = in.next();
+        lista.add(s);
+        }
+
+        return lista;
+    }
     public static void main(String[] args) {
         //Apartado 1
-        for (int i = 0; i < 5; i++) {
+       /* for (int i = 0; i < 5; i++) {
             System.out.println("Empieza el jugador: " + dado.quienEmpieza(4));
         }
         
@@ -136,8 +150,18 @@ public class TestP1 {
         
         diario.ocurreEvento("Que tal");
         System.out.println("Eventos pendientes: " + diario.eventosPendientes());
-
-    
+        */
+       
+       ArrayList<String> nombres = new ArrayList<>();
+       nombres = getNombreJugadores();
+       System.out.println("Los nombres de los jugadores son " + nombres.toString());
+       System.out.println("El numero de jugadores es de " + nombres.size());
+       
+       CivitasJuego civitas = new CivitasJuego(nombres);
+       System.out.println("Empieza el jugador " +  dado.quienEmpieza(nombres.size()));
+       civitas.infoJugadorTexto();
+       
+       
+       
     }
 }
-

@@ -15,7 +15,8 @@ public class CivitasJuego {
     
     
     CivitasJuego(ArrayList<String> nombres){
-        for(int i=0; i<nombres.size(); i++){
+      jugadores = new ArrayList<>();
+      for(int i=0; i<nombres.size(); i++){
             jugadores.add(new Jugador(nombres.get(i)));
         }
         
