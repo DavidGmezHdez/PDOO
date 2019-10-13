@@ -25,7 +25,7 @@ module Civitas
   
   
     def añade_casilla(casilla)
-      carcel = Casilla.new_carcel(@num_casilla_carcel,"carcel")
+      carcel = Casilla.new_nombre("Carcel")
       if @casillas.size == @num_casilla_carcel
         @casillas<<carcel
       end

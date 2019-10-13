@@ -20,6 +20,7 @@ module Civitas
     
     attr_writer :texto
     attr_accessor :valor
+    attr_reader :tipo
     
     
     #Constructor para la sorpresa que envía a la cárcel

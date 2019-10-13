@@ -96,7 +96,7 @@ module Civitas
     
     
     def to_s
-      "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe}  \n Carcel #{@@carcel} }"
+      "Casilla { \n Nombre: #{@nombre}  \n Valor: #{@importe}  \n Carcel: #{@@carcel} \n}"
     end
     
     

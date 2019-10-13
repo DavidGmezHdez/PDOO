@@ -149,31 +149,31 @@ module Civitas
       puts numero_jug
       
       @@civitas = CivitasJuego.new(nombres)
-           
       
-      puts "\nMostramos el tablero: "
-      @@civitas.tablero.to_s
-      
+#      puts "\nMostramos el tablero: "
+#      puts @@civitas.tablero.to_s
+#      
 #      puts "\nMostramos el mazo: "
 #      for i in 0..@@civitas.mazo.sorpresas.size
 #        puts @@civitas.mazo.sorpresas[i].to_s
 #        puts "\n\n"
 #      end
+#      
+#      puts "Casilla cárcel: #{@@civitas.tablero.num_casilla_carcel} \n"
+#      
+#      puts "\n La casilla actual es: " 
+#      puts @@civitas.get_casilla_actual.to_s
+#      
+#      puts "\n Empieza el jugador: " 
+#      puts @@dado.quien_empieza(numero_jug)
+#      
+#      puts @@civitas.get_jugador_actual
+#      
+#      puts "\n"
+#      puts @@civitas.info_jugador_texto
       
-      puts "Casilla cárcel: #{@@civitas.tablero.num_casilla_carcel} \n"
-      
-#      puts "\n La casilla actual es: " + @@civitas.get_casilla_actual.to_s
-      
-      puts "\n Empieza el jugador " 
-      puts @@dado.quien_empieza(numero_jug)
-      
-      #puts @@civitas.get_jugador_actual
-      
-      puts "\n"
-      puts @@civitas.info_jugador_texto
-      
-      #Aplicar sorpresa al jugador actual
-      #@@civitas.tablero.casillas.sorpresa.to_s
+      puts "Aplicar sorpresa al jugador actual"
+      @@civitas.tablero.casillas[1].sorpresa.to_s
       
       
     end
