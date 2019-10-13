@@ -19,13 +19,13 @@ module Civitas
     def initialize(nombre, encarcelado = false, saldo = @@SALDO_INICIAL, 
         puede_comprar = true,salvoconducto = nil, num_casilla = 0, 
         propiedades = Array.new)
-         @encarcelado = encarcelado
-         @nombre = nombre
-         @saldo = saldo
-         @puede_comprar = puede_comprar
-         @salvoconducto = salvoconducto
-         @num_casilla_actual= num_casilla
-         @propiedades = propiedades
+        @encarcelado = encarcelado
+        @nombre = nombre
+        @saldo = saldo
+        @puede_comprar = puede_comprar
+        @salvoconducto = salvoconducto
+        @num_casilla_actual= num_casilla
+        @propiedades = propiedades
     end
     
    
@@ -156,7 +156,7 @@ module Civitas
     
     def modificar_saldo(cantidad)
       @saldo = @saldo + cantidad
-      Diario.instance.ocurre_evento("Modificado el saldo del jugador " + @nombre + " con  " + cantidad )
+      Diario.instance.ocurre_evento("Modificado el saldo del jugador " + @nombre + " con  " + cantidad.to_s )
       return true
     end
     
@@ -167,7 +167,7 @@ module Civitas
       else 
         @num_casilla_actual = num_casilla
         @puede_comprar = false
-        Diario.instance.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla )
+        Diario.instance.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla.to_s )
         return true
       end
     end
