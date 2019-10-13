@@ -312,10 +312,9 @@ module Civitas
     
     
     def to_s
-      "Jugador: #{@nombre} \n encarcelado: #{@encarcelado} \n 
-      propiedades: #{@propiedades} \n saldo: #{@saldo} \n 
-      puede comprar: #{@puede_comprar} \n 
-      casilla actual: #{@num_casilla_actual}\n salvoconducto: #{@salvoconducto}\n"
+      "Jugador: { \n Nombre: #{@nombre} Encarcelado: #{@encarcelado} 
+ Propiedades: #{@propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
+ Casilla actual: #{@num_casilla_actual} \n Salvoconducto: #{@salvoconducto} \n}"
     end
     
      

@@ -1,6 +1,7 @@
 #encoding:utf-8
 
 require_relative 'dado'
+require_relative 'diario'
 require_relative 'tablero'
 require_relative 'tipo_casilla'
 require_relative 'tipo_sorpresa'
@@ -8,6 +9,10 @@ require_relative 'operaciones_juego'
 require_relative 'estados_juego'
 require_relative 'mazo_sorpresas'
 require_relative 'civitas_juego'
+require_relative 'titulo_propiedad'
+require_relative 'casilla'
+require_relative 'jugador'
+require_relative 'sorpresa'
 
 
 module Civitas
@@ -135,20 +140,20 @@ module Civitas
       end
       
       nombres=get_nombre_jugadores
-      
+      numero_jug = nombres.size
       
       puts "\nLos nombres de los jugadores son: "
       puts nombres
       
       puts "\nEl numero de jugadores es: "
-      puts nombres.size
+      puts numero_jug
       
       @@civitas = CivitasJuego.new(nombres)
            
       
 #      puts "\nMostramos el tablero: "
 #      for i in 1..@@civitas.tablero.casillas.size
-#        puts @@civitas.tablero.casillas[1].to_s
+#        puts @@civitas.tablero.casillas[i].titulo.to_s
 #      end
       
       puts "\nMostramos el mazo: "
@@ -159,11 +164,18 @@ module Civitas
       
       puts "Casilla cárcel: #{@@civitas.tablero.num_casilla_carcel} \n"
       
-      puts "\n La casilla actual es: " + @@civitas.get_casilla_actual.to_s
+#      puts "\n La casilla actual es: " + @@civitas.get_casilla_actual.to_s
       
-      puts "\n Empieza el jugador " + @@dado.quien_empieza(4).to_s
+      puts "\n Empieza el jugador " 
+      puts @@dado.quien_empieza(numero_jug)
       
-      puts @@civitas.get_jugador_actual
+      #puts @@civitas.get_jugador_actual
+      
+      puts "\n"
+      puts @@civitas.info_jugador_texto
+      
+      #Aplicar sorpresa al jugador actual
+      #@@civitas.tablero.casillas.sorpresa.to_s
       
       
     end

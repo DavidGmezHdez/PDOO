@@ -19,7 +19,7 @@ module Civitas
     end
     
     
-    attr_reader :nombre, :titulo, :tipo, :carcel, :importe
+    attr_reader :nombre, :titulo, :tipo, :carcel, :importe, :sorpresa, :mazo
     
     
     def self.new_nombre(nombre)
