@@ -206,19 +206,10 @@ module Civitas
       puts "\n Modifica saldo -140 euros"
       puts @@civitas.get_jugador_actual.modificar_saldo(140)
       puts @@civitas.info_jugador_texto
-      
-      puts "\n Esta encarcelado?"
-      puts @@civitas.get_jugador_actual.encarcelado
-<<<<<<< HEAD
-      puts "\n Encarcelar al jugador"
-      puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
-      
-=======
 
       puts "\n Encarcelar al jugador"
       puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
             
->>>>>>> 165f9482715fb1ddf6b74e5db99f447d11677af5
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
       
@@ -242,13 +233,9 @@ module Civitas
       
       puts "\n Pasa por salida"
       puts @@civitas.get_jugador_actual.pasa_por_salida
-      
-      
+     
       puts @@civitas.tablero.casillas[1].titulo.get_precio_venta
 
-      
-
-      
     end
   end
   TestP1.main
