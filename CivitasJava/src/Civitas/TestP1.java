@@ -1,8 +1,6 @@
 package Civitas;
 
-import Civitas.Dado;
 import java.util.Scanner;
-
 import java.util.ArrayList;
 
 public class TestP1 {

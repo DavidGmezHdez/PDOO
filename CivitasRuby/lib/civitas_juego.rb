@@ -1,6 +1,11 @@
 # encoding:utf-8
+
 require_relative 'dado'
-require_relative 'diario'
+require_relative 'jugador'
+require_relative 'estados_juego'
+require_relative 'gestor_estados'
+require_relative 'tablero'
+require_relative 'mazo_sorpresas'
 
 module Civitas
   class CivitasJuego

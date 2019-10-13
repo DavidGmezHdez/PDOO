@@ -1,4 +1,5 @@
 # encoding:utf-8
+
 require_relative 'dado'
 require_relative 'tablero'
 require_relative 'tipo_casilla'

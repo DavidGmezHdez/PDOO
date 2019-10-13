@@ -1,6 +1,9 @@
 # encoding:utf-8
+
 require_relative 'dado'
 require_relative 'diario'
+require_relative 'sorpresa'
+require_relative 'titulo_propiedad'
 
 module Civitas
   class Jugador

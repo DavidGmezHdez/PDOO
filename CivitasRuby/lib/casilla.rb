@@ -1,11 +1,16 @@
 # encoding:utf-8
 
+require_relative 'tipo_casilla'
+require_relative 'titulo_propiedad'
+require_relative 'sorpresa'
+require_relative 'mazo_sorpresas'
+
 module Civitas
   class Casilla
     
     def initialize(nombre, titulo, cantidad, num_casilla_carcel, mazo)
       @nombre = nombre
-      @carcel = num_casilla_carcel
+      @@carcel = num_casilla_carcel
       @importe = cantidad
       @titulo = titulo
       @mazo = mazo
@@ -87,7 +92,7 @@ module Civitas
     def recibe_jugador_juez(iactual,todos)
       if(jugador_correcto(iactual,todos))
         informe(iactual,todos)
-        todos[iactual].encarcelar(@carcel)
+        todos[iactual].encarcelar(@@carcel)
       end
     end
     
@@ -98,7 +103,7 @@ module Civitas
     
     
     def to_s
-      "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe}  \n Carcel #{@carcel} }"
+      "Casilla { Nombre: \n #{@nombre}  \n Valor: #{@importe}  \n Carcel #{@@carcel} }"
     end
     
     

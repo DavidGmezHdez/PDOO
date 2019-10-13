@@ -1,5 +1,7 @@
 # encoding:utf-8
 
+require_relative 'jugador'
+
 module Civitas
   class TituloPropiedad
     
@@ -13,7 +15,7 @@ module Civitas
       @hipotecado = false
       @num_casas = 0
       @num_hoteles = 0
-      @facor_intereses_hipoteca = 1.1
+      @@factor_intereses_hipoteca = 1.1
       @propietario = nil
     end
     

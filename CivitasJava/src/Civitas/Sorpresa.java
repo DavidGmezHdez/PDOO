@@ -1,8 +1,6 @@
 package Civitas;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import Civitas.Jugador;
 
 public class Sorpresa {
     private String texto;

@@ -1,9 +1,10 @@
 # encoding:utf-8
-require_relative "mazo_sorpresas"
-require_relative "tablero"
-require_relative "jugador"
-require_relative "tipo_sorpresa"
-require_relative "diario"
+
+require_relative 'mazo_sorpresas'
+require_relative 'tipo_sorpresa'
+require_relative 'tablero'
+require_relative 'jugador'
+require_relative 'diario'
 
 module Civitas
   class Sorpresa

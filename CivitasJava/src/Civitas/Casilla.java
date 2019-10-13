@@ -1,7 +1,6 @@
 package Civitas;
 
 import java.util.ArrayList;
-import Civitas.Diario;
 
 public class Casilla {
     private String nombre;

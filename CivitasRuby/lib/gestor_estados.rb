@@ -1,5 +1,8 @@
+# encoding:utf-8
+
 require_relative 'diario'
-require_relative 'operaciones_juego'
+require_relative 'estados_juego'
+require_relative 'jugador'
 
 module Civitas
   class Gestor_estados
