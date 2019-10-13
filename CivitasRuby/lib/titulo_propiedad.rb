@@ -20,12 +20,12 @@ module Civitas
     end
     
     
-    attr_accessor :nombre, :hipotecado, :hipoteca_base, :num_casas, :num_hoteles, 
+    attr_reader :nombre, :hipotecado, :hipoteca_base, :num_casas, :num_hoteles, 
       :precio_compra, :precio_edificar, :propietario
     
     
     def actualiza_propietario_por_conversion(jugador)
-    
+      raise NotImplementedError
     end
     
     
@@ -110,7 +110,7 @@ module Civitas
     
     
     def get_importe_cancelar_hipoteca
-        return @hipoteca_base * @factor_intereses_hipoteca
+        return @hipoteca_base * @@factor_intereses_hipoteca
     end
     
     

@@ -161,8 +161,8 @@ module Civitas
 #      
 #      puts "Casilla cárcel: #{@@civitas.tablero.num_casilla_carcel} \n"
 #      
-      puts "\n La casilla actual es: " 
-      puts @@civitas.get_casilla_actual
+#      puts "\n La casilla actual es: " 
+#      puts @@civitas.get_casilla_actual
 #      
 #      puts "\n Empieza el jugador: " 
 #      puts @@civitas.get_jugador_actual.to_s
@@ -210,8 +210,12 @@ module Civitas
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
       
+<<<<<<< HEAD
       puts "\n Encarcelar al jugador"
       puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
+=======
+      puts @@civitas.tablero.casillas[1].titulo.get_precio_venta
+>>>>>>> f6c0aad362c59648ee8d129a5d939fc84d15f9ce
       
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado

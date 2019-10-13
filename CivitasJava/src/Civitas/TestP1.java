@@ -158,10 +158,8 @@ public class TestP1 {
        System.out.println("El numero de jugadores es de " + nombres.size());
        
        CivitasJuego civitas = new CivitasJuego(nombres);
-       System.out.println("Empieza el jugador " +  dado.quienEmpieza(nombres.size()));
+       System.out.println("Empieza el jugador ");
        civitas.infoJugadorTexto();
-       
-       
        
     }
 }
