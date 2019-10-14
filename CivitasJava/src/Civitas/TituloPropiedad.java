@@ -37,7 +37,15 @@ public class TituloPropiedad {
     
     
     boolean cancelarHipoteca(Jugador jugador){
-        throw new UnsupportedOperationException("No implementado");
+        boolean resultado = false;
+        if (this.hipotecado){
+            if(this.esEsteElPropietario(jugador)){
+                this.propietario.paga(this.getImporteCancelarHipoteca());
+                this.hipotecado = false;
+                resultado = true;
+            }
+        }
+        return resultado;
     }
     /*
     boolean cancelarHipoteca(Jugador jugador){
@@ -56,10 +64,16 @@ public class TituloPropiedad {
         return this.getNumCasas() + this.getNumHoteles();
     }
     
-    
     boolean comprar(Jugador jugador){
-        throw new UnsupportedOperationException("No implementado");
+        boolean resultado = false;
+        if(!this.tienePropietario()){
+            this.propietario = jugador;
+            this.propietario.paga(this.precioCompra);
+            resultado = true;
+        }
+        return resultado;
     }
+    
     
     
     boolean construirCasa(Jugador jugador){
@@ -68,21 +82,18 @@ public class TituloPropiedad {
     
     
     boolean construirHotel(Jugador jugador){
-        throw new UnsupportedOperationException("No implementado");
-    }
-    /*
-    boolean comprar(Jugador jugador){
-        if(this.tienePropietario()){
-            return false;
+        boolean resultado = false;
+        if(this.esEsteElPropietario(jugador)){
+            this.propietario.paga(this.precioEdificar);
+            this.numHoteles++;
+            resultado = true;
         }
-        else{
-            this.propietario = jugador;
-            jugador.paga(this.precioCompra);
-            return true;
-        }
+        return resultado;
     }
+   
+
   
-    
+   /* 
     boolean construirCasa(Jugador jugador){
         boolean resultado = false;
         if(this.esEsteElPropietario(jugador)){
@@ -179,20 +190,14 @@ public class TituloPropiedad {
     
     
     boolean hipotecar(Jugador jugador){
-        throw new UnsupportedOperationException("No implementado");
-    }
-    /*
-    boolean hipotecar(Jugador jugador){
+        boolean salida = false;
         if(!this.hipotecado && this.esEsteElPropietario(jugador)){
-            jugador.recibe(this.hipotecaBase);
+            this.propietario.recibe(this.getImporteHipoteca());
             this.hipotecado = true;
-            return true;
+            salida = true;
         }
-        else
-            return false;
+        return salida;
     }
-    */
-    
     
     private boolean propietarioEncarcelado(){
         return propietario.isEncarcelado();

@@ -30,7 +30,15 @@ module Civitas
     
     
     def cancelar_hipoteca(jugador)
-      raise NotImplementedError
+      resultado = false
+      if @hipotecado
+        if es_este_el_propietario(jugador)
+          @propietario.paga(get_importe_cancelar_hipoteca)
+          @hipotecado = false
+          resultado = true
+        end
+      end
+      return resultado
     end
 #    def cancelar_hipoteca(jugador)
 #       if @hipotecado && es_este_el_propietario(jugador)
@@ -49,7 +57,13 @@ module Civitas
     
     
     def comprar(jugador)
-      raise NotImplementedError
+      resultado = false
+      if !tiene_propietario
+        @propietario = jugador
+        @propietario.paga(@precio_compra)
+        resultado = true
+      end
+      return resultado
     end
     
     
@@ -59,7 +73,13 @@ module Civitas
     
     
     def construir_hotel(jugador)
-      raise NotImplementedError
+      resultado = false
+      if es_este_el_propietario(jugador)
+        @propietario.paga(@precio_edificar)
+        @num_hoteles = @num_hoteles + 1
+        resultado = true
+      end
+      return resultado
     end
     
 #    def comprar(jugador)
@@ -129,17 +149,15 @@ module Civitas
 
 
     def hipotecar(jugador)
-      raise NotImplementedError
+      salida = false
+      if !@hipotecado && es_este_el_propietario(jugador)
+        @propietario.recibe(@hipoteca_base)
+        @hipotecado = true
+        salida = true
+      end
+      return salida
     end
-#    def hipotecar(jugador)
-#        if !@hipotecado && es_este_el_propietario(jugador)
-#          @jugador.recibe(@hipoteca_base)
-#          @hipotecado = true
-#          return true
-#        else
-#          return false
-#        end
-#    end
+
     
     def propietario_encarcelado
       return @propietario.encarcelado

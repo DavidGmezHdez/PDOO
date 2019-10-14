@@ -159,7 +159,11 @@ public class TestP1 {
        
        CivitasJuego civitas = new CivitasJuego(nombres);
        System.out.println("Empieza el jugador ");
-       civitas.infoJugadorTexto();
+       System.out.println(civitas.getJugadorActual());
+       
+       System.out.println("Puede comprar casilla ");
+       System.out.println(civitas.getJugadorActual().puedeComprarCasilla());
+       
        
     }
 }

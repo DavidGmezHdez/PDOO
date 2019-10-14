@@ -41,7 +41,22 @@ module Civitas
     
     
     def cancelar_hipoteca(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      if existe_la_propiedad(ip)
+        propiedad = @propiedades[ip]
+        cantidad = propiedad.get_importe_cancelar_hipoteca
+        puedo_gastar = puedo_gastar(cantidad)
+        if puedo_gastar
+          result = propiedad.cancelar_hipoteca(self)
+          if result
+            Diario.instance.ocurre_evento("El jugador " + @nombre + " cancela la hipoteca de la propiedad  " + ip) 
+          end
+        end
+      end
+      return result
     end
     
     
@@ -69,7 +84,22 @@ module Civitas
     
     
     def comprar(titulo)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      
+      if @puede_comprar
+        if puedo_gastar(titulo.precio_compra)
+          result = titulo.comprar(self)
+          if result
+            @propiedades.push(titulo)
+            Diario.instance.ocurre_evento("El jugador " + @nombre +" compra la propiedad  " + titulo.to_s)
+          end
+        end
+      end
+      @puede_comprar = false
+      return result
     end
     
     
@@ -79,7 +109,20 @@ module Civitas
     
     
     def construir_hotel(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      
+      if existe_la_propiedad(ip)
+        propiedad = @propiedades[ip]
+        if propiedad.puedo_edificar_hotel(propiedad)
+          result = propiedad.construir_hotel(self)
+          propiedad.derruir_casas(getCasas_Por_Hotel, self)
+          Diario.instance.ocurre_evento("El jugador " + nombre + " construye hotel en la propiedad  " + ip)
+        end
+      end
+      return result
     end
     
     
@@ -150,7 +193,19 @@ module Civitas
     
     
     def hipotecar(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      
+      if existe_la_propiedad(ip)
+        propiedad = @propiedades[ip]
+        result = propiedad.hipotecar(self)
+        if result
+          Diario.instance.ocurre_evento("El jugador " + nombre + " hipoteca la propiedad  " + ip)
+        end
+      end
+      return result
     end
     
     
@@ -240,7 +295,8 @@ module Civitas
     
     
     def puedo_edificar_hotel(propiedad)
-      return propiedad.num_casas==4 && @saldo>propiedad.precio_edificar
+      return puedo_gastar(propiedad.precio_edificar) &&
+      propiedad.num_hoteles < getHoteles_Max && propiedad.num_casas >= getCasas_Por_Hotel
     end
     
     
