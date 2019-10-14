@@ -213,6 +213,9 @@ module Civitas
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
       
+      puts "\n Hoteles Max"
+      puts @@civitas.get_jugador_actual.getHoteles_Max
+      
       puts "\n Salir carcel pagando"
       puts @@civitas.get_jugador_actual.salir_carcel_pagando
       
