@@ -63,7 +63,7 @@ module Civitas
     
     
     def recibe_jugador(iactual,todos)
-      raise NotImplementedError
+      
     end
     
     
@@ -89,7 +89,11 @@ module Civitas
     
     
     def recibe_jugador_sorpresa(iactual,todos)
-      raise NotImplementedError
+      if jugador_correcto(iactual,todos)
+        @sorpresa = @mazo.siguiente
+        informe(iactual,todos)
+        @sorpresa.aplicar_a_jugador(iactual,todos)
+      end
     end
     
     

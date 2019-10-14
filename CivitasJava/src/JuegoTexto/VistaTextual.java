@@ -1,15 +1,15 @@
-package juegoTexto;
-
-import civitas.CivitasJuego;
-import civitas.Diario;
-import civitas.OperacionesJuego;
-import civitas.SalidasCarcel;
+package JuegoTexto;
+import Civitas.CivitasJuego;
+import Civitas.Diario;
+import Civitas.OperacionesJuego;
+import Civitas.Respuestas
+import Civitas.SalidasCarcel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import civitas.Casilla;
-import civitas.Jugador;
-import civitas.TituloPropiedad;
+import Civitas.Casilla;
+import Civitas.Jugador;
+import Civitas.TituloPropiedad;
 
 class VistaTextual {
   
@@ -76,19 +76,36 @@ class VistaTextual {
     return (SalidasCarcel.values()[opcion]);
   }
 
-  Respuestas comprar() {}
+  Respuestas comprar(){
+    int opcion = menu ("¿Deseas comprar la propiedad?",
+      new ArrayList<> (Arrays.asList("Si","No")));
+    return (Respuestas.values()[opcion]);
+  }
 
-  void gestionar () {}
+  void gestionar(){
+    int opcion = this.menu("¿Qué gestion inmobiliaria deseas hacer?", 
+        new ArrayList<> (Arrays.asList("Terminar","Vender","Hipotecar","Cancelar Hipoteca","Construir Casa", "Construir Hotel")));
+    //this.iPropiedad = this.juegoModel.getCasillaActual();
+    //FALTAN METODOS EN EL GUION
+  }
   
-  public int getGestion(){}
+  public int getGestion(){
+      return this.iGestion;
+  }
   
-  public int getPropiedad(){}
+  public int getPropiedad(){
+      return this.iPropiedad;
+  }
     
+  void mostrarSiguienteOperacion(OperacionesJuego operacion){
+    System.out.println("Siguiente operacion: " + operacion.toString());
+  }
 
-  void mostrarSiguienteOperacion(OperacionesJuego operacion) {}
-
-
-  void mostrarEventos() {}
+  void mostrarEventos(){
+    while(Civitas.Diario.getInstance().eventosPendientes()){
+       System.out.println(Civitas.Diario.getInstance().leerEvento());
+    }
+  }
   
   public void setCivitasJuego(CivitasJuego civitas){ 
         juegoModel=civitas;
@@ -96,5 +113,9 @@ class VistaTextual {
 
     }
   
-  void actualizarVista(){} 
+  void actualizarVista(){
+      System.out.println(this.juegoModel.infoJugadorTexto());
+  }
+  
+  
 }

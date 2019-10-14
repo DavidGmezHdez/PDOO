@@ -3,9 +3,8 @@ require_relative 'operaciones_juego'
 require 'io/console'
 
 module Civitas
-
   class Vista_textual
-
+    
     def mostrar_estado(estado)
       puts estado
     end

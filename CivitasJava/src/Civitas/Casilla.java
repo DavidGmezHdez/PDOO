@@ -1,5 +1,4 @@
 package Civitas;
-
 import java.util.ArrayList;
 
 public class Casilla {
@@ -91,7 +90,7 @@ public class Casilla {
     
     
     void recibeJugador(int iactual, ArrayList<Jugador> todos){
-        throw new UnsupportedOperationException("No implementado");
+
     }
     
     
@@ -117,7 +116,11 @@ public class Casilla {
     
     
     private void recibeJugador_sorpresa(int iactual, ArrayList<Jugador> todos){
-        throw new UnsupportedOperationException("No implementado");
+        if(this.jugadorCorrecto(iactual, todos)){
+            this.sorpresa = this.mazo.siguiente();
+            this.informe(iactual, todos);
+            this.sorpresa.aplicarAJugador(iactual, todos);
+        }
     }
     
     
