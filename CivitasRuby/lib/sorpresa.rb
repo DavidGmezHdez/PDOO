@@ -56,7 +56,7 @@ module Civitas
     
     def jugador_correcto(actual, todos)
       es_correcto = false
-      if (actual >= 0 && actual < todos.size())
+      if actual >= 0 && actual < todos.size
         es_correcto = true
       end
       return es_correcto

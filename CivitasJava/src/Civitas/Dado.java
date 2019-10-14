@@ -46,8 +46,8 @@ public class Dado {
     
     
     int quienEmpieza (int n){
-        int primerJugador = 1;
-        primerJugador = random.nextInt(n) + 1;
+        Random jugAleatorio = new Random();
+        int primerJugador = jugAleatorio.nextInt(n);
         return primerJugador;
     }
     

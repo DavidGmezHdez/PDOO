@@ -46,7 +46,22 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean cancelarHipoteca(int ip){
-        throw new UnsupportedOperationException("No implementado");
+        boolean result = false;
+        if (this.encarcelado)
+            return result;
+        
+        if(this.existeLaPropiedad(ip)){
+            TituloPropiedad propiedad = propiedades.get(ip);
+            float cantidad = propiedad.getImporteCancelarHipoteca();
+            boolean puedoGastar = this.puedoGastar(cantidad);
+            if(puedoGastar){
+                result = propiedad.cancelarHipoteca(this);
+                if(result){
+                    Diario.getInstance().ocurreEvento("El jugador " + nombre + " cancela la hipoteca de la propiedad  " + ip);
+                }
+            }
+        }
+        return result;
     }
     
 
@@ -66,7 +81,21 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean comprar(TituloPropiedad titulo){
-        throw new UnsupportedOperationException("No implementado");
+        boolean result = false;
+        if (this.encarcelado)
+            return result;
+        
+        if(this.puedeComprar){
+            if(this.puedoGastar(titulo.getPrecioCompra())){
+                result = titulo.comprar(this);
+                if(result){
+                    this.propiedades.add(titulo);
+                    Diario.getInstance().ocurreEvento("El jugador " + nombre + " compra la propiedad  " + titulo.toString());
+                }
+            }
+        }
+        this.puedeComprar = false;
+        return result;
     } 
     
     
@@ -76,7 +105,19 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean construirHotel(int ip){
-        throw new UnsupportedOperationException("No implementado");
+        boolean result = false;
+        if (this.encarcelado)
+            return result;
+        
+        if(this.existeLaPropiedad(ip)){
+            TituloPropiedad propiedad = this.propiedades.get(ip);
+            if(this.puedoEdificarHotel(propiedad)){
+                result = propiedad.construirHotel(this);
+                propiedad.derruirCasas(getCasasPorHotel(), this);
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye hotel en la propiedad  " + ip);
+            }
+        }
+        return result;
     } 
     
     
@@ -166,7 +207,17 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean hipotecar(int ip){
-        throw new UnsupportedOperationException("No implementado");
+        boolean result = false;
+        if (this.encarcelado)
+            return result;
+        
+        if(this.existeLaPropiedad(ip)){
+            TituloPropiedad propiedad = this.propiedades.get(ip);
+            result = propiedad.hipotecar(this);
+        }
+        if (result)
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " hipoteca la propiedad  " + ip);
+        return result;
     }
     
     
@@ -261,7 +312,8 @@ public class Jugador implements Comparable<Jugador> {
     
     
     private boolean puedoEdificarHotel(TituloPropiedad propiedad){
-        return propiedad.getNumCasas() == 4 && this.saldo>propiedad.getPrecioEdificar();
+        return this.puedoGastar(propiedad.getPrecioEdificar()) && propiedad.getNumHoteles() < getHotelesMax() 
+                && propiedad.getNumCasas()>=getCasasPorHotel();
     }
     
     

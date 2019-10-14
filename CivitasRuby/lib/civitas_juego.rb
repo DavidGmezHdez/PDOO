@@ -33,7 +33,15 @@ module Civitas
     
     
     def avanza_jugador
-      raise NotImplementedError
+      jugador_actual = @jugadores[@indice_jugador_actual]
+      posicion_actual = jugador_actual.num_casilla_actual
+      tirada = Dado.instance.tirar
+      posicion_nueva = @tablero.calcular_tirada(posicion_actual, tirada)
+      casilla = @tablero.get_casilla(posicion_nueva)
+      contabilizar_pasos_por_salida(jugador_actual)
+      jugador_actual.mover_a_casilla(posicion_nueva)
+      casilla.recibe_jugador(jugador_actual, @jugadores)
+      contabilizar_pasos_por_salida(jugador_actual)
     end
     
     
@@ -176,7 +184,7 @@ module Civitas
       @jugadores[@indice_jugador_actual].vender(ip)
     end
     
-    attr_reader :tablero, :mazo
+    attr_reader :tablero, :mazo, :indice_jugador_actual, :jugadores
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
     
   end

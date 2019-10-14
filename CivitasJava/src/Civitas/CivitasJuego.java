@@ -23,7 +23,7 @@ public class CivitasJuego {
         gestorEstados = new GestorEstados();
         gestorEstados.estadoInicial();
         
-        this.indiceJugadorActual = Dado.getInstance().quienEmpieza(nombres.size());
+        this.indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
         mazo = new MazoSorpresas();
         
         this.inicializarTablero(mazo);
@@ -33,7 +33,15 @@ public class CivitasJuego {
     
     
     private void avanzaJugador(){
-        throw new UnsupportedOperationException("No implementado");
+        Jugador jugadorActual = jugadores.get(indiceJugadorActual);
+        int posicionActual = jugadorActual.getNumCasillaActual();
+        int tirada = Dado.getInstance().tirar();
+        int posicionNueva = this.tablero.nuevaPosicion(posicionActual, tirada);
+        Casilla casilla = this.tablero.getCasilla(posicionNueva);
+        this.contabilizarPasosPorSalida(jugadorActual);
+        jugadorActual.moverACasilla(posicionNueva);
+        casilla.recibeJugador(this.indiceJugadorActual, jugadores);
+        this.contabilizarPasosPorSalida(jugadorActual);
     }
     
     
@@ -99,6 +107,11 @@ public class CivitasJuego {
     public String infoJugadorTexto(){
         return jugadores.get(indiceJugadorActual).toString();
     }
+    
+    public int getIndiceJugadorActual(){
+        return this.indiceJugadorActual;
+    }
+            
     
     
     private void inicializarMazoSorpresas(Tablero tablero){
