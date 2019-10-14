@@ -209,6 +209,7 @@ module Civitas
       
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
+<<<<<<< HEAD
 
       puts "\n Encarcelar al jugador"
       puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
@@ -218,6 +219,11 @@ module Civitas
             
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
+=======
+      
+      puts "\n Encarcelar al jugador"
+      puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
+>>>>>>> de3366af778fc6195847288260c39f43eec8c80c
       
       puts "\n Salir carcel pagando"
       puts @@civitas.get_jugador_actual.salir_carcel_pagando
@@ -240,12 +246,25 @@ module Civitas
       puts "\n Pasa por salida"
       puts @@civitas.get_jugador_actual.pasa_por_salida
       
+      puts "\n Cantidad de casas y hoteles"
+      puts @@civitas.tablero.casillas[1].titulo.cantidad_casas_hoteles
       
+<<<<<<< HEAD
       puts @@civitas.tablero.casillas[1].titulo.get_precio_venta
       
 
+=======
+      puts "\n Importe cancelar hipoteca"
+      puts @@civitas.tablero.casillas[1].titulo.get_importe_cancelar_hipoteca
       
-
+      #Algunos metodos no se pueden hacer en TituloPropiedad ya que el propietario es nil, porque aún no hemos implementado la compra
+      
+      #Probando metodos de sorpresa
+      
+      puts "\n Se puede aplicar la siguiente sorpresa?"
+      puts @@civitas.mazo.siguiente.aplicar_a_jugador(@@civitas.indice_jugador_actual,@@civitas.jugadores)
+>>>>>>> de3366af778fc6195847288260c39f43eec8c80c
+      
       
     end
   end

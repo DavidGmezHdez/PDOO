@@ -43,7 +43,7 @@ module Civitas
 #    end
     
     
-    def cantidad_casas_hoteles()
+    def cantidad_casas_hoteles
         return @num_casas + @num_hoteles
     end
     

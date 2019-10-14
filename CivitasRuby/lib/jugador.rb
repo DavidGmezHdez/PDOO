@@ -48,7 +48,7 @@ module Civitas
     def cantidad_casas_hoteles
       total = 0
       for i in @propiedades
-        total = total + i.num_casas + i.num_hoteles
+        total = total + i.cantidad_casas_hoteles
       end
       return total
     end

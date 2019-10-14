@@ -176,7 +176,7 @@ module Civitas
       @jugadores[@indice_jugador_actual].vender(ip)
     end
     
-    attr_reader :tablero, :mazo
+    attr_reader :tablero, :mazo, :indice_jugador_actual, :jugadores
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
     
   end
