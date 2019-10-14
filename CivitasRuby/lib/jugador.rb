@@ -123,7 +123,7 @@ module Civitas
       return @@CASAS_MAX
     end
     
-    
+ 
     def self.getCasas_Por_Hotel
       return @@CASAS_POR_HOTEL
     end
