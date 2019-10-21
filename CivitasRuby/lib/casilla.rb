@@ -63,12 +63,32 @@ module Civitas
     
     
     def recibe_jugador(iactual,todos)
-      
+      case(@tipo)
+      when TipoCasilla::CALLE
+        recibe_jugador_calle(iactual,todos)
+      when TipoCasilla::IMPUESTO
+        recibe_jugador_impuesto(iactual, todos)
+      when TipoCasilla::JUEZ
+        recibe_jugador_juez(iactual, todos)
+      when TipoCasilla::SORPRESA
+        recibe_jugador_sorpresa(iactual, todos)
+      else
+        informe(iactual,todos);
+      end
     end
     
     
     def recibe_jugador_calle(iactual,todos)
-      raise NotImplementedError
+      if(jugadorCorrecto(iactual,todos))
+        informe(iactual,todos)
+        jugador = Jugador.new(todos[iactual]);
+        
+        if(!titulo.tiene_propietario())
+          jugador.puede_comprar_casilla()
+        else
+          @titulo.tramitar_alquiler(jugador)
+        end
+      end
     end
     
     

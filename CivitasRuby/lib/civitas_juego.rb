@@ -60,7 +60,13 @@ module Civitas
     
     
     def comprar
-      raise NotImplementedError
+      jugador_actual = @jugadores[@indice_jugador_actual]
+      num_casilla_actual = jugador_actual.num_casilla_actual
+      casilla = @tablero.get_casilla(num_casilla_actual)
+      titulo = casilla.titulo
+      res = jugador_actual.comprar(titulo)
+      
+      return res
     end
     
     
@@ -171,7 +177,17 @@ module Civitas
     
     
     def siguiente_paso
-      raise NotImplementedError
+      jugador_actual = @jugadores[@indice_jugador_actual]
+      operacion = @gestor_estados.operaciones_permitidas(jugador_actual, @estado)
+      
+      if(operacion == OperacionesJuego::PASAR_TURNO)
+        pasar_turno()
+        siguiente_paso_completado(operacion)
+      else
+        avanza_jugador()
+        siguiente_paso_completado(operacion)
+      end
+      return operacion
     end
     
     
