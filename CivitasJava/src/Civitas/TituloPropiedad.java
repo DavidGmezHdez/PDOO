@@ -145,7 +145,7 @@ public class TituloPropiedad {
     }       
     
 
-    String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 

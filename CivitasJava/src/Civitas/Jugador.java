@@ -191,7 +191,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    protected ArrayList<TituloPropiedad> getPropiedades() {
+    public ArrayList<TituloPropiedad> getPropiedades() {
         return propiedades;
     }
     

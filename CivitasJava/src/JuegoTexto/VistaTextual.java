@@ -2,12 +2,13 @@ package JuegoTexto;
 import Civitas.CivitasJuego;
 import Civitas.Diario;
 import Civitas.OperacionesJuego;
-import Civitas.Respuestas
+import Civitas.Respuestas;
 import Civitas.SalidasCarcel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import Civitas.Casilla;
+import Civitas.GestionesInmobiliarias;
 import Civitas.Jugador;
 import Civitas.TituloPropiedad;
 
@@ -83,10 +84,15 @@ class VistaTextual {
   }
 
   void gestionar(){
-    int opcion = this.menu("¿Qué gestion inmobiliaria deseas hacer?", 
+    this.iGestion = this.menu("¿Qué gestion inmobiliaria deseas hacer?", 
         new ArrayList<> (Arrays.asList("Terminar","Vender","Hipotecar","Cancelar Hipoteca","Construir Casa", "Construir Hotel")));
-    //this.iPropiedad = this.juegoModel.getCasillaActual();
-    //FALTAN METODOS EN EL GUION
+    
+    ArrayList<String>  nombresPropiedades = new ArrayList<>();
+    
+    for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++)
+        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+    
+    this.iPropiedad = this.menu("¿Qué propiedad deseas gestionar?",nombresPropiedades);
   }
   
   public int getGestion(){
