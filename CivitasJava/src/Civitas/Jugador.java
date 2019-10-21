@@ -100,7 +100,24 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean construirCasa(int ip){
-        throw new UnsupportedOperationException("No implementado");
+        boolean result = false;
+        boolean puedoEdificarCasa = false;
+        if(this.encarcelado){
+            return result;
+        } else {
+            boolean existe = this.existeLaPropiedad(ip);
+            if(existe){
+                TituloPropiedad propiedad = this.propiedades.get(ip);
+                puedoEdificarCasa = this.puedoEdificarCasa(propiedad);
+                if(puedoEdificarCasa){
+                    result = propiedad.construirCasa(this);
+                    if(result){
+                        Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye casa en la propiedad  " + ip);
+                    }
+                }
+            }
+        }
+        return result;        
     } 
     
     
@@ -307,7 +324,7 @@ public class Jugador implements Comparable<Jugador> {
     
     
     private boolean puedoEdificarCasa(TituloPropiedad propiedad){
-        return propiedad.getNumCasas()<4 && this.saldo>propiedad.getPrecioEdificar();
+        return this.puedoGastar(propiedad.getPrecioEdificar()) && propiedad.getNumCasas() < getCasasMax();
     }
     
     

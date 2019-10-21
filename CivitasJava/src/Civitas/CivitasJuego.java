@@ -59,7 +59,13 @@ public class CivitasJuego {
 
     
     public boolean comprar(){
-        throw new UnsupportedOperationException("No implementado");  
+        Jugador jugadorActual = jugadores.get(indiceJugadorActual);
+        int numCasillaActual = jugadorActual.getNumCasillaActual();
+        Casilla casilla = this.tablero.getCasilla(numCasillaActual);
+        TituloPropiedad titulo = casilla.getTituloPropiedad();
+        boolean res = jugadorActual.comprar(titulo);
+        
+        return res;
     }
     
     
@@ -184,7 +190,17 @@ public class CivitasJuego {
     
     
     public OperacionesJuego siguientePaso(){
-        throw new UnsupportedOperationException("No implementado");  
+        Jugador jugadorActual = jugadores.get(indiceJugadorActual);
+        OperacionesJuego operacion = this.gestorEstados.operacionesPermitidas(jugadorActual, this.estado);
+        
+        if(operacion == OperacionesJuego.PASAR_TURNO){
+            pasarTurno();
+            siguientePasoCompletado(operacion);
+        } else {
+            avanzaJugador();
+            siguientePasoCompletado(operacion);
+        }
+        return operacion;
     }
     
     
