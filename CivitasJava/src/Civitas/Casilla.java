@@ -78,24 +78,41 @@ public class Casilla {
         this.sorpresa = null;
         this.mazo = null;
     }
-    
-    
-    public boolean jugadorCorrecto(int iactual, ArrayList<Jugador> todos){
+
+    public boolean jugadorCorrecto(int iactual, ArrayList<Jugador> todos) {
         boolean es_correcto = false;
-        if(iactual>=0 && iactual<todos.size()){
-            es_correcto=true;
+        if (iactual >= 0 && iactual < todos.size()) {
+            es_correcto = true;
         }
         return es_correcto;
     }
-    
-    
-    void recibeJugador(int iactual, ArrayList<Jugador> todos){
 
+    void recibeJugador(int iactual, ArrayList<Jugador> todos) {
+        switch (this.tipo) {
+            case CALLE:
+                recibeJugador_calle(iactual, todos);
+            case IMPUESTO:
+                recibeJugador_impuesto(iactual, todos);
+            case JUEZ:
+                recibeJugador_juez(iactual, todos);
+            case SORPRESA:
+                recibeJugador_sorpresa(iactual, todos);
+            default:
+                informe(iactual, todos);
+        }
     }
-    
-    
+
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
-        throw new UnsupportedOperationException("No implementado");
+        if(jugadorCorrecto(iactual,todos)){
+            informe(iactual,todos);
+            Jugador jugador = new Jugador(todos.get(iactual));
+            
+            if(!this.tituloPropiedad.tienePropietario()){
+                jugador.puedeComprarCasilla();
+            } else{
+                this.tituloPropiedad.tramitarAlquiler(jugador);
+            }
+        }
     }
     
    
