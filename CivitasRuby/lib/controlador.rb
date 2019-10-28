@@ -13,7 +13,7 @@ class Controlador
     while !@juego.final_del_juego
       @vista.actualizarVista
       @vista.pausa
-      operacion = @vista.mostrarSiguienteOperacion(@juego.siguiente_paso)
+      operacion = @juego.siguiente_paso
       if operacion != OperacionesJuego::PASAR_TURNO
         @vista.mostrarEventos
       end
@@ -43,9 +43,14 @@ class Controlador
               when GestionesInmobiliarias::TERMINAR
                 @juego.siguiente_paso_completado(operacion)
             end
-        when OperacionesJuego::SALIR_CARCEL
-          #Falta añadir metodos en vista
-          @juego.siguiente_paso_completado(operacion)
+          when OperacionesJuego::SALIR_CARCEL
+            case(@vista.salir_carcel)
+              when SalidasCarcel::PAGANDO
+                @juego.salir_carcel_pagando
+              when SalidasCarcel::TIRANDO
+                @juego.salir_carcel_tirando
+            end
+            @juego.siguiente_paso_completado(operacion)
         end
       end
     end

@@ -84,15 +84,55 @@ class VistaTextual {
   }
 
   void gestionar(){
-    this.iGestion = this.menu("¿Qué gestion inmobiliaria deseas hacer?", 
-        new ArrayList<> (Arrays.asList("Terminar","Vender","Hipotecar","Cancelar Hipoteca","Construir Casa", "Construir Hotel")));
-    
+    ArrayList<String> nombresGestion = new ArrayList<> 
+        (Arrays.asList("Terminar","Vender","Hipotecar","Cancelar Hipoteca","Construir Casa", "Construir Hotel"));
     ArrayList<String>  nombresPropiedades = new ArrayList<>();
     
-    for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++)
-        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+    this.iGestion = -1;
     
-    this.iPropiedad = this.menu("¿Qué propiedad deseas gestionar?",nombresPropiedades);
+    while(this.iGestion != 0){
+        this.iGestion = this.menu("¿Qué gestion inmobiliaria deseas hacer?", nombresGestion);
+        switch (this.iGestion){
+            case 1:
+                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++)
+                    nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                this.iPropiedad = this.menu("¿Qué propiedad deseas vender?",nombresPropiedades);
+                this.juegoModel.vender(iPropiedad);
+                break;
+            case 2:
+                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
+                    if(this.juegoModel.getJugadorActual().getPropiedades().get(i).getHipotecado() == false)
+                        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                }
+                this.iPropiedad = this.menu("¿Qué propiedad deseas hipotecar?",nombresPropiedades);
+                this.juegoModel.hipotecar(iPropiedad);
+                break;
+            case 3:
+                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
+                    if(this.juegoModel.getJugadorActual().getPropiedades().get(i).getHipotecado() == true)
+                        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                }
+                this.iPropiedad = this.menu("¿Qué propiedad deseas cancelar hipoteca?",nombresPropiedades);
+                this.juegoModel.cancelarHipoteca(iPropiedad);
+                break;
+            case 4:
+                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
+                    if(this.juegoModel.getJugadorActual().puedoEdificarCasa(this.juegoModel.getJugadorActual().getPropiedades().get(i)))
+                        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                }
+                this.iPropiedad = this.menu("¿Qué propiedad deseas construir casa?",nombresPropiedades);
+                this.juegoModel.construirCasa(iPropiedad);
+                break;
+            case 5:
+                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
+                    if(this.juegoModel.getJugadorActual().puedoEdificarHotel(this.juegoModel.getJugadorActual().getPropiedades().get(i)))
+                        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                }
+                this.iPropiedad = this.menu("¿Qué propiedad deseas construir hotel?",nombresPropiedades);
+                this.juegoModel.construirHotel(iPropiedad);
+                break;
+        }
+    }
   }
   
   public int getGestion(){
@@ -121,6 +161,7 @@ class VistaTextual {
   
   void actualizarVista(){
       System.out.println(this.juegoModel.infoJugadorTexto());
+      System.out.println(this.juegoModel.getCasillaActual().toString());
   }
   
   

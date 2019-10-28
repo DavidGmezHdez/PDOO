@@ -323,12 +323,12 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    private boolean puedoEdificarCasa(TituloPropiedad propiedad){
+    public boolean puedoEdificarCasa(TituloPropiedad propiedad){
         return this.puedoGastar(propiedad.getPrecioEdificar()) && propiedad.getNumCasas() < getCasasMax();
     }
     
     
-    private boolean puedoEdificarHotel(TituloPropiedad propiedad){
+    public boolean puedoEdificarHotel(TituloPropiedad propiedad){
         return this.puedoGastar(propiedad.getPrecioEdificar()) && propiedad.getNumHoteles() < getHotelesMax() 
                 && propiedad.getNumCasas()>=getCasasPorHotel();
     }
