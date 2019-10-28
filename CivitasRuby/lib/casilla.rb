@@ -81,9 +81,9 @@ module Civitas
     def recibe_jugador_calle(iactual,todos)
       if(jugadorCorrecto(iactual,todos))
         informe(iactual,todos)
-        jugador = Jugador.new(todos[iactual]);
+        jugador = todos[iactual];
         
-        if(!titulo.tiene_propietario())
+        if(!@titulo.tiene_propietario())
           jugador.puede_comprar_casilla()
         else
           @titulo.tramitar_alquiler(jugador)

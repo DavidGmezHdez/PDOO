@@ -105,7 +105,7 @@ public class Casilla {
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
         if(jugadorCorrecto(iactual,todos)){
             informe(iactual,todos);
-            Jugador jugador = new Jugador(todos.get(iactual));
+            Jugador jugador = todos.get(iactual);
             
             if(!this.tituloPropiedad.tienePropietario()){
                 jugador.puedeComprarCasilla();
