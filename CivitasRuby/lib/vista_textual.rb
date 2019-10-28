@@ -4,6 +4,7 @@ require 'io/console'
 require_relative 'salidas_carcel'
 require_relative 'respuestas'
 require_relative 'diario'
+require_relative 'gestiones_inmobiliarias'
 
 
 module Civitas
@@ -73,12 +74,13 @@ module Civitas
     
     def comprar
       opcion = menu("¿Deseas comprar la propiedad?",Respuestas::lista_respuestas)
-      return lista_respuestas[opcion]
+      return Respuestas::lista_respuestas[opcion]
     end
     
 
     def gestionar
-      @i_gestion = menu("¿Qué gestion inmobiliaria deseas hacer?",NOSEEE)
+      
+      @i_gestion = menu("¿Qué gestion inmobiliaria deseas hacer?",GestionesInmobiliarias::lista_gestiones_inmobiliarias)
       
       nombres_propiedades = Array.new
       
@@ -126,7 +128,7 @@ module Civitas
     def salir_carcel
       opcion = menu("Elige la forma para intentar salir de la carcel", 
         SalidasCarcel::lista_salidas_carcel)
-      return lista_salidas_carcel[opcion]
+      return SalidasCarcel::lista_salidas_carcel[opcion]
     end
         
   end
