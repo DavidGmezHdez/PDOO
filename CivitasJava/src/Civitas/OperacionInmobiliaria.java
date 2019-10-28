@@ -3,7 +3,7 @@ public class OperacionInmobiliaria {
     private int numPropiedad;
     private GestionesInmobiliarias gestion;
     
-    OperacionInmobiliaria(GestionesInmobiliarias gest, int ip){
+    public OperacionInmobiliaria(GestionesInmobiliarias gest, int ip){
         this.gestion = gest;
         this.numPropiedad = ip;
     }
