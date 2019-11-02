@@ -206,8 +206,6 @@ module Civitas
       puts "\n Modifica saldo -140 euros"
       puts @@civitas.get_jugador_actual.modificar_saldo(140)
       puts @@civitas.info_jugador_texto
-<<<<<<< HEAD
-=======
       
       puts "\n Esta encarcelado?"
       puts @@civitas.get_jugador_actual.encarcelado
@@ -215,7 +213,6 @@ module Civitas
 
       puts "\n Encarcelar al jugador"
       puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
->>>>>>> 4f44786be6bc46d39b3e7a5742ec5a8ff415d0b5
 
       puts "\n Encarcelar al jugador"
       puts @@civitas.get_jugador_actual.encarcelar(@@civitas.tablero.num_casilla_carcel)
@@ -251,11 +248,9 @@ module Civitas
       
       puts "\n Pasa por salida"
       puts @@civitas.get_jugador_actual.pasa_por_salida
-<<<<<<< HEAD
      
       puts @@civitas.tablero.casillas[1].titulo.get_precio_venta
 
-=======
       
       puts "\n Cantidad de casas y hoteles"
       puts @@civitas.tablero.casillas[1].titulo.cantidad_casas_hoteles
@@ -273,9 +268,6 @@ module Civitas
       puts "\n Se puede aplicar la siguiente sorpresa?"
       puts @@civitas.mazo.siguiente.aplicar_a_jugador(@@civitas.indice_jugador_actual,@@civitas.jugadores)
 
-      
-      
->>>>>>> 4f44786be6bc46d39b3e7a5742ec5a8ff415d0b5
     end
   end
   TestP1.main
