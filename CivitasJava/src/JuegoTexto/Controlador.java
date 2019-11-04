@@ -30,11 +30,13 @@ public class Controlador {
         GestionesInmobiliarias gest;
         int numProp;
         int indGest;
+        vista.setCivitasJuego(juego);
 
         if (!juego.finalDelJuego()) {
             vista.actualizarVista();
             vista.pausa();
             operacion = juego.siguientePaso();
+
             if (operacion != OperacionesJuego.PASAR_TURNO) {
                 vista.mostrarEventos();
             }
