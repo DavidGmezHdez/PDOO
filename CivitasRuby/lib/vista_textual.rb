@@ -61,7 +61,7 @@ module Civitas
       puts titulo
       index = 0
       lista.each { |l|
-        puts tab+index.to_s+"-"+l
+        puts tab+index.to_s+"-"+l.to_s
         index += 1
       }
 
@@ -73,8 +73,8 @@ module Civitas
 
     
     def comprar
-      opcion = menu("¿Deseas comprar la propiedad?",Respuestas::lista_respuestas)
-      return Respuestas::lista_respuestas[opcion]
+      opcion = menu("¿Deseas comprar la propiedad?",Respuestas::LISTA_RESPUESTAS)
+      return Respuestas::LISTA_RESPUESTAS[opcion]
     end
     
 
@@ -167,9 +167,9 @@ module Civitas
     
     
     def salir_carcel
-      opcion = menu("Elige la forma para intentar salir de la carcel", 
-        SalidasCarcel::lista_salidas_carcel)
-      return SalidasCarcel::lista_salidas_carcel[opcion]
+      opcion = menu(" Elige la forma para intentar salir de la carcel ", 
+        SalidasCarcel::LISTA_SALIDAS_CARCEL)
+      return SalidasCarcel::LISTA_SALIDAS_CARCEL[opcion]
     end
         
   end

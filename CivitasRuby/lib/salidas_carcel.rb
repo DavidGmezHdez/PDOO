@@ -1,6 +1,6 @@
 # encoding:utf-8
 module Civitas
   class SalidasCarcel
-    lista_salidas_carcel = [:PAGANDO, :TIRANDO]
+    LISTA_SALIDAS_CARCEL = [:PAGANDO, :TIRANDO]
   end
 end

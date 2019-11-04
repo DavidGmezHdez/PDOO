@@ -48,17 +48,12 @@ module Civitas
     
     
     def informe(iactual, todos)
-      Diario.instance.ocurre_evento("Ha caído en la casilla " + self.to_s + 
-          "el jugador" + todos[iactual].nombre)
+      Diario.instance.ocurre_evento(" Ha caído en la casilla " + self.to_s + " el jugador " + todos[iactual].nombre)
     end
       
     
     def jugador_correcto(iactual,todos)
-      es_correcto=false
-      if(iactual>=0 && iactual<todos.size())
-        es_correcto=true
-      end
-      return es_correcto
+      return iactual>=0 && iactual<todos.size
     end
     
     
@@ -79,7 +74,7 @@ module Civitas
     
     
     def recibe_jugador_calle(iactual,todos)
-      if(jugadorCorrecto(iactual,todos))
+      if jugador_correcto(iactual,todos)
         informe(iactual,todos)
         jugador = todos[iactual];
         
