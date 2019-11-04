@@ -1,7 +1,7 @@
 # encoding:utf-8
 module Civitas
-  class Respuestas
-    lista_respuestas = [:NO, :SI]
+  module Respuestas
+    LISTA_RESPUESTAS = [NO=:NO, SI=:SI]
   end
 end
 

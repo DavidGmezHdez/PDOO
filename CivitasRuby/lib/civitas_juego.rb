@@ -40,7 +40,7 @@ module Civitas
       casilla = @tablero.get_casilla(posicion_nueva)
       contabilizar_pasos_por_salida(jugador_actual)
       jugador_actual.mover_a_casilla(posicion_nueva)
-      casilla.recibe_jugador(jugador_actual, @jugadores)
+      casilla.recibe_jugador(@indice_jugador_actual, @jugadores)
       contabilizar_pasos_por_salida(jugador_actual)
     end
     
@@ -91,7 +91,7 @@ module Civitas
     def final_del_juego
       fin = false
       for i in @jugadores
-        if @jugadores[i].en_bancarrota
+        if i.en_bancarrota
           fin = true
         end
       end
