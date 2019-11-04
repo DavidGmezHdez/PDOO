@@ -144,8 +144,8 @@ public class Casilla {
     @Override
     public String toString(){
         return "Casilla {" + "Nombre= " + nombre + ", importe=" + importe 
-                + ", carcel = " + carcel + "tituloPropiedad= " + tituloPropiedad +
-                "tipo= " + tipo + '}';
+                + ", carcel = " + carcel + ", tituloPropiedad= " + tituloPropiedad +
+                ", tipo= " + tipo + '}';
     }
     
 }

@@ -14,14 +14,14 @@ public class CivitasJuego {
     private EstadosJuego estado;
     
     
-    CivitasJuego(ArrayList<String> nombres){
+    public CivitasJuego(ArrayList<String> nombres){
       jugadores = new ArrayList<>();
       for(int i=0; i<nombres.size(); i++){
             jugadores.add(new Jugador(nombres.get(i)));
         }
         
         gestorEstados = new GestorEstados();
-        gestorEstados.estadoInicial();
+        estado = gestorEstados.estadoInicial();
         
         this.indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
         mazo = new MazoSorpresas();
