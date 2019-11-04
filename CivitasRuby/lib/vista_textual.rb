@@ -84,35 +84,35 @@ module Civitas
       @i_gestion = -1
       
       while @i_gestion != 0
-        @i_gestion = menu("¿Qué gestion inmobiliaria deseas hacer?",GestionesInmobiliarias::lista_gestiones_inmobiliarias)  
+        @i_gestion = menu("¿Qué gestion inmobiliaria deseas hacer?",GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS)  
         case @i_gestion
           when 1
-            for i in @juego_model.jugador_actual.propiedades.size()
+            for i in @juego_model.get_jugador_actual.propiedades.size
               nombres_propiedades << i.nombre
             end
             @i_propiedad = menu("¿Qué propiedad deseas vender?",nombres_propiedades)
             @juego_model.vender(@i_propiedad)
           when 2
-            for i in @juego_model.get_jugador_actual.propiedades.size()
-              if i.hipotecado == false
-                nombres_propiedades << i.nombre
+            for x in @juego_model.get_jugador_actual.propiedades.size
+              if x.hipotecado == false
+                nombres_propiedades << x.nombre
               end
             end
             @i_propiedad = menu("¿Qué propiedad deseas hipotecar?",nombres_propiedades)
             @juego_model.hipotecar(@i_propiedad)
           when 3
-            for i in @juego_model.jugador_actual.propiedades.size()
-              if i.hipotecado == true
-                nombres_propiedades << i.nombre
+            for y in @juego_model.jugador_actual.propiedades.size
+              if y.hipotecado == true
+                nombres_propiedades << y.nombre
               end
             end
             @i_propiedad = menu("¿Qué propiedad deseas cancelar hipotecar?",nombres_propiedades)
             @juego_model.cancelar_hipoteca(@i_propiedad)
           when 4
             j=0
-            for i in @juego_model.jugador_actual.propiedades.size()
+            for z in @juego_model.jugador_actual.propiedades.size
               if @juego_model.get_jugador_actual.puedo_edificar_casa(@juego_model.jugador_actual.propiedades[j]) == true
-                nombres_propiedades << i.nombre
+                nombres_propiedades << z.nombre
               end
               j = j+1
             end
@@ -120,9 +120,9 @@ module Civitas
             @juego_model.construir_casa(@i_propiedad)
           when 5
             j=0
-            for i in @juego_model.jugador_actual.propiedades.size()
+            for w in @juego_model.jugador_actual.propiedades.size
               if @juego_model.get_jugador_actual.puedo_edificar_hotel(@juego_model.jugador_actual.propiedades[j]) == true
-                nombres_propiedades << i.nombre
+                nombres_propiedades << w.nombre
               end
               j = j+1
             end
@@ -156,13 +156,12 @@ module Civitas
     
 
     def setCivitasJuego(civitas)
-         @juegoModel=civitas
-         self.actualizarVista
+         @juego_model=civitas
     end
     
 
     def actualizarVista
-      puts @juegoModel.info_jugador_texto
+      puts @juego_model.info_jugador_texto
     end
     
     

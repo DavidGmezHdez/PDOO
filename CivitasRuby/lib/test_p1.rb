@@ -8,8 +8,8 @@ module Civitas
     def self.main
       @@vista = Vista_textual.new
       nombres = Array.new
-      nombres << "Pepe"
-      nombres << "Kaka"
+      nombres.push("Pepe")
+      nombres.push("Kaka")
       @@juego = CivitasJuego.new(nombres)
       @@controlador = Controlador.new(@@juego,@@vista)
       @@controlador.juega

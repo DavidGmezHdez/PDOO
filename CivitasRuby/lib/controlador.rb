@@ -1,6 +1,7 @@
 # encoding:utf-8
 require_relative 'civitas_juego'
 require_relative 'vista_textual'
+require_relative 'operacion_inmobiliaria'
 module Civitas
   class Controlador
     def initialize(juego,vista)
@@ -13,6 +14,7 @@ module Civitas
       while !@juego.final_del_juego
         @vista.actualizarVista
         @vista.pausa
+        
         operacion = @juego.siguiente_paso
         if operacion != OperacionesJuego::PASAR_TURNO
           @vista.mostrarEventos
@@ -30,24 +32,24 @@ module Civitas
               @vista.gestionar
               op_inmobiliaria = OperacionInmobiliaria.new(@vista.getGestion, @vista.getPropiedad)
               case (@vista.getGestion)
-                when GestionesInmobiliarias::VENDER
-                  @juego.vender(op_inmobiliaria.get_num_propiedad)
-                when GestionesInmobiliarias::HIPOTECAR
-                  @juego.hipotecar(op_inmobiliaria.get_num_propiedad)
-                when GestionesInmobiliarias::CANCELAR_HIPOTECA
-                  @juego.cancelar_hipoteca(op_inmobiliaria.get_num_propiedad)
-                when GestionesInmobiliarias::CONSTRUIR_CASA
-                  @juego.construir_casa(op_inmobiliaria.get_num_propiedad)
-                when GestionesInmobiliarias::CONSTRUIR_HOTEL
-                  @juego.construir_hotel(op_inmobiliaria.get_num_propiedad)
-                when GestionesInmobiliarias::TERMINAR
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[10]
                   @juego.siguiente_paso_completado(operacion)
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[1]
+                  @juego.vender(op_inmobiliaria.get_num_propiedad)
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[2]
+                  @juego.hipotecar(op_inmobiliaria.get_num_propiedad)
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[3]
+                  @juego.cancelar_hipoteca(op_inmobiliaria.get_num_propiedad)
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[4]
+                  @juego.construir_casa(op_inmobiliaria.get_num_propiedad)
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[5]
+                  @juego.construir_hotel(op_inmobiliaria.get_num_propiedad)
               end
             when OperacionesJuego::SALIR_CARCEL
               case(@vista.salir_carcel)
-                when SalidasCarcel::PAGANDO
+                when SalidasCarcel::LISTA_SALIDAS_CARCEL[0]
                   @juego.salir_carcel_pagando
-                when SalidasCarcel::TIRANDO
+                when SalidasCarcel::LISTA_SALIDAS_CARCEL[1]
                   @juego.salir_carcel_tirando
               end
               @juego.siguiente_paso_completado(operacion)

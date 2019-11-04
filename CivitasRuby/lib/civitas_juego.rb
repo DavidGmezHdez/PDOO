@@ -179,13 +179,13 @@ module Civitas
     def siguiente_paso
       jugador_actual = @jugadores[@indice_jugador_actual]
       operacion = @gestor_estados.operaciones_permitidas(jugador_actual, @estado)
-      
-      if(operacion == OperacionesJuego::PASAR_TURNO)
-        pasar_turno()
-        siguiente_paso_completado(operacion)
-      else
-        avanza_jugador()
-        siguiente_paso_completado(operacion)
+      case operacion
+        when OperacionesJuego::PASAR_TURNO
+          pasar_turno
+          siguiente_paso_completado(operacion)
+        when OperacionesJuego::AVANZAR
+          avanza_jugador
+          siguiente_paso_completado(operacion)
       end
       return operacion
     end
