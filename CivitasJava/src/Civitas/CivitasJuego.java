@@ -81,7 +81,7 @@ public class CivitasJuego {
     
     private void contabilizarPasosPorSalida(Jugador jugadorActual){
         while(this.tablero.getPorSalida() > 0)
-                jugadorActual.pasaPorSalida();
+            jugadorActual.pasaPorSalida();
     }
     
     

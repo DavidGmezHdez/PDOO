@@ -80,8 +80,8 @@ public class Sorpresa {
     
 
     void informe(int actual, ArrayList<Jugador> todos){
-        Diario.getInstance().ocurreEvento("Aplicando sorpresa" + this.toString() + 
-                " al jugador " + todos.get(actual).toString());
+        Diario.getInstance().ocurreEvento("Aplicando sorpresa: \n" + this.toString() + 
+                " al jugador " + todos.get(actual).getNombre());
     }
     
     

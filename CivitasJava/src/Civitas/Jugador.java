@@ -245,8 +245,8 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean modificarSaldo(float cantidad){
         this.saldo+=cantidad;
-        Diario.getInstance().ocurreEvento("Saldo del jugador " + this.nombre + ""
-                + "modificado: " + cantidad);
+        Diario.getInstance().ocurreEvento("Saldo del jugador " + this.nombre
+                + " modificado: " + cantidad);
         return true;
     }
     
@@ -258,7 +258,7 @@ public class Jugador implements Comparable<Jugador> {
             this.numCasillaActual = numCasilla;
             this.puedeComprar = false;
             Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
-                    "moviendose a casilla " + numCasilla);
+                    " moviendose a casilla " + numCasilla);
             return true;
         }
     }
@@ -398,10 +398,10 @@ public class Jugador implements Comparable<Jugador> {
     
     @Override
     public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", numCasillaActual=" + 
-                numCasillaActual + ", puedeComprar=" + puedeComprar + ", saldo=" + 
-                saldo + ", encarcelado=" + encarcelado + ", propiedades=" + 
-                propiedades + '}';
+        return "Jugador{" + "\n Nombre: " + nombre + ", \n numCasillaActual: " + 
+                numCasillaActual + ", \n PuedeComprar: " + puedeComprar + ", \n Saldo=" + 
+                saldo + ", \n Encarcelado: " + encarcelado + " \n Propiedades: " + 
+                propiedades + "\n}";
     }
 
 }

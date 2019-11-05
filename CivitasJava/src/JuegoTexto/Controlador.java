@@ -31,16 +31,18 @@ public class Controlador {
         int numProp;
         int indGest;
         vista.setCivitasJuego(juego);
-
-        if (!juego.finalDelJuego()) {
+        
+        while (!juego.finalDelJuego()) {
             vista.actualizarVista();
             vista.pausa();
+            System.out.println("Pasa5");
             operacion = juego.siguientePaso();
+            System.out.println("Pasa6");
 
             if (operacion != OperacionesJuego.PASAR_TURNO) {
                 vista.mostrarEventos();
             }
-            if (!juego.finalDelJuego()) {
+            if (!(juego.finalDelJuego())) {
                 switch (operacion) {
                     case COMPRAR:
                         resp = vista.comprar();
@@ -81,8 +83,7 @@ public class Controlador {
                 }
             }
 
-        } else {
-            juego.ranking().toString();
         }
+            juego.ranking().toString();
     }
 }

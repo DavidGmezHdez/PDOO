@@ -2,6 +2,7 @@
 require_relative 'civitas_juego'
 require_relative 'vista_textual'
 require_relative 'operacion_inmobiliaria'
+
 module Civitas
   class Controlador
     def initialize(juego,vista)
@@ -32,7 +33,7 @@ module Civitas
               @vista.gestionar
               op_inmobiliaria = OperacionInmobiliaria.new(@vista.getGestion, @vista.getPropiedad)
               case (@vista.getGestion)
-                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[10]
+                when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[0]
                   @juego.siguiente_paso_completado(operacion)
                 when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[1]
                   @juego.vender(op_inmobiliaria.get_num_propiedad)

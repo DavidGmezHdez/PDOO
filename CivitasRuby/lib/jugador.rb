@@ -249,7 +249,7 @@ module Civitas
       if @encarcelado
         return false
       else
-        salvoconducto = sorpresa
+        @salvoconducto = sorpresa
         return true
       end
     end
