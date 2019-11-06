@@ -12,8 +12,9 @@ require_relative 'casilla'
 module Civitas
   class CivitasJuego
     
+    @@dado = Dado.instance
     def initialize(nombres)
-      @indice_jugador_actual = Dado.instance.quien_empieza(nombres.size)
+      @indice_jugador_actual = @@dado.quien_empieza(nombres.size)
       
       @jugadores = Array.new
       nombres.each do |nombre|
@@ -29,14 +30,17 @@ module Civitas
       inicializar_mazo_sorpresas(@tablero)
       inicializar_tablero(@mazo)
       
+      @@dado.debug = true
+      
     end
     
     
     def avanza_jugador
       jugador_actual = @jugadores[@indice_jugador_actual]
       posicion_actual = jugador_actual.num_casilla_actual
-      tirada = Dado.instance.tirar
+      tirada = @@dado.tirar
       posicion_nueva = @tablero.calcular_tirada(posicion_actual, tirada)
+      puts " Resultado de la tirada: " + tirada.to_s + " Posicion nueva: " + posicion_nueva.to_s 
       casilla = @tablero.get_casilla(posicion_nueva)
       contabilizar_pasos_por_salida(jugador_actual)
       jugador_actual.mover_a_casilla(posicion_nueva)
@@ -120,8 +124,8 @@ module Civitas
     
     
     def inicializar_mazo_sorpresas(tablero)
-      @mazo.al_mazo(Sorpresa.new_a_carcel(TipoSorpresa::IRCARCEL,tablero))
       @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRCASILLA, tablero, 10,"Pides un Uber que te lleva la casilla mitad del tablero"))
+      @mazo.al_mazo(Sorpresa.new_a_carcel(TipoSorpresa::IRCARCEL,tablero))
       @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRCASILLA, tablero, 5,"Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río"))
       @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORJUGADOR, 200,"Pides a la gente que te de dinero para comprar un regalo en común, pero acabas quedándotelo tu para ir a Pedro"))
       @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORJUGADOR, -50,"Dijiste que invitarías a chupitos pero no lo hiciste, pagas 50 euros a cada uno"))
@@ -200,7 +204,7 @@ module Civitas
       @jugadores[@indice_jugador_actual].vender(ip)
     end
     
-    attr_reader :tablero, :mazo, :indice_jugador_actual, :jugadores
+    attr_reader :tablero, :mazo, :indice_jugador_actual, :jugadores, :dado
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
     
   end

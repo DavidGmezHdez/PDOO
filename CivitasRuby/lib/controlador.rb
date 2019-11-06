@@ -31,7 +31,6 @@ module Civitas
               @juego.siguiente_paso_completado(operacion)
             when OperacionesJuego::GESTIONAR
               @vista.gestionar
-              puts "check gestionar"
               op_inmobiliaria = OperacionInmobiliaria.new(@vista.getGestion, @vista.getPropiedad)
               case (@vista.getGestion)
                 when GestionesInmobiliarias::LISTA_GESTIONES_INMOBILIARIAS[0]

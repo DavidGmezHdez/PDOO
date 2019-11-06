@@ -12,6 +12,7 @@ public class CivitasJuego {
     private Tablero tablero;
     private GestorEstados gestorEstados;
     private EstadosJuego estado;
+    private static Dado dado = Dado.getInstance();
     
     
     public CivitasJuego(ArrayList<String> nombres){
@@ -23,8 +24,9 @@ public class CivitasJuego {
         gestorEstados = new GestorEstados();
         estado = gestorEstados.estadoInicial();
         
-        this.indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
+        this.indiceJugadorActual = dado.quienEmpieza(jugadores.size());
         mazo = new MazoSorpresas();
+        this.tablero = new Tablero(15);
         
         this.inicializarTablero(this.mazo);
         this.inicializarMazoSorpresas(this.tablero);
@@ -35,8 +37,9 @@ public class CivitasJuego {
     private void avanzaJugador(){
         Jugador jugadorActual = jugadores.get(indiceJugadorActual);
         int posicionActual = jugadorActual.getNumCasillaActual();
-        int tirada = Dado.getInstance().tirar();
+        int tirada = dado.tirar();
         int posicionNueva = this.tablero.nuevaPosicion(posicionActual, tirada);
+        System.out.println(" Tirada: " + tirada + " Posicion nueva: " + posicionNueva);
         Casilla casilla = this.tablero.getCasilla(posicionNueva);
         this.contabilizarPasosPorSalida(jugadorActual);
         jugadorActual.moverACasilla(posicionNueva);
@@ -104,6 +107,10 @@ public class CivitasJuego {
         return this.jugadores.get(indiceJugadorActual);
     }
     
+    public void setDebugDado(boolean deb){
+        dado.setDebug(deb);
+    }
+    
     
     public boolean hipotecar(int ip){
         return this.jugadores.get(this.indiceJugadorActual).hipotecar(ip);
@@ -145,7 +152,7 @@ public class CivitasJuego {
     
     
     private void inicializarTablero(MazoSorpresas mazo){
-        this.tablero = new Tablero(14);
+        
         
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Willyrex", 625, 75, 12, 350, 400)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));

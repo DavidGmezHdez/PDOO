@@ -114,7 +114,16 @@ module Civitas
     
     
     def to_s
-      "Casilla { \n Nombre: #{@nombre}  \n Valor: #{@importe}  \n Tipo: #{@tipo} \n}"
+      case (@tipo)
+        when TipoCasilla::CALLE
+            "Casilla { \n Nombre: #{@nombre}  \n Titulo Propiedad: #{@titulo.to_s}  \n}"
+        when TipoCasilla::IMPUESTO
+            "Casilla { \n Nombre: #{@nombre}  \n Valor: #{@importe}"
+        else
+          "Casilla { \n Nombre: #{@nombre} \n Tipo: #{@tipo} \n}"
+      end
+      
+      
     end
     
     

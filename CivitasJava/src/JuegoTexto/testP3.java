@@ -11,13 +11,12 @@ public class testP3 {
     
     public static void main(String[] args) {
         ArrayList<String> nombres = new ArrayList<>();
-        nombres.add("Marta");
-        nombres.add("Jose");
-        nombres.add("Rodrigo");
+        nombres.add("Pepe");
+        nombres.add("Carla");
         
         CivitasJuego civitas = new CivitasJuego(nombres);
         VistaTextual vista = new VistaTextual();
-        
+        civitas.setDebugDado(true);
         Controlador controlador = new Controlador(civitas,vista);
         controlador.juega();
         

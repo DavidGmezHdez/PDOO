@@ -32,7 +32,7 @@ public class Controlador {
         int indGest;
         vista.setCivitasJuego(juego);
         
-        while (!juego.finalDelJuego()) {
+        while(!this.juego.finalDelJuego()){
             vista.actualizarVista();
             vista.pausa();
             System.out.println("Pasa5");
@@ -42,15 +42,14 @@ public class Controlador {
             if (operacion != OperacionesJuego.PASAR_TURNO) {
                 vista.mostrarEventos();
             }
-            if (!(juego.finalDelJuego())) {
+            if (!juego.finalDelJuego()) {
                 switch (operacion) {
                     case COMPRAR:
                         resp = vista.comprar();
                         if (resp == Respuestas.SI) {
                             juego.comprar();
-                            juego.siguientePasoCompletado(operacion);
                         }
-
+                        juego.siguientePasoCompletado(operacion);
                     case GESTIONAR:
                         vista.gestionar();
                         indGest = vista.getGestion();
@@ -71,7 +70,7 @@ public class Controlador {
                             case TERMINAR:
                                 juego.siguientePasoCompletado(operacion);
                         }
-
+                        juego.siguientePasoCompletado(operacion);
                     case SALIR_CARCEL:
                         switch (vista.salirCarcel()) {
                             case PAGANDO:
@@ -82,7 +81,6 @@ public class Controlador {
                         juego.siguientePasoCompletado(operacion);
                 }
             }
-
         }
             juego.ranking().toString();
     }

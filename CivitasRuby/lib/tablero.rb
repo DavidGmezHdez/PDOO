@@ -43,11 +43,7 @@ module Civitas
   
   
     def calcular_tirada(origen,destino)
-      nueva_posicion = destino - origen
-      if nueva_posicion < 0
-        nueva_posicion = nueva_posicion + 20
-      end
-      return nueva_posicion
+      return (origen+destino)%20
     end
   
   

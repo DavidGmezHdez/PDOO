@@ -9,7 +9,7 @@ module Civitas
       @@vista = Vista_textual.new
       nombres = Array.new
       nombres.push("Pepe")
-      nombres.push("Kaka")
+      nombres.push("Carla")
       @@juego = CivitasJuego.new(nombres)
       @@controlador = Controlador.new(@@juego,@@vista)
       @@controlador.juega
