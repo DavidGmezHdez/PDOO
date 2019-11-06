@@ -1,4 +1,4 @@
-# encoding:utf-8
+#encoding:utf-8
 
 require_relative 'dado'
 require_relative 'jugador'
@@ -33,7 +33,15 @@ module Civitas
     
     
     def avanza_jugador
-      raise NotImplementedError
+      jugador_actual = @jugadores[@indice_jugador_actual]
+      posicion_actual = jugador_actual.num_casilla_actual
+      tirada = Dado.instance.tirar
+      posicion_nueva = @tablero.calcular_tirada(posicion_actual, tirada)
+      casilla = @tablero.get_casilla(posicion_nueva)
+      contabilizar_pasos_por_salida(jugador_actual)
+      jugador_actual.mover_a_casilla(posicion_nueva)
+      casilla.recibe_jugador(@indice_jugador_actual, @jugadores)
+      contabilizar_pasos_por_salida(jugador_actual)
     end
     
     
@@ -52,7 +60,13 @@ module Civitas
     
     
     def comprar
-      raise NotImplementedError
+      jugador_actual = @jugadores[@indice_jugador_actual]
+      num_casilla_actual = jugador_actual.num_casilla_actual
+      casilla = @tablero.get_casilla(num_casilla_actual)
+      titulo = casilla.titulo
+      res = jugador_actual.comprar(titulo)
+      
+      return res
     end
     
     
@@ -77,7 +91,7 @@ module Civitas
     def final_del_juego
       fin = false
       for i in @jugadores
-        if @jugadores[i].en_bancarrota
+        if i.en_bancarrota
           fin = true
         end
       end
@@ -163,7 +177,17 @@ module Civitas
     
     
     def siguiente_paso
-      raise NotImplementedError
+      jugador_actual = @jugadores[@indice_jugador_actual]
+      operacion = @gestor_estados.operaciones_permitidas(jugador_actual, @estado)
+      case operacion
+        when OperacionesJuego::PASAR_TURNO
+          pasar_turno
+          siguiente_paso_completado(operacion)
+        when OperacionesJuego::AVANZAR
+          avanza_jugador
+          siguiente_paso_completado(operacion)
+      end
+      return operacion
     end
     
     
@@ -176,7 +200,7 @@ module Civitas
       @jugadores[@indice_jugador_actual].vender(ip)
     end
     
-    attr_reader :tablero, :mazo
+    attr_reader :tablero, :mazo, :indice_jugador_actual, :jugadores
     private :avanza_jugador, :contabilizar_pasos_por_salida, :inicializar_mazo_sorpresas, :inicializar_tablero, :pasar_turno, :ranking
     
   end

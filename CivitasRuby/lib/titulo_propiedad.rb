@@ -68,7 +68,13 @@ module Civitas
     
     
     def construir_casa(jugador)
-      raise NotImplementedError
+      resultado = false
+      if es_este_el_propietario(jugador)
+        @propietario.paga(@precio_edificar)
+        @num_casas = @num_casas + 1
+        resultado = true
+      end
+      return resultado
     end
     
     
@@ -81,38 +87,6 @@ module Civitas
       end
       return resultado
     end
-    
-#    def comprar(jugador)
-#      if tiene_propietario
-#        return false
-#      else
-#        @propietario = jugador
-#        @jugador.paga(@precio_compra)
-#        return true
-#      end
-#        
-#    end
-#    
-#    def construir_casa(jugador)
-#        resultado = false
-#        if es_este_el_propietario(jugador)
-#          jugador.paga(@precio_edificar)
-#          @num_casas = @num_casas + 1
-#          resultado = true
-#        end
-#      return resultado
-#    end
-#    
-#    def construir_hotel(jugador)
-#        resultado = false
-#        if es_este_el_propietario(jugador)
-#          jugador.paga(@precio_edificar)
-#          @num_hoteles = @num_hoteles + 1
-#          resultado = true
-#        end
-#      return resultado
-#    end
-    
     
     def derruir_casas(n,jugador)
       if es_este_el_propietario(jugador) && @num_casas >= n

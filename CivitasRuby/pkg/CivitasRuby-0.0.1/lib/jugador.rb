@@ -19,13 +19,13 @@ module Civitas
     def initialize(nombre, encarcelado = false, saldo = @@SALDO_INICIAL, 
         puede_comprar = true,salvoconducto = nil, num_casilla = 0, 
         propiedades = Array.new)
-         @encarcelado = encarcelado
-         @nombre = nombre
-         @saldo = saldo
-         @puede_comprar = puede_comprar
-         @salvoconducto = salvoconducto
-         @num_casilla_actual= num_casilla
-         @propiedades = propiedades
+        @encarcelado = encarcelado
+        @nombre = nombre
+        @saldo = saldo
+        @puede_comprar = puede_comprar
+        @salvoconducto = salvoconducto
+        @num_casilla_actual= num_casilla
+        @propiedades = propiedades
     end
     
    
@@ -41,14 +41,29 @@ module Civitas
     
     
     def cancelar_hipoteca(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      if existe_la_propiedad(ip)
+        propiedad = @propiedades[ip]
+        cantidad = propiedad.get_importe_cancelar_hipoteca
+        puedo_gastar = puedo_gastar(cantidad)
+        if puedo_gastar
+          result = propiedad.cancelar_hipoteca(self)
+          if result
+            Diario.instance.ocurre_evento("El jugador " + @nombre + " cancela la hipoteca de la propiedad  " + @propiedades[ip].nombre) 
+          end
+        end
+      end
+      return result
     end
     
     
     def cantidad_casas_hoteles
       total = 0
       for i in @propiedades
-        total = total + i.num_casas + i.num_hoteles
+        total = total + i.cantidad_casas_hoteles
       end
       return total
     end
@@ -69,17 +84,62 @@ module Civitas
     
     
     def comprar(titulo)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      
+      if @puede_comprar
+        if puedo_gastar(titulo.precio_compra)
+          result = titulo.comprar(self)
+          if result
+            @propiedades.push(titulo)
+            Diario.instance.ocurre_evento("El jugador " + @nombre +" compra la propiedad  " + titulo.to_s)
+          end
+        end
+      end
+      @puede_comprar = false
+      return result
     end
     
     
     def construir_casa(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      else
+        existe = existe_la_propiedad(ip)
+        if(existe)
+          propiedad = @propiedades[ip]
+          puedo_edificar_casa = puedo_edificar_casa(propiedad)
+          if(puedo_edificar_casa)
+            result = propiedad.construir_casa(self)
+            if(result)
+              Diario.instance.ocurre_evento("El jugador " + @nombre + " construye casa en la propiedad  " + @propiedades[ip].nombre)
+            end
+          end
+        end
+      end
+      
+      return result
     end
     
     
     def construir_hotel(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      
+      if existe_la_propiedad(ip)
+        propiedad = @propiedades[ip]
+        if puedo_edificar_hotel(propiedad)
+          result = propiedad.construir_hotel(self)
+          propiedad.derruir_casas(@@CASAS_POR_HOTEL, self)
+          Diario.instance.ocurre_evento("El jugador " + @nombre + " construye hotel en la propiedad  " + @propiedades[ip].nombre)
+        end
+      end
+      return result
     end
     
     
@@ -106,9 +166,9 @@ module Civitas
     
     def encarcelar(num_casilla_carcel)
       if debe_ser_encarcelado
-        mover_a_casilla(num_casilla_carcel)
+        @num_casilla_actual = num_casilla_carcel
         @encarcelado = true
-        Diario.instance.ocurre_evento("Jugador " + @nombre + "encarcelado, movido a cárcel");
+        Diario.instance.ocurre_evento("Jugador " + @nombre + " encarcelado, movido a cárcel");
       end
       return @encarcelado
     end
@@ -123,7 +183,7 @@ module Civitas
       return @@CASAS_MAX
     end
     
-    
+ 
     def self.getCasas_Por_Hotel
       return @@CASAS_POR_HOTEL
     end
@@ -150,7 +210,19 @@ module Civitas
     
     
     def hipotecar(ip)
-      raise NotImplementedError
+      result = false
+      if @encarcelado
+        return result
+      end
+      
+      if existe_la_propiedad(ip)
+        propiedad = @propiedades[ip]
+        result = propiedad.hipotecar(self)
+        if result
+          Diario.instance.ocurre_evento("El jugador " + @nombre + " hipoteca la propiedad  " + @propiedades[ip].nombre)
+        end
+      end
+      return result
     end
     
     
@@ -177,7 +249,7 @@ module Civitas
       if @encarcelado
         return false
       else
-        salvoconducto = sorpresa
+        @salvoconducto = sorpresa
         return true
       end
     end
@@ -235,12 +307,13 @@ module Civitas
     
     
     def puedo_edificar_casa(propiedad)
-      return propiedad.num_casas<4 && @saldo>propiedad.precio_edificar
+      return puedo_gastar(propiedad.precio_edificar) && propiedad.num_casas < @@CASAS_MAX
     end
     
     
     def puedo_edificar_hotel(propiedad)
-      return propiedad.num_casas==4 && @saldo>propiedad.precio_edificar
+      return puedo_gastar(propiedad.precio_edificar) &&
+      propiedad.num_hoteles < @@HOTELES_MAX && propiedad.num_casas >= @@CASAS_POR_HOTEL
     end
     
     
@@ -299,8 +372,8 @@ module Civitas
       if @encarcelado
         return false
       else
-        if existe_la_propiedad(ip) && @propiedades.index(ip).vender(self)
-          Diario.instance.ocurre_evento("Propiedad " + @propiedades.index(ip).nombre + 
+        if existe_la_propiedad(ip) && @propiedades[ip].vender(self)
+          Diario.instance.ocurre_evento("Propiedad " + @propiedades[ip].nombre + 
               " vendida por el jugador " + @nombre)
           @propiedades.delete_at(ip)
           return true
@@ -319,9 +392,7 @@ module Civitas
     
      
     protected :debe_ser_encarcelado
-    private :existe_la_propiedad, :puede_salir_carcel_pagando, 
-      :puedo_edificar_casa, :perder_salvoconducto, :puedo_edificar_hotel, 
-      :puedo_gastar
+    private :existe_la_propiedad, :puede_salir_carcel_pagando, :perder_salvoconducto, :puedo_gastar
    
   end
 end

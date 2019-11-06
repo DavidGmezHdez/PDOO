@@ -10,7 +10,7 @@ module Civitas
     
     def initialize(tipo,nombre = nil, titulo = nil, cantidad = 0, num_casilla_carcel = 0, mazo = nil)
       @nombre = nombre
-      @@carcel = num_casilla_carcel
+      @carcel = num_casilla_carcel
       @importe = cantidad
       @titulo = titulo
       @mazo = mazo
@@ -48,27 +48,42 @@ module Civitas
     
     
     def informe(iactual, todos)
-      Diario.instance.ocurre_evento("Ha caído en la casilla " + self.to_s + 
-          "el jugador" + todos[iactual].nombre)
+      Diario.instance.ocurre_evento(" Ha caído en la casilla " + self.to_s + " el jugador " + todos[iactual].nombre)
     end
       
     
     def jugador_correcto(iactual,todos)
-      es_correcto=false
-      if(iactual>=0 && iactual<todos.size())
-        es_correcto=true
-      end
-      return es_correcto
+      return iactual>=0 && iactual<todos.size
     end
     
     
     def recibe_jugador(iactual,todos)
-      raise NotImplementedError
+      case(@tipo)
+      when TipoCasilla::CALLE
+        recibe_jugador_calle(iactual,todos)
+      when TipoCasilla::IMPUESTO
+        recibe_jugador_impuesto(iactual, todos)
+      when TipoCasilla::JUEZ
+        recibe_jugador_juez(iactual, todos)
+      when TipoCasilla::SORPRESA
+        recibe_jugador_sorpresa(iactual, todos)
+      else
+        informe(iactual,todos);
+      end
     end
     
     
     def recibe_jugador_calle(iactual,todos)
-      raise NotImplementedError
+      if jugador_correcto(iactual,todos)
+        informe(iactual,todos)
+        jugador = todos[iactual];
+        
+        if(!@titulo.tiene_propietario())
+          jugador.puede_comprar_casilla()
+        else
+          @titulo.tramitar_alquiler(jugador)
+        end
+      end
     end
     
     
@@ -83,19 +98,23 @@ module Civitas
     def recibe_jugador_juez(iactual,todos)
       if(jugador_correcto(iactual,todos))
         informe(iactual,todos)
-        todos[iactual].encarcelar(@@carcel)
+        todos[iactual].encarcelar(@carcel)
       end
     end
     
     
     def recibe_jugador_sorpresa(iactual,todos)
-      raise NotImplementedError
+      if jugador_correcto(iactual,todos)
+        @sorpresa = @mazo.siguiente
+        informe(iactual,todos)
+        @sorpresa.aplicar_a_jugador(iactual,todos)
+      end
     end
     
     
     
     def to_s
-      "Casilla { \n Nombre: #{@nombre}  \n Valor: #{@importe}  \n Carcel: #{@@carcel} \n}"
+      "Casilla { \n Nombre: #{@nombre}  \n Valor: #{@importe}  \n Tipo: #{@tipo} \n}"
     end
     
     

@@ -10,7 +10,7 @@ module Civitas
     
     def initialize(tipo,nombre = nil, titulo = nil, cantidad = 0, num_casilla_carcel = 0, mazo = nil)
       @nombre = nombre
-      @@carcel = num_casilla_carcel
+      @carcel = num_casilla_carcel
       @importe = cantidad
       @titulo = titulo
       @mazo = mazo
@@ -98,7 +98,7 @@ module Civitas
     def recibe_jugador_juez(iactual,todos)
       if(jugador_correcto(iactual,todos))
         informe(iactual,todos)
-        todos[iactual].encarcelar(@@carcel)
+        todos[iactual].encarcelar(@carcel)
       end
     end
     

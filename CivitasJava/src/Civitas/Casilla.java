@@ -12,6 +12,16 @@ public class Casilla {
     private MazoSorpresas mazo;
     
     
+    private void init(){
+        this.nombre = " ";
+        this.carcel = 0;
+        this.importe = 0;
+        this.tituloPropiedad = null;
+        this.tipo = null;
+        this.sorpresa = null;
+        this.mazo = null;
+    }
+    
     Casilla(String nombre) {
         init();
         this.nombre = nombre;
@@ -69,15 +79,7 @@ public class Casilla {
     }
     
     
-    private void init(){
-        this.nombre = " ";
-        this.carcel = 0;
-        this.importe = 0;
-        this.tituloPropiedad = null;
-        this.tipo = null;
-        this.sorpresa = null;
-        this.mazo = null;
-    }
+
 
     public boolean jugadorCorrecto(int iactual, ArrayList<Jugador> todos) {
         boolean es_correcto = false;
