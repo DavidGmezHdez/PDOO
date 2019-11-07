@@ -39,9 +39,9 @@ public class Controlador {
             operacion = juego.siguientePaso();
             System.out.println("Pasa6");
 
-            if (operacion != OperacionesJuego.PASAR_TURNO) {
+            if (operacion != OperacionesJuego.PASAR_TURNO)
                 vista.mostrarEventos();
-            }
+            
             if (!juego.finalDelJuego()) {
                 switch (operacion) {
                     case COMPRAR:
@@ -79,9 +79,9 @@ public class Controlador {
                                 juego.salirCarcelTirando();
                         }
                         juego.siguientePasoCompletado(operacion);
+                    }
                 }
             }
-        }
             juego.ranking().toString();
     }
 }

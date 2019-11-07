@@ -155,12 +155,10 @@ class VistaTextual {
   
   public void setCivitasJuego(CivitasJuego civitas){ 
         juegoModel=civitas;
-
     }
   
   void actualizarVista(){
       System.out.println(this.juegoModel.infoJugadorTexto());
-      System.out.println(this.juegoModel.getCasillaActual().toString());
   }
   
   

@@ -145,7 +145,7 @@ module Civitas
     
     def tramitar_alquiler(jugador)
       if tiene_propietario && !es_este_el_propietario(jugador)
-        precio = get_precio_alquiler()
+        precio = get_precio_alquiler
         jugador.paga_alquiler(precio)
         @propietario.recibe(precio)
       end

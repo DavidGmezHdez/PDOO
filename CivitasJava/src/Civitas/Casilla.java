@@ -146,7 +146,7 @@ public class Casilla {
         switch(this.tipo){
        
             case CALLE:
-                return "Casilla {" + "\n Nombre: " + nombre + ", TituloPropiedad: " + tituloPropiedad.toString() + ", \n Tipo: " + tipo + "\n}";
+                return "Casilla {" + "\n TituloPropiedad: " + tituloPropiedad.toString() + ", \n Tipo: " + tipo + "\n}";
             case IMPUESTO:
                 return "Casilla {" + "\n Nombre: " + nombre + " \n Tipo: " + tipo + "\n}" + "Importe: " + importe + "\n";
             default:
