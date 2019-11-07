@@ -144,7 +144,7 @@ public class Jugador implements Comparable<Jugador> {
         else if(this.tieneSalvoconducto()){
             this.perderSalvoConducto();
             Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
-                    "usa salvoconducto, no entra en la cárcel");
+                    " usa salvoconducto, no entra en la cárcel");
             return false;
         }
         else
@@ -159,7 +159,7 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean encarcelar(int numCasillaCarcel){
         if(this.debeSerEncarcelado()){
-            this.moverACasilla(numCasillaCarcel);
+            this.numCasillaActual = numCasillaCarcel;
             this.encarcelado = true;
             Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
                     " encarcelado, movido a cárcel");

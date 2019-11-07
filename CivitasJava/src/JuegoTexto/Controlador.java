@@ -76,7 +76,7 @@ public class Controlador {
                                 juego.siguientePasoCompletado(operacion);
                                 break;
                         }
-                        juego.siguientePasoCompletado(operacion);
+                        //juego.siguientePasoCompletado(operacion);
                         break;
                     case SALIR_CARCEL:
                         switch (vista.salirCarcel()) {

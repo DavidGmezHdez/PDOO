@@ -96,40 +96,71 @@ class VistaTextual {
             case 1:
                 for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++)
                     nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
-                this.iPropiedad = this.menu("¿Qué propiedad deseas vender?",nombresPropiedades);
-                this.juegoModel.vender(iPropiedad);
+                
+                if(nombresPropiedades.isEmpty()){
+                    System.out.println("No puedes vender ninguna propiedad");
+                    this.iPropiedad = 0;
+                }
+                else{
+                    this.iPropiedad = this.menu("¿Qué propiedad deseas vender?",nombresPropiedades);
+                }
                 break;
             case 2:
                 for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
-                    if(this.juegoModel.getJugadorActual().getPropiedades().get(i).getHipotecado() == false)
+                    if(this.juegoModel.getJugadorActual().getPropiedades().get(i).getHipotecado() == false 
+                    && !nombresPropiedades.contains(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre()))
                         nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
                 }
-                this.iPropiedad = this.menu("¿Qué propiedad deseas hipotecar?",nombresPropiedades);
-                this.juegoModel.hipotecar(iPropiedad);
+                
+                if(nombresPropiedades.isEmpty()){
+                    System.out.println("No puedes hipotecar ninguna propiedad");
+                    this.iPropiedad = 0;
+                }
+                else{
+                    this.iPropiedad = this.menu("¿Qué propiedad deseas hipotecar?",nombresPropiedades);
+                }
                 break;
             case 3:
                 for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
-                    if(this.juegoModel.getJugadorActual().getPropiedades().get(i).getHipotecado() == true)
+                    if(this.juegoModel.getJugadorActual().getPropiedades().get(i).getHipotecado() == true
+                    && !nombresPropiedades.contains(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre()))
                         nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
                 }
-                this.iPropiedad = this.menu("¿Qué propiedad deseas cancelar hipoteca?",nombresPropiedades);
-                this.juegoModel.cancelarHipoteca(iPropiedad);
+                if(nombresPropiedades.isEmpty()){
+                    System.out.println("No puedes cancelar ninguna hipoteca");
+                    this.iPropiedad = 0;
+                }
+                else{
+                    this.iPropiedad = this.menu("¿Qué propiedad deseas cancelar hipoteca?",nombresPropiedades);
+                }
                 break;
             case 4:
                 for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
-                    if(this.juegoModel.getJugadorActual().puedoEdificarCasa(this.juegoModel.getJugadorActual().getPropiedades().get(i)))
+                    if(this.juegoModel.getJugadorActual().puedoEdificarCasa(this.juegoModel.getJugadorActual().getPropiedades().get(i))
+                    && !nombresPropiedades.contains(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre()))
                         nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
                 }
-                this.iPropiedad = this.menu("¿Qué propiedad deseas construir casa?",nombresPropiedades);
-                this.juegoModel.construirCasa(iPropiedad);
+                if(nombresPropiedades.isEmpty()){
+                    System.out.println("No puedes construir ninguna casa");
+                    this.iPropiedad = 0;
+                }
+                else{
+                    this.iPropiedad = this.menu("¿Qué propiedad deseas construir casa?",nombresPropiedades);
+                }
                 break;
             case 5:
                 for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
-                    if(this.juegoModel.getJugadorActual().puedoEdificarHotel(this.juegoModel.getJugadorActual().getPropiedades().get(i)))
+                    if(this.juegoModel.getJugadorActual().puedoEdificarHotel(this.juegoModel.getJugadorActual().getPropiedades().get(i))
+                    && !nombresPropiedades.contains(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre()))
                         nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
                 }
-                this.iPropiedad = this.menu("¿Qué propiedad deseas construir hotel?",nombresPropiedades);
-                this.juegoModel.construirHotel(iPropiedad);
+                if(nombresPropiedades.isEmpty()){
+                    System.out.println("No puedes construir ningun hotel");
+                    this.iPropiedad = 0;
+                }
+                else{
+                    this.iPropiedad = this.menu("¿Qué propiedad deseas construir hotel?",nombresPropiedades);
+                }
                 break;
         }
     }
