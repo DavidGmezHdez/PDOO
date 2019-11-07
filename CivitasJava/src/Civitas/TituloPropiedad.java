@@ -232,13 +232,16 @@ public class TituloPropiedad {
     
     
     @Override
-    public String toString() {
+    public String toString() {/*
         return "TituloPropiedad{" + "nombre=" + nombre 
-                + ", alquilerBase=" + alquilerBase + ", factorInteresesHipoteca=" 
-                + factorInteresesHipoteca + ", factorRevalorizaci\u00f3n=" + factorRevalorización 
-                + ", hipotecaBase=" + hipotecaBase + ", hipotecado=" + hipotecado + ", precioCompra=" 
-                + precioCompra + ", precioEdificar=" + precioEdificar + ", numCasas=" + numCasas + ", numHoteles=" 
-                + numHoteles + ", propietario=" + propietario + '}';
+                + ", alquilerBase=" + Float.toString(alquilerBase) + ", factorInteresesHipoteca=" 
+                + Float.toString(factorInteresesHipoteca)
+                + ", factorRevalorizacion=" + Float.toString(factorRevalorización )
+                + ", hipotecaBase=" + Float.toString(hipotecaBase) + ", hipotecado=" + hipotecado + ", precioCompra=" 
+                + Float.toString(precioCompra) + ", precioEdificar=" + Float.toString(precioEdificar) + ", numCasas=" + Integer.toString(numCasas) + ", numHoteles=" 
+                + Integer.toString(numHoteles) + ", propietario=" + propietario + "}";*/
+        return "TituloPropiedad{" + "nombre=" + nombre + "}";
+        
     }
 }
 

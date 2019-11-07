@@ -14,17 +14,14 @@ public class testP3 {
         nombres.add("Pepe");
         nombres.add("Carla");
         
+        dado.setDebug(false);
+        System.out.println("Debug: " + dado.isDebug());
+        
         CivitasJuego civitas = new CivitasJuego(nombres);
         VistaTextual vista = new VistaTextual();
         civitas.setDebugDado(true);
         Controlador controlador = new Controlador(civitas,vista);
         controlador.juega();
-        
-        /*
-        dado.setDebug(false);
-        System.out.println("Debug: " + dado.isDebug());
-        */
-        
         
     }
 

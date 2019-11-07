@@ -62,6 +62,7 @@ public class Sorpresa {
     
     
     void aplicarAJugador(int actual, ArrayList<Jugador> todos) {
+        /*
         switch(this.tipo){
             case IRCARCEL:
                 aplicarAJugador_irCarcel(actual, todos);
@@ -75,7 +76,20 @@ public class Sorpresa {
                 aplicarAJugador_porJugador(actual, todos);
             case SALIRCARCEL:
                 aplicarAJugador_salirCarcel (actual, todos);       
-        }
+        }*/
+        if(this.tipo==tipo.IRCARCEL)
+                aplicarAJugador_irCarcel(actual, todos);
+        else if(this.tipo==tipo.IRCASILLA)
+                aplicarAJugador_irACasilla (actual, todos);
+        else if(this.tipo==tipo.PAGARCOBRAR)
+                aplicarAJugador_pagarCobrar(actual, todos);
+        else if(this.tipo==tipo.PORCASAHOTEL)
+                aplicarAJugador_porCasaHotel(actual, todos);
+        else if(this.tipo==tipo.PORJUGADOR)
+                aplicarAJugador_porJugador(actual, todos);
+        else if(this.tipo==tipo.SALIRCARCEL)
+                aplicarAJugador_salirCarcel (actual, todos);  
+        
     }
     
 

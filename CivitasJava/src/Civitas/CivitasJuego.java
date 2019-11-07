@@ -22,11 +22,11 @@ public class CivitasJuego {
         }
         
         gestorEstados = new GestorEstados();
-        estado = gestorEstados.estadoInicial();
+        estado = gestorEstados.estadoInicial();        
         
         this.indiceJugadorActual = dado.quienEmpieza(jugadores.size());
         mazo = new MazoSorpresas();
-        this.tablero = new Tablero(15);
+       
         
         this.inicializarTablero(this.mazo);
         this.inicializarMazoSorpresas(this.tablero);
@@ -153,6 +153,8 @@ public class CivitasJuego {
     
     private void inicializarTablero(MazoSorpresas mazo){
         
+         this.tablero = new Tablero(15);
+        
         
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Willyrex", 625, 75, 12, 350, 400)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
@@ -203,7 +205,7 @@ public class CivitasJuego {
         if(operacion == OperacionesJuego.PASAR_TURNO){
             pasarTurno();
             siguientePasoCompletado(operacion);
-        } else {
+        } else if(operacion == OperacionesJuego.AVANZAR) {
             avanzaJugador();
             siguientePasoCompletado(operacion);
         }

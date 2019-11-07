@@ -148,8 +148,8 @@ class VistaTextual {
   }
 
   void mostrarEventos(){
-    while(Civitas.Diario.getInstance().eventosPendientes()){
-       System.out.println(Civitas.Diario.getInstance().leerEvento());
+    while(Diario.getInstance().eventosPendientes()){
+       System.out.println(Diario.getInstance().leerEvento());
     }
   }
   

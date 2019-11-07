@@ -30,14 +30,13 @@ public class Controlador {
         GestionesInmobiliarias gest;
         int numProp;
         int indGest;
+        
         vista.setCivitasJuego(juego);
         
         while(!this.juego.finalDelJuego()){
             vista.actualizarVista();
             vista.pausa();
-            System.out.println("Pasa5");
             operacion = juego.siguientePaso();
-            System.out.println("Pasa6");
 
             if (operacion != OperacionesJuego.PASAR_TURNO)
                 vista.mostrarEventos();
@@ -50,6 +49,7 @@ public class Controlador {
                             juego.comprar();
                         }
                         juego.siguientePasoCompletado(operacion);
+                        break;
                     case GESTIONAR:
                         vista.gestionar();
                         indGest = vista.getGestion();
@@ -59,26 +59,36 @@ public class Controlador {
                         switch (gest) {
                             case VENDER:
                                 juego.vender(opInmobiliaria.getNumPropiedad());
+                                break;
                             case HIPOTECAR:
                                 juego.hipotecar(opInmobiliaria.getNumPropiedad());
+                                break;
                             case CANCELAR_HIPOTECA:
                                 juego.cancelarHipoteca(opInmobiliaria.getNumPropiedad());
+                                break;
                             case CONSTRUIR_CASA:
                                 juego.construirCasa(opInmobiliaria.getNumPropiedad());
+                                break;
                             case CONSTRUIR_HOTEL:
                                 juego.construirHotel(opInmobiliaria.getNumPropiedad());
+                                break;
                             case TERMINAR:
                                 juego.siguientePasoCompletado(operacion);
+                                break;
                         }
                         juego.siguientePasoCompletado(operacion);
+                        break;
                     case SALIR_CARCEL:
                         switch (vista.salirCarcel()) {
                             case PAGANDO:
                                 juego.salirCarcelPagando();
+                                break;
                             case TIRANDO:
                                 juego.salirCarcelTirando();
+                                break;
                         }
                         juego.siguientePasoCompletado(operacion);
+                        break;
                     }
                 }
             }

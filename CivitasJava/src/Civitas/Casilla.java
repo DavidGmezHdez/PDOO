@@ -86,7 +86,7 @@ public class Casilla {
         return es_correcto;
     }
 
-    void recibeJugador(int iactual, ArrayList<Jugador> todos) {
+    void recibeJugador(int iactual, ArrayList<Jugador> todos) {/*
         switch (this.tipo) {
             case CALLE:
                 recibeJugador_calle(iactual, todos);
@@ -98,7 +98,17 @@ public class Casilla {
                 recibeJugador_sorpresa(iactual, todos);
             default:
                 informe(iactual, todos);
-        }
+        }*/
+        if(tipo==tipo.CALLE)
+             recibeJugador_calle(iactual,todos);
+         else if(tipo==tipo.IMPUESTO)
+             recibeJugador_impuesto(iactual,todos);
+         else if(tipo==tipo.JUEZ)
+             recibeJugador_juez(iactual,todos);
+         else if(tipo==tipo.SORPRESA)
+             recibeJugador_sorpresa(iactual,todos);
+         else 
+             informe(iactual,todos);
     }
 
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
@@ -142,7 +152,7 @@ public class Casilla {
     
     @Override
     public String toString(){
-        
+        /*
         switch(this.tipo){
        
             case CALLE:
@@ -151,7 +161,13 @@ public class Casilla {
                 return "Casilla {" + "\n Nombre: " + nombre + " \n Tipo: " + tipo + "\n}" + "Importe: " + importe + "\n";
             default:
                 return "Casilla {" + "\n Nombre: " + nombre + " \n Tipo: " + tipo + "\n}";
-        }
+        }*/
+        if(tipo==tipo.CALLE)
+            return "Casilla {" + "\n TituloPropiedad: " + tituloPropiedad.toString() + ", \n Tipo: " + tipo + "\n}";
+         else if(tipo==tipo.IMPUESTO)
+            return "Casilla {" + "\n Nombre: " + nombre + " \n Tipo: " + tipo + "\n}" + "Importe: " + importe + "\n";
+         else 
+            return "Casilla {" + "\n Nombre: " + nombre + " \n Tipo: " + tipo + "\n}";
     }
     
 }
