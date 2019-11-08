@@ -27,8 +27,9 @@ module Civitas
       @mazo = MazoSorpresas.new(false)
       @tablero = Tablero.new(15)
       
-      inicializar_mazo_sorpresas(@tablero)
+     
       inicializar_tablero(@mazo)
+       inicializar_mazo_sorpresas(@tablero)
       
       @@dado.debug = true
       
@@ -37,14 +38,18 @@ module Civitas
     
     def avanza_jugador
       jugador_actual = @jugadores[@indice_jugador_actual]
+        puts jugador_actual.to_s
       posicion_actual = jugador_actual.num_casilla_actual
       tirada = @@dado.tirar
       posicion_nueva = @tablero.calcular_tirada(posicion_actual, tirada)
       puts " Resultado de la tirada: " + tirada.to_s + " Posicion nueva: " + posicion_nueva.to_s 
       casilla = @tablero.get_casilla(posicion_nueva)
       contabilizar_pasos_por_salida(jugador_actual)
+      puts "a"
       jugador_actual.mover_a_casilla(posicion_nueva)
+      puts "b"
       casilla.recibe_jugador(@indice_jugador_actual, @jugadores)
+      puts "c"
       contabilizar_pasos_por_salida(jugador_actual)
     end
     
@@ -140,6 +145,7 @@ module Civitas
     def inicializar_tablero(mazo)
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 75, 12, 350, 400)))
+      
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 50, 10, 550, 250)))
       @tablero.añade_juez
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Picaporte", 740, 55, 19, 300, 575)))
@@ -181,15 +187,21 @@ module Civitas
     
     
     def siguiente_paso
+      
       jugador_actual = @jugadores[@indice_jugador_actual]
+      puts jugador_actual.to_s
       operacion = @gestor_estados.operaciones_permitidas(jugador_actual, @estado)
+      puts operacion
       case operacion
         when OperacionesJuego::PASAR_TURNO
           pasar_turno
           siguiente_paso_completado(operacion)
         when OperacionesJuego::AVANZAR
           avanza_jugador
+            puts jugador_actual.to_s
+          puts "estoy aqui"
           siguiente_paso_completado(operacion)
+          puts "estoy aqui"
       end
       return operacion
     end

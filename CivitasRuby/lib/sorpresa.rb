@@ -74,6 +74,7 @@ module Civitas
       when TipoSorpresa::IRCARCEL
         aplicar_a_jugador_ir_a_carcel(actual,todos)
       when TipoSorpresa::IRCASILLA
+         puts "ir a casilla"
         aplicar_a_jugador_ir_a_casilla(actual, todos)
       when TipoSorpresa::PAGARCOBRAR
         aplicar_a_jugador_pagar_cobrar(actual, todos)
@@ -99,8 +100,15 @@ module Civitas
       casilla_actual = todos[actual].num_casilla_actual
       if(jugador_correcto(actual,todos))
         informe(actual,todos)
+        puts " antestirada"
         tirada = @tablero.calcular_tirada(casilla_actual,@valor)
+        puts "despuestirada"
+        puts @tablero.to_s
+        puts casilla_actual
+        puts tirada
         nueva_posicion = @tablero.nueva_posicion(casilla_actual,tirada)
+        puts "posicion nueva"
+        puts nueva_posicion
         todos[actual].mover_a_casilla(nueva_posicion)
         @tablero.casillas[nueva_posicion].recibe_jugador(actual,todos)
       end
