@@ -58,13 +58,8 @@ module Civitas
     
     
     def recibe_jugador(iactual,todos)
-      puts "c2"
-      puts @tipo
       case(@tipo)
       when TipoCasilla::CALLE
-        puts "c2.1"
-        puts iactual
-        puts todos
         recibe_jugador_calle(iactual,todos)
       when TipoCasilla::IMPUESTO
         recibe_jugador_impuesto(iactual, todos)
@@ -79,9 +74,7 @@ module Civitas
     
     
     def recibe_jugador_calle(iactual,todos)
-      puts "d1"
       if jugador_correcto(iactual,todos)
-        puts "d"
         informe(iactual,todos)
         jugador = todos[iactual];
         
@@ -112,12 +105,8 @@ module Civitas
     
     def recibe_jugador_sorpresa(iactual,todos)
       if jugador_correcto(iactual,todos)
-        puts "sorpresa"
-        puts @mazo
         @sorpresa = @mazo.siguiente
-        puts @sorpresa
         informe(iactual,todos)
-        puts "aqui"
         @sorpresa.aplicar_a_jugador(iactual,todos)
       end
     end

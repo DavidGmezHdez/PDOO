@@ -83,7 +83,7 @@ module Civitas
       if !correcto(actual)
         return -1
       else
-                posicion = (actual+tirada)%20
+        posicion = (actual+tirada)%20
       end
     
       if actual+tirada != posicion
