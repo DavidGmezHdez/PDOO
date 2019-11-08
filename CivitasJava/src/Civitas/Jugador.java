@@ -384,15 +384,15 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean vender(int ip){
-        if(this.encarcelado){
+        System.out.println("Check vender");
+        if(this.encarcelado || (this.existeLaPropiedad(ip) && this.propiedades.get(ip).vender(this))){
             return false;
-        } else if(this.existeLaPropiedad(ip) && this.propiedades.get(ip).vender(this)){
+        } 
+        else{
             Diario.getInstance().ocurreEvento("Propiedad " + this.propiedades.get(ip).getNombre() + " vendida por el jugador " + this.nombre );
             this.propiedades.remove(ip);
             return true;
-        } else {
-            return false;
-        }            
+        } 
     }
     
     

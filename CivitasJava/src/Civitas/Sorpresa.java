@@ -143,7 +143,7 @@ public class Sorpresa {
             informe(actual, todos);
             int valorActual = this.valor;
             int valorOtros = this.valor;
-            String text = "Pagar al jugador" + todos.get(actual).getNombre();
+            String text = " Pagar al jugador " + todos.get(actual).getNombre();
             valorActual = valorActual * (todos.size()-1);
             valorOtros = valorOtros * -1;
             Sorpresa sorpActual = new Sorpresa(TipoSorpresa.PAGARCOBRAR, valorActual, text);
@@ -197,8 +197,8 @@ public class Sorpresa {
     
     @Override
     public String toString(){
-        return "Sorpresa{ " + "nombre= " + texto + "valor= " + valor + 
-                "tipo= " + tipo + '}';
+        return "Sorpresa: { \n Texto = " + texto + "\n Tipo = " + tipo + 
+                "\n Valor = " + valor + "}";
     }
     
 }

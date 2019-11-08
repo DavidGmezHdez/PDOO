@@ -154,7 +154,6 @@ public class Casilla {
     public String toString(){
         
         switch(this.tipo){
-       
             case CALLE:
                 return "Casilla {" + "\n TituloPropiedad: " + tituloPropiedad.toString() + ", \n Tipo: " + tipo + "\n}";
             case IMPUESTO:

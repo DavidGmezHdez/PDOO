@@ -56,7 +56,7 @@ public class Controlador {
                         numProp = vista.getPropiedad();
                         gest = GestionesInmobiliarias.values()[indGest];
                         OperacionInmobiliaria opInmobiliaria = new OperacionInmobiliaria(gest, numProp);
-                        switch (gest) {
+                        switch (GestionesInmobiliarias.values()[indGest]) {
                             case VENDER:
                                 juego.vender(opInmobiliaria.getNumPropiedad());
                                 break;

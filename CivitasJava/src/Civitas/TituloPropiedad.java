@@ -233,14 +233,26 @@ public class TituloPropiedad {
     
     @Override
     public String toString() {
-        /*return "TituloPropiedad{" + "nombre=" + nombre 
-                + ", alquilerBase=" + Float.toString(alquilerBase) + ", factorInteresesHipoteca=" 
-                + Float.toString(factorInteresesHipoteca)
-                + ", factorRevalorizacion=" + Float.toString(factorRevalorización )
-                + ", hipotecaBase=" + Float.toString(hipotecaBase) + ", hipotecado=" + hipotecado + ", precioCompra=" 
-                + Float.toString(precioCompra) + ", precioEdificar=" + Float.toString(precioEdificar) + ", numCasas=" + Integer.toString(numCasas) + ", numHoteles=" 
-                + Integer.toString(numHoteles) + ", propietario=" + propietario.getNombre() + "}";*/
-        return "TituloPropiedad{" + "nombre=" + nombre + "}";
+        
+        if(this.propietario == null){
+         return "TituloPropiedad{" + "\n nombre = " + nombre 
+                + "\n AlquilerBase = " + alquilerBase + "\n factorInteresesHipoteca = " 
+                + factorInteresesHipoteca + "\n factorRevalorizacion = " + factorRevalorización 
+                + "\n hipotecaBase = " + hipotecaBase + "\n hipotecado = " + hipotecado + "\n precioCompra = " 
+                + precioCompra + "\n precioEdificar = " + precioEdificar + "\n numCasas = " + numCasas 
+                + "\n numHoteles = " + numHoteles + "\n propietario = Sin propietario}";
+        
+        
+        }
+        else{
+        return "TituloPropiedad{" + "nombre = " + nombre 
+                + ", alquilerBase = " + alquilerBase + ", factorInteresesHipoteca = " 
+                + factorInteresesHipoteca + ", factorRevalorizacion = " + factorRevalorización 
+                + ", hipotecaBase = " + hipotecaBase + ", hipotecado = " + hipotecado + ", precioCompra = " 
+                + precioCompra + ", precioEdificar = " + precioEdificar + ", numCasas = " + numCasas 
+                + ", numHoteles = " + numHoteles + ", propietario = " + propietario.getNombre() + "}\n";
+        }
+        
         
     }
 }
