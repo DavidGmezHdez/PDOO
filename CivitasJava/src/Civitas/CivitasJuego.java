@@ -140,11 +140,11 @@ public class CivitasJuego {
 
         mazo.alMazo(new Sorpresa (TipoSorpresa.PAGARCOBRAR,500,"Recibes un sobre con la letra B escrita, recibes 500 euros"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PAGARCOBRAR,200,"Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros"));
+        mazo.alMazo(new Sorpresa (TipoSorpresa.PAGARCOBRAR,-200,"Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros"));
 
         mazo.alMazo(new Sorpresa (TipoSorpresa.PORCASAHOTEL,300,"Gracias a la burbuja del alquiler, la gente compra más casas y hay más turistas en hoteles, ganas 300 euros."));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PORCASAHOTEL, 500, "Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros"));
+        mazo.alMazo(new Sorpresa (TipoSorpresa.PORCASAHOTEL, -500, "Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros"));
 
         mazo.alMazo(new Sorpresa (TipoSorpresa.SALIRCARCEL,mazo));
 

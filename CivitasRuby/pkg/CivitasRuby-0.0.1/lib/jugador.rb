@@ -363,7 +363,7 @@ module Civitas
     end
     
     
-    def tiene_salvoconducto
+    def tiene_salvo_conducto
       return @salvoconducto != nil
     end
     
@@ -383,10 +383,16 @@ module Civitas
       end
     end
     
+    def get_propiedades
+      for i in @propiedades
+        puts i.to_s + "\n"
+      end
+    end
+    
     
     def to_s
       "Jugador: { \n Nombre: #{@nombre} Encarcelado: #{@encarcelado} 
- Propiedades: #{@propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
+ Propiedades: #{get_propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
  Casilla actual: #{@num_casilla_actual} \n Salvoconducto: #{@salvoconducto} \n}"
     end
     

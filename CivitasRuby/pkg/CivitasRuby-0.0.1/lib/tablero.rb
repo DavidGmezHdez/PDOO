@@ -43,21 +43,18 @@ module Civitas
   
   
     def calcular_tirada(origen,destino)
-      nueva_posicion = destino - origen
-      if nueva_posicion < 0
-        nueva_posicion = nueva_posicion + 20
-      end
-      return nueva_posicion
+      return (origen+destino)%20
+      
     end
   
   
-    def correcto
+    def correcto2
       return @casillas.size > @num_casilla_carcel && @tiene_juez
     end
   
   
     def correcto(num_casilla)
-      return correcto(num_casilla) && (num_casilla>=0 && num_casilla<=@casillas.size) 
+      return correcto2 && (num_casilla>=0 && num_casilla<=@casillas.size) 
     end
   
   
@@ -82,6 +79,7 @@ module Civitas
   
   
     def nueva_posicion(actual,tirada)
+      
       if !correcto(actual)
         return -1
       else
@@ -91,6 +89,7 @@ module Civitas
       if actual+tirada != posicion
         @por_salida = @por_salida+1
       end
+     
       return posicion
     end
     

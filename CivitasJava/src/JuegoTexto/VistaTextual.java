@@ -79,7 +79,7 @@ class VistaTextual {
 
   Respuestas comprar(){
     int opcion = menu ("¿Deseas comprar la propiedad?",
-      new ArrayList<> (Arrays.asList("Si","No")));
+      new ArrayList<> (Arrays.asList("No","Si")));
     return (Respuestas.values()[opcion]);
   }
 
@@ -96,13 +96,13 @@ class VistaTextual {
             case 1:
                 for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++)
                     nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
-                
                 if(nombresPropiedades.isEmpty()){
                     System.out.println("No puedes vender ninguna propiedad");
                     this.iPropiedad = 0;
                 }
                 else{
                     this.iPropiedad = this.menu("¿Qué propiedad deseas vender?",nombresPropiedades);
+                    this.juegoModel.vender(this.iPropiedad);
                 }
                 break;
             case 2:
@@ -111,13 +111,13 @@ class VistaTextual {
                     && !nombresPropiedades.contains(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre()))
                         nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
                 }
-                
                 if(nombresPropiedades.isEmpty()){
                     System.out.println("No puedes hipotecar ninguna propiedad");
                     this.iPropiedad = 0;
                 }
                 else{
                     this.iPropiedad = this.menu("¿Qué propiedad deseas hipotecar?",nombresPropiedades);
+                    this.juegoModel.hipotecar(this.iPropiedad);
                 }
                 break;
             case 3:
@@ -132,6 +132,7 @@ class VistaTextual {
                 }
                 else{
                     this.iPropiedad = this.menu("¿Qué propiedad deseas cancelar hipoteca?",nombresPropiedades);
+                    this.juegoModel.cancelarHipoteca(this.iPropiedad);
                 }
                 break;
             case 4:
@@ -146,6 +147,7 @@ class VistaTextual {
                 }
                 else{
                     this.iPropiedad = this.menu("¿Qué propiedad deseas construir casa?",nombresPropiedades);
+                    this.juegoModel.construirCasa(this.iPropiedad);
                 }
                 break;
             case 5:
@@ -160,6 +162,7 @@ class VistaTextual {
                 }
                 else{
                     this.iPropiedad = this.menu("¿Qué propiedad deseas construir hotel?",nombresPropiedades);
+                    this.juegoModel.construirHotel(this.iPropiedad);
                 }
                 break;
         }

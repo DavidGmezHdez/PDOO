@@ -112,7 +112,8 @@ public class Jugador implements Comparable<Jugador> {
                 if(puedoEdificarCasa){
                     result = propiedad.construirCasa(this);
                     if(result){
-                        Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye casa en la propiedad  " + ip);
+                        Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye casa en la propiedad  " 
+                                + this.propiedades.get(ip).getNombre());
                     }
                 }
             }
@@ -131,7 +132,8 @@ public class Jugador implements Comparable<Jugador> {
             if(this.puedoEdificarHotel(propiedad)){
                 result = propiedad.construirHotel(this);
                 propiedad.derruirCasas(getCasasPorHotel(), this);
-                Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye hotel en la propiedad  " + ip);
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye hotel en la propiedad  " 
+                        + this.propiedades.get(ip).getNombre());
             }
         }
         return result;
@@ -159,7 +161,7 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean encarcelar(int numCasillaCarcel){
         if(this.debeSerEncarcelado()){
-            this.numCasillaActual = numCasillaCarcel;
+            this.moverACasilla(numCasillaCarcel);
             this.encarcelado = true;
             Diario.getInstance().ocurreEvento("Jugador " + this.nombre + 
                     " encarcelado, movido a cárcel");
@@ -233,7 +235,8 @@ public class Jugador implements Comparable<Jugador> {
             result = propiedad.hipotecar(this);
         }
         if (result)
-                Diario.getInstance().ocurreEvento("El jugador " + nombre + " hipoteca la propiedad  " + ip);
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " hipoteca la propiedad  " 
+                        + this.propiedades.get(ip).getNombre());
         return result;
     }
     
@@ -384,15 +387,13 @@ public class Jugador implements Comparable<Jugador> {
     
     
     boolean vender(int ip){
-        if(this.encarcelado){
-            return false;
-        } else if(this.existeLaPropiedad(ip) && this.propiedades.get(ip).vender(this)){
+        boolean resultado = false;
+        if(!this.encarcelado && this.existeLaPropiedad(ip) && this.propiedades.get(ip).vender(this)){
             Diario.getInstance().ocurreEvento("Propiedad " + this.propiedades.get(ip).getNombre() + " vendida por el jugador " + this.nombre );
             this.propiedades.remove(ip);
-            return true;
-        } else {
-            return false;
-        }            
+            resultado = true;
+        } 
+        return resultado;
     }
     
     

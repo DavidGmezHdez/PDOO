@@ -65,7 +65,7 @@ module Civitas
     
     def informe(actual, todos)
       Diario.instance.ocurre_evento("Aplicando sorpresa " + self.to_s + 
-        "al jugador " + todos[actual].nombre)
+        " al jugador " + todos[actual].nombre + " tipo de sorpresa: " + @tipo.to_s)
     end
     
     
@@ -127,20 +127,17 @@ module Civitas
     
     def aplicar_a_jugador_por_jugador(actual,todos)
       if(jugador_correcto(actual,todos))
-        valor_actual = @valor
-        valor_otros = @valor
-        text = "Pagar al jugador" + todos[actual].nombre
-        valor_actual = valor_actual * (todos.size-1)
-        valor_otros = valor_otros * -1
+        informe(actual,todos)
+        valor_actual = @valor * (todos.size-1)
+        valor_otros = @valor * -1
         
-        sorp_actual = Sorpresa.new(TipoSorpresa::PAGARCOBRAR, valor_actual,text)
-        sorp_otros = Sorpresa.new(TipoSorpresa::PAGARCOBRAR, valor_otros,text)
-
-        for i in (todos.size())
-          if(i==actual)
-            sorp_actual.aplicar_a_jugador_pagar_cobrar(actual,todos)
+        
+        j=0
+        for i in todos
+          if i==todos[actual]
+            i.modificar_saldo(valor_actual)
           else
-            sorp_otros.aplicar_a_jugador_pagar_cobrar(actual,todos)
+            i.modificar_saldo(valor_otros)
           end
         end       
       end
@@ -152,14 +149,14 @@ module Civitas
         informe(actual,todos)
         nadie_salvo_conducto=0
         
-        for i in (todos.size())
-          if(todos[i].tiene_salvo_conducto())
+        for i in todos
+          if i.tiene_salvo_conducto
             nadie_salvo_conducto = nadie_salvo_conducto+1
           end
         end
         
-        # Si naide tiene salvo conducto
-        if(nadie_salvo_conducto==0)
+        # Si nadie tiene salvo conducto
+        if nadie_salvo_conducto==0
           todos[actual].obtener_salvoconducto(self)
           salir_del_mazo
         end
@@ -169,7 +166,7 @@ module Civitas
     
     def salir_del_mazo
       if(@tipo==TipoSorpresa::SALIRCARCEL)
-        @mazo.inhabilitarCartaEspecial(self)
+        @mazo.inhabilitar_carta_especial(self)
       end
     end
     
@@ -186,7 +183,7 @@ module Civitas
     
     
     private :informe, :init, :aplicar_a_jugador_ir_a_carcel, 
-      :aplicar_a_jugador_ir_a_casilla, :aplicar_a_jugador_pagar_cobrar, 
+      :aplicar_a_jugador_ir_a_casilla, 
       :aplicar_a_jugador_por_casa_hotel, :aplicar_a_jugador_por_jugador,
       :aplicar_a_jugador_salir_carcel
     

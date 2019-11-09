@@ -363,7 +363,7 @@ module Civitas
     end
     
     
-    def tiene_salvoconducto
+    def tiene_salvo_conducto
       return @salvoconducto != nil
     end
     
