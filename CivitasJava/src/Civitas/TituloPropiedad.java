@@ -204,17 +204,17 @@ public class TituloPropiedad {
     public String toString() {
         
         if(this.propietario == null){
-         return "TituloPropiedad{" + "\n nombre = " + nombre 
-                + "\n AlquilerBase = " + alquilerBase + "\n factorInteresesHipoteca = " 
-                + factorInteresesHipoteca + "\n factorRevalorizacion = " + factorRevalorización 
-                + "\n hipotecaBase = " + hipotecaBase + "\n hipotecado = " + hipotecado + "\n precioCompra = " 
-                + precioCompra + "\n precioEdificar = " + precioEdificar + "\n numCasas = " + numCasas 
-                + "\n numHoteles = " + numHoteles + "\n propietario = Sin propietario}";
+         return "TituloPropiedad {" + "\n Nombre = " + nombre 
+                + "\n  AlquilerBase = " + alquilerBase + "\n  FactorInteresesHipoteca = " 
+                + factorInteresesHipoteca + "\n  FactorRevalorizacion = " + factorRevalorización 
+                + "\n  HipotecaBase = " + hipotecaBase + "\n  Hipotecado = " + hipotecado + "\n  PrecioCompra = " 
+                + precioCompra + "\n  PrecioEdificar = " + precioEdificar + "\n  NumCasas = " + numCasas 
+                + "\n  NumHoteles = " + numHoteles + "\n  Propietario = Sin propietario}";
         
         
         }
         else{
-        return "TituloPropiedad{" + "nombre = " + nombre 
+        return "TituloPropiedad {" + " Nombre = " + nombre 
                 + ", alquilerBase = " + alquilerBase + ", factorInteresesHipoteca = " 
                 + factorInteresesHipoteca + ", factorRevalorizacion = " + factorRevalorización 
                 + ", hipotecaBase = " + hipotecaBase + ", hipotecado = " + hipotecado + ", precioCompra = " 

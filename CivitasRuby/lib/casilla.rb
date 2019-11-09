@@ -48,7 +48,7 @@ module Civitas
     
     
     def informe(iactual, todos)
-      Diario.instance.ocurre_evento(" Ha caído en la casilla " + self.to_s + " el jugador " + todos[iactual].nombre)
+      Diario.instance.ocurre_evento(" Ha caído en la casilla \n" + self.to_s + " el jugador " + todos[iactual].nombre + "\n")
     end
       
     
@@ -116,7 +116,7 @@ module Civitas
     def to_s
       case (@tipo)
         when TipoCasilla::CALLE
-            "Casilla { \n Nombre: #{@nombre}  \n Titulo Propiedad: #{@titulo.to_s}  \n}"
+            "Casilla { \n Nombre: #{@nombre}  \n #{@titulo.to_s}  \n}"
         when TipoCasilla::IMPUESTO
             "Casilla { \n Nombre: #{@nombre}  \n Valor: #{@importe}"
         else

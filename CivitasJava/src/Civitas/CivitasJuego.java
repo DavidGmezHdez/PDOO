@@ -26,8 +26,7 @@ public class CivitasJuego {
         
         this.indiceJugadorActual = dado.quienEmpieza(jugadores.size());
         mazo = new MazoSorpresas();
-       
-        
+     
         this.inicializarTablero(this.mazo);
         this.inicializarMazoSorpresas(this.tablero);
         
@@ -152,10 +151,8 @@ public class CivitasJuego {
     
     
     private void inicializarTablero(MazoSorpresas mazo){
-        
-         this.tablero = new Tablero(15);
-        
-        
+        this.tablero = new Tablero(15);
+
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Willyrex", 625, 75, 12, 350, 400)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Guerrero", 700, 50, 10, 550, 250)));
@@ -167,7 +164,7 @@ public class CivitasJuego {
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Ruby", 500, 95, 14, 175, 275)));
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Focus", 830, 100, 16, 675, 500)));
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Motorola", 777, 85, 15, 750, 470)));
-        this.tablero.añadeCasilla(new Casilla(500,"Impuesto"));
+        this.tablero.añadeCasilla(new Casilla("Impuesto",500));
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Rengar", 900, 80, 12, 200, 450)));
         this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Potter", 675, 60, 20, 475, 750)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));

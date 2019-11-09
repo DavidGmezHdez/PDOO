@@ -36,7 +36,7 @@ public class Casilla {
     }
     
     
-    Casilla(float cantidad, String nombre){
+    Casilla(String nombre, float cantidad){
         init();
         this.tipo = TipoCasilla.IMPUESTO;
         importe = cantidad;
@@ -75,8 +75,6 @@ public class Casilla {
         return tituloPropiedad;
     }
     
-    
-
 
     public boolean jugadorCorrecto(int iactual, ArrayList<Jugador> todos) {
         boolean es_correcto = false;
@@ -87,21 +85,26 @@ public class Casilla {
     }
 
     void recibeJugador(int iactual, ArrayList<Jugador> todos) {
-        /*
+        
         switch (this.tipo) {
             case CALLE:
                 recibeJugador_calle(iactual, todos);
+                break;
             case IMPUESTO:
                 recibeJugador_impuesto(iactual, todos);
+                break;
             case JUEZ:
                 recibeJugador_juez(iactual, todos);
+                break;
             case SORPRESA:
                 recibeJugador_sorpresa(iactual, todos);
+                break;
             default:
                 informe(iactual, todos);
+                break;
         }
-        */
         
+        /*
         if(tipo==tipo.CALLE)
              recibeJugador_calle(iactual,todos);
          else if(tipo==tipo.IMPUESTO)
@@ -114,7 +117,7 @@ public class Casilla {
              recibeJugador_sorpresa(iactual,todos);
          else 
              informe(iactual,todos);
-        
+        */
     }
 
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
@@ -140,7 +143,6 @@ public class Casilla {
     
     
     private void recibeJugador_juez(int iactual, ArrayList<Jugador> todos){
-        
         if(jugadorCorrecto(iactual,todos)){
             informe(iactual,todos);
             todos.get(iactual).encarcelar(carcel);
@@ -162,7 +164,7 @@ public class Casilla {
         
         switch(this.tipo){
             case CALLE:
-                return "Casilla {" + "\n TituloPropiedad: " + tituloPropiedad.toString() + ", \n Tipo: " + tipo + "\n}";
+                return "Casilla {" + "\n " + tituloPropiedad.toString() + ", \n Tipo: " + tipo + "\n}";
             case IMPUESTO:
                 return "Casilla {" + "\n Nombre: " + nombre + " \n Tipo: " + tipo + "\n}" + "Importe: " + importe + "\n";
             default:

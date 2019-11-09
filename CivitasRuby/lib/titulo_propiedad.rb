@@ -169,11 +169,11 @@ module Civitas
 
     
     def to_s
-      "TituloPropiedad: #{@nombre} \n Alquiler base #{@alquiler_base} \n 
-      Factor Revalorizacion: #{@factor_revalorizacion} \n Hipoteca Base: #{@hipoteca_base} \n 
-      Precio Compra: #{@precio_compra} \n 
-      Precio Edificar: #{@precio_edificar}\n Hipotecado: #{@hipotecado}\n Num Casas: #{@num_casas}\n
-      Num Hoteles: #{@num_hoteles}\n Propietario: #{@hpropietario}\n"
+      "TituloPropiedad: #{@nombre} \n Alquiler base #{@alquiler_base}
+ Factor Revalorizacion: #{@factor_revalorizacion} \n Hipoteca Base: #{@hipoteca_base}
+ Precio Compra: #{@precio_compra} \n Precio Edificar: #{@precio_edificar}
+ Hipotecado: #{@hipotecado}\n Num Casas: #{@num_casas}\n Num Hoteles: #{@num_hoteles}
+ Propietario: #{@propietario}"
     end
     
   end

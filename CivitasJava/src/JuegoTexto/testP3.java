@@ -13,10 +13,10 @@ public class testP3 {
         ArrayList<String> nombres = new ArrayList<>();
         nombres.add("Pepe");
         nombres.add("Carla");
-        
+        /*
         dado.setDebug(false);
         System.out.println("Debug: " + dado.isDebug());
-        
+        */
         CivitasJuego civitas = new CivitasJuego(nombres);
         VistaTextual vista = new VistaTextual();
         civitas.setDebugDado(true);
