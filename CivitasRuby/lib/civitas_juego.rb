@@ -140,11 +140,8 @@ module Civitas
     
     
     def inicializar_tablero(mazo)
-<<<<<<< HEAD
       
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-=======
->>>>>>> 1a99332136297a7a0cc0fd85eceba1402b9c5840
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 75, 12, 350, 400)))
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 50, 10, 550, 250)))

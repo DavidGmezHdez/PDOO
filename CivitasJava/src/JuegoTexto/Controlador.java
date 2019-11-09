@@ -77,10 +77,8 @@ public class Controlador {
                                 juego.siguientePasoCompletado(operacion);
                                 break;
                         }
-<<<<<<< HEAD
+
                         juego.siguientePasoCompletado(operacion);
-=======
->>>>>>> 1a99332136297a7a0cc0fd85eceba1402b9c5840
                         break;
                     case SALIR_CARCEL:
                         switch (vista.salirCarcel()) {
