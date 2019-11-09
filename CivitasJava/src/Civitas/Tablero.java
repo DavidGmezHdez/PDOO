@@ -10,8 +10,8 @@ public class Tablero {
     
     
     Tablero(int numero){
-        if(numero>=1)
-            numCasillaCarcel = numero;
+        if(numero>1)
+            numCasillaCarcel = numero-1;
         else
             numCasillaCarcel = 1;
         

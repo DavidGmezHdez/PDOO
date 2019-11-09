@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Casilla {
     private String nombre;
-    private static int carcel;
+    private int carcel;
     private float importe;
     
     private TipoCasilla tipo;
@@ -14,8 +14,8 @@ public class Casilla {
     
     private void init(){
         this.nombre = " ";
-        this.carcel = 0;
         this.importe = 0;
+        this.carcel = 0;
         this.tituloPropiedad = null;
         this.tipo = null;
         this.sorpresa = null;
@@ -46,9 +46,9 @@ public class Casilla {
     
     Casilla(int numCasillaCarcel, String nombre){
         init();
-        this.tipo = TipoCasilla.CARCEL;
+        this.tipo = TipoCasilla.JUEZ;
         this.nombre = nombre;
-        carcel = numCasillaCarcel;
+        this.carcel = numCasillaCarcel;
     }
     
     
@@ -86,7 +86,8 @@ public class Casilla {
         return es_correcto;
     }
 
-    void recibeJugador(int iactual, ArrayList<Jugador> todos) {/*
+    void recibeJugador(int iactual, ArrayList<Jugador> todos) {
+        /*
         switch (this.tipo) {
             case CALLE:
                 recibeJugador_calle(iactual, todos);
@@ -98,17 +99,22 @@ public class Casilla {
                 recibeJugador_sorpresa(iactual, todos);
             default:
                 informe(iactual, todos);
-        }*/
+        }
+        */
+        
         if(tipo==tipo.CALLE)
              recibeJugador_calle(iactual,todos);
          else if(tipo==tipo.IMPUESTO)
              recibeJugador_impuesto(iactual,todos);
-         else if(tipo==tipo.JUEZ)
+         else if(tipo==tipo.JUEZ){
+             System.out.println(carcel);
              recibeJugador_juez(iactual,todos);
+         }
          else if(tipo==tipo.SORPRESA)
              recibeJugador_sorpresa(iactual,todos);
          else 
              informe(iactual,todos);
+        
     }
 
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
@@ -134,6 +140,7 @@ public class Casilla {
     
     
     private void recibeJugador_juez(int iactual, ArrayList<Jugador> todos){
+        
         if(jugadorCorrecto(iactual,todos)){
             informe(iactual,todos);
             todos.get(iactual).encarcelar(carcel);

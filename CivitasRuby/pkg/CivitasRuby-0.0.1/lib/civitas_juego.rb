@@ -29,7 +29,7 @@ module Civitas
       
      
       inicializar_tablero(@mazo)
-       inicializar_mazo_sorpresas(@tablero)
+      inicializar_mazo_sorpresas(@tablero)
       
       @@dado.debug = true
       

@@ -1,8 +1,7 @@
 package Civitas;
 public enum TipoCasilla {
     CALLE, 
-    JUEZ, 
-    CARCEL, 
+    JUEZ,  
     SORPRESA, 
     IMPUESTO, 
     DESCANSO

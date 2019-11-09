@@ -56,27 +56,27 @@ public class Controlador {
                         numProp = vista.getPropiedad();
                         gest = GestionesInmobiliarias.values()[indGest];
                         OperacionInmobiliaria opInmobiliaria = new OperacionInmobiliaria(gest, numProp);
-                        switch (GestionesInmobiliarias.values()[indGest]) {
-                            case VENDER:
+                        System.out.println(indGest);
+                        switch (indGest) {
+                            case 1:
                                 juego.vender(opInmobiliaria.getNumPropiedad());
                                 break;
-                            case HIPOTECAR:
+                            case 2:
                                 juego.hipotecar(opInmobiliaria.getNumPropiedad());
                                 break;
-                            case CANCELAR_HIPOTECA:
+                            case 3:
                                 juego.cancelarHipoteca(opInmobiliaria.getNumPropiedad());
                                 break;
-                            case CONSTRUIR_CASA:
+                            case 4:
                                 juego.construirCasa(opInmobiliaria.getNumPropiedad());
                                 break;
-                            case CONSTRUIR_HOTEL:
+                            case 5:
                                 juego.construirHotel(opInmobiliaria.getNumPropiedad());
                                 break;
-                            case TERMINAR:
+                            case 0:
                                 juego.siguientePasoCompletado(operacion);
                                 break;
                         }
-                        //juego.siguientePasoCompletado(operacion);
                         break;
                     case SALIR_CARCEL:
                         switch (vista.salirCarcel()) {
