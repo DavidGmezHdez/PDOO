@@ -38,27 +38,14 @@ public class TituloPropiedad {
     
     boolean cancelarHipoteca(Jugador jugador){
         boolean resultado = false;
-        if (this.hipotecado){
-            if(this.esEsteElPropietario(jugador)){
-                this.propietario.paga(this.getImporteCancelarHipoteca());
-                this.hipotecado = false;
-                resultado = true;
-            }
+        if (this.hipotecado && this.esEsteElPropietario(jugador)){
+            this.propietario.paga(this.getImporteCancelarHipoteca());
+            this.hipotecado = false;
+            resultado = true;
+            
         }
         return resultado;
     }
-    /*
-    boolean cancelarHipoteca(Jugador jugador){
-        if(this.hipotecado && this.esEsteElPropietario(jugador)){
-            jugador.paga(this.getImporteCancelarHipoteca());
-            this.hipotecado = false;
-            return true;
-        }
-        else
-            return false;
-    }
-    */
-    
     
     int cantidadCasasHoteles(){
         return this.getNumCasas() + this.getNumHoteles();
@@ -96,30 +83,6 @@ public class TituloPropiedad {
         }
         return resultado;
     }
-   
-
-  
-   /* 
-    boolean construirCasa(Jugador jugador){
-        boolean resultado = false;
-        if(this.esEsteElPropietario(jugador)){
-            jugador.paga(this.precioEdificar);
-            this.numCasas++;
-            resultado = true;
-        }
-        return resultado;
-    }
-    
-    boolean construirHotel(Jugador jugador){
-        boolean resultado = false;
-        if(this.esEsteElPropietario(jugador)){
-            jugador.paga(this.precioEdificar);
-            this.numHoteles++;
-            resultado = true;
-        }
-        return resultado;
-    }*/
-    
     
     boolean derruirCasas(int n,Jugador jugador){
         if(this.esEsteElPropietario(jugador) && this.getNumCasas() >= n){
