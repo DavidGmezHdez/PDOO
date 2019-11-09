@@ -24,7 +24,7 @@ module Civitas
       @gestor_estados = GestorEstados.new
       @estado = @gestor_estados.estado_inicial
       
-      @mazo = MazoSorpresas.new(false)
+      @mazo = MazoSorpresas.new(false)      
       @tablero = Tablero.new(15)
       
       inicializar_mazo_sorpresas(@tablero)
@@ -138,6 +138,7 @@ module Civitas
     
     
     def inicializar_tablero(mazo)
+      
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 75, 12, 350, 400)))
       @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 50, 10, 550, 250)))
