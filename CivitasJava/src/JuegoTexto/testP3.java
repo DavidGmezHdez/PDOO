@@ -14,7 +14,7 @@ public class testP3 {
         nombres.add("Pepe");
         nombres.add("Carla");
         
-        dado.setDebug(false);
+        dado.setDebug(true);
         System.out.println("Debug: " + dado.isDebug());
         
         CivitasJuego civitas = new CivitasJuego(nombres);
