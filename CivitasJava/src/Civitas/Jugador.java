@@ -57,7 +57,8 @@ public class Jugador implements Comparable<Jugador> {
             if(puedoGastar){
                 result = propiedad.cancelarHipoteca(this);
                 if(result){
-                    Diario.getInstance().ocurreEvento("El jugador " + nombre + " cancela la hipoteca de la propiedad  " + ip);
+                    Diario.getInstance().ocurreEvento("El jugador " + nombre + " cancela la hipoteca de la propiedad  " 
+                            + this.propiedades.get(ip));
                 }
             }
         }

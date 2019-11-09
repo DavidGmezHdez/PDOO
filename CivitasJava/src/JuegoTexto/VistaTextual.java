@@ -94,8 +94,10 @@ class VistaTextual {
         this.iGestion = this.menu("¿Qué gestion inmobiliaria deseas hacer?", nombresGestion);
         switch (this.iGestion){
             case 1:
-                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++)
-                    nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                for(int i=0;i<this.juegoModel.getJugadorActual().getPropiedades().size();i++){
+                    if(!nombresPropiedades.contains(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre()))
+                        nombresPropiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+                }
                 if(nombresPropiedades.isEmpty()){
                     System.out.println("No puedes vender ninguna propiedad");
                     this.iPropiedad = 0;
