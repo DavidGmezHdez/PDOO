@@ -89,7 +89,7 @@ public class Casilla {
         switch (this.tipo) {
             case CALLE:
                 recibeJugador_calle(iactual, todos);
-                break;
+                //break;
             case IMPUESTO:
                 recibeJugador_impuesto(iactual, todos);
                 break;
