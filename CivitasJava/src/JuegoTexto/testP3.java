@@ -1,12 +1,10 @@
 package JuegoTexto;
 
 import Civitas.CivitasJuego;
-import Civitas.Dado;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class testP3 {
-    private static Dado dado = Dado.getInstance();
     private static final Scanner in = new Scanner (System.in);
     
     private static ArrayList<String> getNombreJugadores(){

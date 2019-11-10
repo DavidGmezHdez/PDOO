@@ -131,8 +131,6 @@ module Civitas
         valor_actual = @valor * (todos.size-1)
         valor_otros = @valor * -1
         
-        
-        j=0
         for i in todos
           if i==todos[actual]
             i.modificar_saldo(valor_actual)

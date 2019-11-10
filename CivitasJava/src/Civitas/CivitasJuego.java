@@ -153,24 +153,24 @@ public class CivitasJuego {
     private void inicializarTablero(MazoSorpresas mazo){
         this.tablero = new Tablero(15);
 
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Willyrex", 625, 75, 12, 350, 400)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Willyrex", 625, (float)0.70, 12, 350, 400)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Guerrero", 700, 50, 10, 550, 250)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Guerrero", 700, (float)0.50, 10, 550, 250)));
         this.tablero.añadeJuez();
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Picaporte", 740, 55, 19, 300, 575)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Picaporte", 740, (float)0.55, 19, 300, 575)));
         this.tablero.añadeCasilla(new Casilla("Parking: Coche Seguro, Precio !Barato"));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Petunia", 925, 90, 17, 875, 600)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Petunia", 925, (float)0.40, 17, 875, 600)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Ruby", 500, 95, 14, 175, 275)));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Focus", 830, 100, 16, 675, 500)));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Motorola", 777, 85, 15, 750, 470)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Ruby", 500, (float)0.95, 14, 175, 275)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Focus", 830, 1, 16, 675, 500)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Motorola", 777, (float)0.70, 15, 750, 470)));
         this.tablero.añadeCasilla(new Casilla("Impuesto",500));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Rengar", 900, 80, 12, 200, 450)));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Potter", 675, 60, 20, 475, 750)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Rengar", 900, (float)0.80, 12, 200, 450)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Potter", 675, (float)0.2, 20, 475, 750)));
         this.tablero.añadeCasilla(new Casilla(mazo,"Sorpresa"));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Jesucristo", 1000, 60, 11, 250, 325)));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Giorgio", 890, 65, 13, 1000, 300)));
-        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Fideo", 550, 80, 15, 600, 750)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Jesucristo", 1000, (float)0.9, 11, 250, 325)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Giorgio", 890, (float)0.3, 13, 1000, 300)));
+        this.tablero.añadeCasilla(new Casilla(new TituloPropiedad("Calle Fideo", 550, (float)0.65, 15, 600, 750)));
     }
     
     
