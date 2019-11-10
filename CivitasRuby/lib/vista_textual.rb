@@ -88,34 +88,18 @@ module Civitas
         case @i_gestion
           when 1
             for i in @juego_model.get_jugador_actual.propiedades
-              if !nombres_propiedades.include?(i.nombre)
-                nombres_propiedades << i.nombre
-              end
+              nombres_propiedades << i.nombre
             end
-            
-          if nombres_propiedades.empty?
-            puts "No puedes vender ningun propiedad \n"
-            @i_propiedad = 0
-          else
             @i_propiedad = menu("¿Qué propiedad deseas vender?",nombres_propiedades)
             @juego_model.vender(@i_propiedad)
-          end
-          
           when 2
             for x in @juego_model.get_jugador_actual.propiedades
               if x.hipotecado == false && !nombres_propiedades.include?(x.nombre)
                 nombres_propiedades << x.nombre
               end
             end
-            
-          if nombres_propiedades.empty?
-            puts "No puedes hipotecar ninguna propiedad \n"
-            @i_propiedad = 0
-          else
             @i_propiedad = menu("¿Qué propiedad deseas hipotecar?",nombres_propiedades)
             @juego_model.hipotecar(@i_propiedad)
-          end
-          
           when 3
             for y in @juego_model.get_jugador_actual.propiedades
               if y.hipotecado == true && !nombres_propiedades.include?(y.nombre)
@@ -126,8 +110,8 @@ module Civitas
               puts "No puedes cancelar ninguna hipoteca \n"
               @i_propiedad = 0
             else
-              @i_propiedad = menu("¿Qué propiedad deseas cancelar hipotecar?",nombres_propiedades)
-              @juego_model.cancelar_hipoteca(@i_propiedad)
+            @i_propiedad = menu("¿Qué propiedad deseas cancelar hipotecar?",nombres_propiedades)
+            @juego_model.cancelar_hipoteca(@i_propiedad)
             end
 
           when 4
@@ -138,15 +122,8 @@ module Civitas
               end
               j = j+1
             end
-            
-          if nombres_propiedades.empty?
-            puts "No puedes construir ninguna casa \n"
-            @i_propiedad = 0
-          else
             @i_propiedad = menu("¿Qué propiedad deseas construir casa?",nombres_propiedades)
             @juego_model.construir_casa(@i_propiedad)
-          end
-          
           when 5
             j=0
             for w in @juego_model.get_jugador_actual.propiedades

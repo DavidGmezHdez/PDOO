@@ -31,7 +31,7 @@ module Civitas
       inicializar_tablero(@mazo)
       inicializar_mazo_sorpresas(@tablero)
       
-      @@dado.debug = false
+      @@dado.debug = true
       
     end
     
@@ -140,24 +140,24 @@ module Civitas
     
     
     def inicializar_tablero(mazo)
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 0.70, 12, 350, 400)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 75, 12, 350, 400)))
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 0.50, 10, 550, 250)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 50, 10, 550, 250)))
       @tablero.añade_juez
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Picaporte", 740, 0.55, 19, 300, 575)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Picaporte", 740, 55, 19, 300, 575)))
       @tablero.añade_casilla(Casilla.new_nombre("Parking: Coche Seguro, Precio !Barato"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Petunia", 925, 0.40, 17, 875, 600)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Petunia", 925, 90, 17, 875, 600)))
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Ruby", 500, 0.95, 14, 175, 275)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Focus", 830, 1, 16, 675, 500)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Motorola", 777, 0.70, 15, 750, 470)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Ruby", 500, 95, 14, 175, 275)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Focus", 830, 100, 16, 675, 500)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Motorola", 777, 85, 15, 750, 470)))
       @tablero.añade_casilla(Casilla.new_cantidad(500, "Impuesto"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Rengar", 900, 0.80, 12, 200, 450)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Potter", 675, 0.20, 20, 475, 750)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Rengar", 900, 80, 12, 200, 450)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Potter", 675, 60, 20, 475, 750)))
       @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Jesucristo", 1000, 0.90, 11, 250, 325)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Giorgio", 890, 0.30, 13, 1000, 300)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Fideo", 550, 0.65, 15, 600, 750)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Jesucristo", 1000, 60, 11, 250, 325)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Giorgio", 890, 65, 13, 1000, 300)))
+      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Fideo", 550, 80, 15, 600, 750)))
     end
     
     

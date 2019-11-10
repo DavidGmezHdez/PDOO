@@ -239,7 +239,7 @@ module Civitas
       else 
         @num_casilla_actual = num_casilla
         @puede_comprar = false
-        Diario.instance.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla.to_s + "\n" )
+        Diario.instance.ocurre_evento("Jugador " + @nombre + " moviendose a casilla " + num_casilla.to_s )
         return true
       end
     end
@@ -392,7 +392,7 @@ module Civitas
     
     def to_s
       "Jugador: { \n Nombre: #{@nombre} Encarcelado: #{@encarcelado} 
- Propiedades: #{@propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
+ Propiedades: #{get_propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
  Casilla actual: #{@num_casilla_actual} \n Salvoconducto: #{@salvoconducto} \n}"
     end
     
