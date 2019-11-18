@@ -6,8 +6,8 @@ require_relative 'tablero'
 require_relative 'jugador'
 require_relative 'diario'
 
-module Civitas
-  class Sorpresa
+module Civitas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  class CasillaSorpresa < Casilla
     
     def initialize(texto, tablero, valor, mazo, tipo)
       @texto = texto
