@@ -32,7 +32,7 @@ public class TituloPropiedad {
     
     
     void actualizaPropietarioPorConversion(Jugador jugador){
-    
+        this.propietario = jugador;
     }
     
     

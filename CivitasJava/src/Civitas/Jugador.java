@@ -12,7 +12,7 @@ public class Jugador implements Comparable<Jugador> {
     private static float SaldoInicial = 7500;
     
     
-    private String nombre;
+    protected String nombre;
     private int numCasillaActual;
     private boolean puedeComprar;
     private float saldo; 
@@ -176,7 +176,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
 
-    private static int getCasasMax() {
+    protected static int getCasasMax() {
         return CasasMax;
     }
 
@@ -186,7 +186,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
 
-    private static int getHotelesMax() {
+    protected static int getHotelesMax() {
         return HotelesMax;
     }
     
@@ -306,7 +306,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    private void perderSalvoConducto(){
+    void perderSalvoConducto(){
         this.salvoconducto.usada();
         this.salvoconducto = null;
     }
@@ -338,7 +338,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    private boolean puedoGastar(float precio){
+    protected boolean puedoGastar(float precio){
         if(this.encarcelado)
             return false;
         else
