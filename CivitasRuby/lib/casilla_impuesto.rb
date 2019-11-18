@@ -1,16 +1,21 @@
 # encoding:utf-8
-
-class CasillaImpuesto < Casilla
-  def initialize(nombre,cantidad)
-    @nombre = super(nombre)
-    @cantidad = cantidad
-  end
-  
-  def recibe_jugador_impuesto(iactual,todos)
-    if(super.jugador_correcto(iactual,todos))
-        super.informe(iactual,todos)
-        todos[iactual].paga_impuesto(@importe)
+module Civitas
+  class CasillaImpuesto < Casilla
+    def initialize(nombre,cantidad)
+      super(nombre)
+      @cantidad = cantidad
     end
-  end 
-  
+
+    def recibe_jugador(iactual,todos)
+      if(super.jugador_correcto(iactual,todos))
+          super.informe(iactual,todos)
+          todos[iactual].paga_impuesto(@importe)
+      end
+    end
+
+      def to_s
+        "Casilla { \n Nombre: #{@nombre} \n Valor: #{@cantidad} \n}"
+      end
+
+  end
 end

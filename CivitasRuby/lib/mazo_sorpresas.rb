@@ -1,6 +1,13 @@
 # encoding:utf-8
 
 require_relative 'sorpresa'
+require_relative 'sorpresa_carcel'
+require_relative 'sorpresa_ir_a_casilla'
+require_relative 'sorpresa_pagar_cobrar'
+require_relative 'sorpresa_por_casa_hotel'
+require_relative 'sorpresa_por_jugador'
+require_relative 'sorpresa_salir_carcel'
+
 require_relative 'diario'
 
 module Civitas

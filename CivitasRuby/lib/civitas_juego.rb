@@ -6,8 +6,8 @@ require_relative 'estados_juego'
 require_relative 'gestor_estados'
 require_relative 'tablero'
 require_relative 'mazo_sorpresas'
-require_relative 'tipo_sorpresa'
-require_relative 'casilla'
+
+
 
 module Civitas
   class CivitasJuego
@@ -125,39 +125,38 @@ module Civitas
     
     
     def inicializar_mazo_sorpresas(tablero)
-      @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PAGARCOBRAR, -200,"Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros"))
-      @mazo.al_mazo(Sorpresa.new_evitar_carcel(TipoSorpresa::SALIRCARCEL, @mazo))
-      @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORCASAHOTEL, 300,"Gracias a la burbuja del alquiler, la gente compra más casas y hay más turistas en hoteles, ganas 300 euros."))
-      @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORJUGADOR, 200,"Pides a la gente que te de dinero para comprar un regalo en común, pero acabas quedándotelo tu para ir a Pedro"))
-      @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PAGARCOBRAR, 500,"Recibes un sobre con la letra B escrita, recibes 500 euros"))
-      @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORJUGADOR, -50,"Dijiste que invitarías a chupitos pero no lo hiciste, pagas 50 euros a cada uno"))
-      @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRCASILLA, tablero, 10,"Pides un Uber que te lleva la casilla mitad del tablero"))
-      @mazo.al_mazo(Sorpresa.new_a_carcel(TipoSorpresa::IRCARCEL,tablero))
-      @mazo.al_mazo(Sorpresa.new_otra_casilla(TipoSorpresa::IRCASILLA, tablero, 5,"Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río"))
-      @mazo.al_mazo(Sorpresa.new_sorpresas(TipoSorpresa::PORCASAHOTEL, -500,"Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros"))
-      
+      @mazo.al_mazo(SorpresaPagarCobrar.new("Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros",-200))
+      @mazo.al_mazo(SorpresaSalirCarcel.new(@mazo))
+      @mazo.al_mazo(SorpresaPorCasaHotel.new("Gracias a la burbuja del alquiler, la gente compra más casas y hay más turistas en hoteles, ganas 300 euros.",300))
+      @mazo.al_mazo(SorpresaPorJugador.new("Pides a la gente que te de dinero para comprar un regalo en común, pero acabas quedándotelo tu para ir a Pedro",200))
+      @mazo.al_mazo(SorpresaPagarCobrar.new("Recibes un sobre con la letra B escrita, recibes 500 euros",500))
+      @mazo.al_mazo(SorpresaPorJugador.new("Dijiste que invitarías a chupitos pero no lo hiciste, pagas 50 euros a cada uno",-50))
+      @mazo.al_mazo(SorpresaIrACasilla.new("Pides un Uber que te lleva la casilla mitad del tablero",tablero,10))
+      @mazo.al_mazo(SorpresaCarcel.new(tablero))
+      @mazo.al_mazo(SorpresaIrACasilla.new("Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río",tablero, 5))
+      @mazo.al_mazo(SorpresaPorCasaHotel.new("Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros",-500))
     end
     
     
     def inicializar_tablero(mazo)
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Willyrex", 625, 0.70, 12, 350, 400)))
-      @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Guerrero", 700, 0.50, 10, 550, 250)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Willyrex", 625, 0.70, 12, 350, 400)))
+      @tablero.añade_casilla(CasillaSorpresa.new("Sorpresa",mazo))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Guerrero", 700, 0.50, 10, 550, 250)))
       @tablero.añade_juez
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Picaporte", 740, 0.55, 19, 300, 575)))
-      @tablero.añade_casilla(Casilla.new_nombre("Parking: Coche Seguro, Precio !Barato"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Petunia", 925, 0.40, 17, 875, 600)))
-      @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Ruby", 500, 0.95, 14, 175, 275)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Focus", 830, 1, 16, 675, 500)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Motorola", 777, 0.70, 15, 750, 470)))
-      @tablero.añade_casilla(Casilla.new_cantidad(500, "Impuesto"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Rengar", 900, 0.80, 12, 200, 450)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Potter", 675, 0.20, 20, 475, 750)))
-      @tablero.añade_casilla(Casilla.new_mazo(mazo, "Sorpresa"))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Jesucristo", 1000, 0.90, 11, 250, 325)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Giorgio", 890, 0.30, 13, 1000, 300)))
-      @tablero.añade_casilla(Casilla.new_titulo(TituloPropiedad.new("Calle Fideo", 550, 0.65, 15, 600, 750)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Picaporte", 740, 0.55, 19, 300, 575)))
+      @tablero.añade_casilla(Casilla.new("Parking: Coche Seguro, Precio !Barato"))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Petunia", 925, 0.40, 17, 875, 600)))
+      @tablero.añade_casilla(CasillaSorpresa.new(mazo, "Sorpresa"))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Ruby", 500, 0.95, 14, 175, 275)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Focus", 830, 1, 16, 675, 500)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Motorola", 777, 0.70, 15, 750, 470)))
+      @tablero.añade_casilla(CasillaImpuesto.new("Impuesto",500))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Rengar", 900, 0.80, 12, 200, 450)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Potter", 675, 0.20, 20, 475, 750)))
+      @tablero.añade_casilla(CasillaSorpresa.new("Sorpesa",mazo))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Jesucristo", 1000, 0.90, 11, 250, 325)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Giorgio", 890, 0.30, 13, 1000, 300)))
+      @tablero.añade_casilla(CasillaCalle.new(TituloPropiedad.new("Calle Fideo", 550, 0.65, 15, 600, 750)))
     end
     
     
