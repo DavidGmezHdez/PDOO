@@ -1,5 +1,4 @@
 # encoding:utf-8
-
 require_relative 'titulo_propiedad'
 require_relative 'sorpresa'
 require_relative 'mazo_sorpresas'

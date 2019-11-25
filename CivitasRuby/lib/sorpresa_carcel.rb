@@ -1,5 +1,5 @@
 # encoding:utf-8
-require_relative 'sorpresa'
+require_relative 'sorpresa.rb'
 module Civitas
   class SorpresaCarcel < Sorpresa
     def initialize(tablero)
@@ -14,14 +14,14 @@ module Civitas
     end
     
     def aplicar_a_jugador(actual, todos)      
-      if(super.jugador_correcto(actual,todos))
+      if jugador_correcto(actual,todos)
         informe(actual,todos)
         todos[actual].encarcelar(@tablero.num_casilla_carcel);
       end
     end
     
     def to_s
-      "Sorpresa: { \n Texto: #{@texto}  \n Tipo: #{@tipo}   \n Valor: #{@valor} }"
+      "Sorpresa: { \n Texto: #{@texto}  \n Tipo: IrACarcel}"
     end
   end
 end

@@ -45,6 +45,7 @@ module Civitas
       casilla = @tablero.get_casilla(posicion_nueva)
       contabilizar_pasos_por_salida(jugador_actual)
       jugador_actual.mover_a_casilla(posicion_nueva)
+      #puts casilla.to_s
       casilla.recibe_jugador(@indice_jugador_actual, @jugadores)
       contabilizar_pasos_por_salida(jugador_actual)
     end

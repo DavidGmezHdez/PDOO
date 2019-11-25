@@ -1,4 +1,4 @@
-# encoding:utf-8s
+# encoding:utf-8
 require_relative 'sorpresa'
 module Civitas
   class SorpresaIrACasilla < Sorpresa
@@ -17,7 +17,7 @@ module Civitas
     
     def aplicar_a_jugador(actual, todos)
       casilla_actual = todos[actual].num_casilla_actual
-      if(super.jugador_correcto(actual,todos))
+      if jugador_correcto(actual,todos)
         informe(actual,todos)
         tirada = @tablero.calcular_tirada(casilla_actual,@valor)
         nueva_posicion = @tablero.nueva_posicion(casilla_actual,tirada)

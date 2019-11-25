@@ -363,7 +363,7 @@ module Civitas
     end
     
     
-    def tiene_salvo_conducto
+    def tiene_salvoconducto
       return @salvoconducto != nil
     end
     
@@ -385,7 +385,7 @@ module Civitas
     
     def get_propiedades
       for i in @propiedades
-        puts i.to_s + "\n"
+        i.to_s + "\n"
       end
     end
     

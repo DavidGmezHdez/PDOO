@@ -15,7 +15,7 @@ module Civitas
     def aplicar_a_jugador(actual, todos)
       num_propiedades = todos[actual].cantidad_casas_hoteles
       nuevo_valor = @valor*num_propiedades
-      if(super.jugador_correcto(actual,todos))
+      if jugador_correcto(actual,todos)
         informe(actual,todos)
         todos[actual].modificar_saldo(nuevo_valor)
       end

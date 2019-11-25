@@ -1,4 +1,4 @@
-# encoding:utf-8
+require_relative 'casilla'
 module Civitas
   class CasillaImpuesto < Casilla
     def initialize(nombre,cantidad)
@@ -7,8 +7,8 @@ module Civitas
     end
 
     def recibe_jugador(iactual,todos)
-      if(super.jugador_correcto(iactual,todos))
-          super.informe(iactual,todos)
+      if jugador_correcto(iactual,todos)
+          informe(iactual,todos)
           todos[iactual].paga_impuesto(@importe)
       end
     end
