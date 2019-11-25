@@ -14,12 +14,12 @@ module Civitas
     
     
     def aplicar_a_jugador(actual, todos)
-      if(super.jugador_correcto(actual,todos))
+      if jugador_correcto(actual,todos)
         informe(actual,todos)
         nadie_salvo_conducto=0
         
         for i in todos
-          if i.tiene_salvo_conducto
+          if i.tiene_salvoconducto
             nadie_salvo_conducto = nadie_salvo_conducto+1
           end
         end

@@ -13,7 +13,7 @@ module Civitas
     end
     
     def aplicar_a_jugador(actual, todos)
-      if(super.jugador_correcto(actual,todos))
+      if jugador_correcto(actual,todos)
         informe(actual,todos)
         valor_actual = @valor * (todos.size-1)
         valor_otros = @valor * -1

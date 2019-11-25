@@ -1,3 +1,4 @@
+require_relative 'casilla'
 module Civitas
   class CasillaSorpresa < Casilla
     def initialize(nombre,mazo)
@@ -6,9 +7,9 @@ module Civitas
     end
     
     def recibe_jugador(iactual,todos)
-      if super.jugador_correcto(iactual,todos)
+      if jugador_correcto(iactual,todos)
         sorpresa = @mazo.siguiente
-        super.informe(iactual,todos)
+        informe(iactual,todos)
         sorpresa.aplicar_a_jugador(iactual,todos)
       end
     end
