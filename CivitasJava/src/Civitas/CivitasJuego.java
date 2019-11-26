@@ -128,25 +128,25 @@ public class CivitasJuego {
     
     
     private void inicializarMazoSorpresas(Tablero tablero){
-        mazo.alMazo(new Sorpresa (TipoSorpresa.IRCARCEL,tablero));
+        mazo.alMazo(new SorpresaCarcel (tablero));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.IRCASILLA, tablero,10,"Pides un Uber que te lleva la casilla mitad del tablero"));
+        mazo.alMazo(new SorpresaIrACasilla (tablero,10,"Pides un Uber que te lleva la casilla mitad del tablero"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.IRCASILLA,tablero,5,"Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río"));
+        mazo.alMazo(new SorpresaIrACasilla (tablero,5,"Alquilas una bici amarilla que te lleva a la casilla 5, luego la tiras al río"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PORJUGADOR,200,"Pides a la gente que te de dinero para comprar un regalo en común, pero acabas quedándotelo tu para ir a Pedro"));
+        mazo.alMazo(new SorpresaPorJugador (200,"Pides a la gente que te de dinero para comprar un regalo en común, pero acabas quedándotelo tu para ir a Pedro"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PORJUGADOR, -50, "Dijiste que invitarías a chupitos pero no lo hiciste, pagas 50 euros a cada uno"));
+        mazo.alMazo(new SorpresaPorJugador (-50, "Dijiste que invitarías a chupitos pero no lo hiciste, pagas 50 euros a cada uno"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PAGARCOBRAR,500,"Recibes un sobre con la letra B escrita, recibes 500 euros"));
+        mazo.alMazo(new SorpresaPagarCobrar (500,"Recibes un sobre con la letra B escrita, recibes 500 euros"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PAGARCOBRAR,-200,"Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros"));
+        mazo.alMazo(new SorpresaPagarCobrar (-200,"Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PORCASAHOTEL,300,"Gracias a la burbuja del alquiler, la gente compra más casas y hay más turistas en hoteles, ganas 300 euros."));
+        mazo.alMazo(new SorpresaPorCasaHotel (300,"Gracias a la burbuja del alquiler, la gente compra más casas y hay más turistas en hoteles, ganas 300 euros."));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.PORCASAHOTEL, -500, "Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros"));
+        mazo.alMazo(new SorpresaPorCasaHotel (-500, "Mala suerte, Hacienda te ha pillado saltándote la declaración de bienes, debes 500 euros"));
 
-        mazo.alMazo(new Sorpresa (TipoSorpresa.SALIRCARCEL,mazo));
+        mazo.alMazo(new SorpresaSalirCarcel (mazo));
 
     }
     

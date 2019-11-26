@@ -1,3 +1,4 @@
+# encoding:utf-8
 require_relative 'casilla'
 module Civitas
   class CasillaSorpresa < Casilla

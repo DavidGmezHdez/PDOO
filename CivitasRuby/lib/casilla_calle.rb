@@ -1,5 +1,5 @@
 # encoding:utf-8
-require_relative 'casilla.rb'
+require_relative 'casilla'
 module Civitas
   class CasillaCalle < Casilla
     def initialize (titulo)
@@ -10,8 +10,8 @@ module Civitas
     attr_reader :titulo
 
     def recibe_jugador(iactual,todos)
-      puts "aqui calle"
-      puts super
+      #puts "aqui calle"
+      #puts super
       if jugador_correcto(iactual, todos)
           informe(iactual,todos)
           jugador = todos[iactual];
