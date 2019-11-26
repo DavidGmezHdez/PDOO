@@ -29,7 +29,7 @@ public class testP3 {
         
         CivitasJuego civitas = new CivitasJuego(nombres);
         VistaTextual vista = new VistaTextual();
-        civitas.setDebugDado(false);
+        civitas.setDebugDado(true);
         
         Controlador controlador = new Controlador(civitas,vista);
         controlador.juega();

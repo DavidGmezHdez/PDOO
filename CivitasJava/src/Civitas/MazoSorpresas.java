@@ -76,5 +76,9 @@ public class MazoSorpresas {
         else
             Diario.getInstance().ocurreEvento("Carta no habilitada");
     }
+    
+    void setDebug(boolean deb){
+        this.debug = deb;
+    }
 
 }

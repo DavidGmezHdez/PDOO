@@ -20,7 +20,7 @@ public class Jugador implements Comparable<Jugador> {
     
     
     private ArrayList<TituloPropiedad> propiedades;
-    private Sorpresa salvoconducto;
+    private SorpresaSalirCarcel salvoconducto;
     
 
     Jugador(String nom){
@@ -38,9 +38,16 @@ public class Jugador implements Comparable<Jugador> {
         this.numCasillaActual = jug.numCasillaActual;
         this.puedeComprar = jug.puedeComprar;
         this.encarcelado = jug.encarcelado;
-        for(int i=0;i<jug.propiedades.size();i++){
-            this.propiedades.add(jug.propiedades.get(i));
+        
+        if(jug.propiedades.isEmpty()){
+            this.propiedades = new ArrayList<>();
         }
+        else{
+            for(int i=0;i<jug.propiedades.size();i++){
+                this.propiedades.add(jug.propiedades.get(i));
+            }        
+        }
+        
         this.saldo = jug.saldo;
     }
     
@@ -268,7 +275,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    boolean obtenerSalvoconducto(Sorpresa sorpresa){
+    boolean obtenerSalvoconducto(SorpresaSalirCarcel sorpresa){
         if(this.encarcelado)
             return false;
         else{

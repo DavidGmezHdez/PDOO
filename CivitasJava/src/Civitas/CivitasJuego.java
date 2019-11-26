@@ -25,7 +25,7 @@ public class CivitasJuego {
         estado = gestorEstados.estadoInicial();        
         
         this.indiceJugadorActual = dado.quienEmpieza(jugadores.size());
-        mazo = new MazoSorpresas();
+        mazo = new MazoSorpresas(true);
      
         this.inicializarTablero(this.mazo);
         this.inicializarMazoSorpresas(this.tablero);
@@ -111,6 +111,10 @@ public class CivitasJuego {
         dado.setDebug(deb);
     }
     
+    public void setDebugMazo(boolean deb){
+        dado.setDebug(deb);
+    }
+    
     
     public boolean hipotecar(int ip){
         return this.jugadores.get(this.indiceJugadorActual).hipotecar(ip);
@@ -128,6 +132,9 @@ public class CivitasJuego {
     
     
     private void inicializarMazoSorpresas(Tablero tablero){
+        
+        mazo.alMazo(new SorpresaEspeculador(5000,"¡Te conviertes en especulador!"));
+        
         mazo.alMazo(new SorpresaCarcel (tablero));
 
         mazo.alMazo(new SorpresaIrACasilla (tablero,10,"Pides un Uber que te lleva la casilla mitad del tablero"));
