@@ -25,7 +25,7 @@ public class CivitasJuego {
         estado = gestorEstados.estadoInicial();        
         
         this.indiceJugadorActual = dado.quienEmpieza(jugadores.size());
-        mazo = new MazoSorpresas(true);
+        mazo = new MazoSorpresas();
      
         this.inicializarTablero(this.mazo);
         this.inicializarMazoSorpresas(this.tablero);
@@ -133,7 +133,7 @@ public class CivitasJuego {
     
     private void inicializarMazoSorpresas(Tablero tablero){
         
-        mazo.alMazo(new SorpresaEspeculador(5000,"¡Te conviertes en especulador!"));
+        mazo.alMazo(new SorpresaEspeculador(100,"¡Te conviertes en especulador!"));
         
         mazo.alMazo(new SorpresaCarcel (tablero));
 

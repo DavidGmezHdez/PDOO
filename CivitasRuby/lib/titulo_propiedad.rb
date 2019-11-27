@@ -25,7 +25,7 @@ module Civitas
     
     
     def actualiza_propietario_por_conversion(jugador)
-      raise NotImplementedError
+      @propietario = jugador
     end
     
     
@@ -40,15 +40,6 @@ module Civitas
       end
       return resultado
     end
-#    def cancelar_hipoteca(jugador)
-#       if @hipotecado && es_este_el_propietario(jugador)
-#         jugador.paga(get_importe_cancelar_hipoteca)
-#         @hipotecado = false
-#         return true
-#       else
-#         return false
-#       end 
-#    end
     
     
     def cantidad_casas_hoteles

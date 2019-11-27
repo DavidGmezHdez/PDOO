@@ -39,6 +39,10 @@ module Civitas
         jugador.propiedades)
     end
     
+    def self.nuevo_especulador(jugador)
+      self.copia(jugador)
+    end
+    
     
     def cancelar_hipoteca(ip)
       result = false

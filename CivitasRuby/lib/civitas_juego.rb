@@ -45,7 +45,6 @@ module Civitas
       casilla = @tablero.get_casilla(posicion_nueva)
       contabilizar_pasos_por_salida(jugador_actual)
       jugador_actual.mover_a_casilla(posicion_nueva)
-      #puts casilla.to_s
       casilla.recibe_jugador(@indice_jugador_actual, @jugadores)
       contabilizar_pasos_por_salida(jugador_actual)
     end
@@ -126,6 +125,7 @@ module Civitas
     
     
     def inicializar_mazo_sorpresas(tablero)
+      @mazo.al_mazo(SorpresaEspeculador.new("¡Te conviertes en especulador", 100))
       @mazo.al_mazo(SorpresaPagarCobrar.new("Te vas a la ruleta, crees ganar pero el ruso de al lado te hace la jugada, pierdes 200 euros",-200))
       @mazo.al_mazo(SorpresaSalirCarcel.new(@mazo))
       @mazo.al_mazo(SorpresaPorCasaHotel.new("Gracias a la burbuja del alquiler, la gente compra más casas y hay más turistas en hoteles, ganas 300 euros.",300))

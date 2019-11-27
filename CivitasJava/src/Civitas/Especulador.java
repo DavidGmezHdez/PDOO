@@ -7,7 +7,6 @@ public class Especulador extends Jugador {
     Especulador(Jugador jugador,int fianza){
         super(jugador);
         this.fianza = fianza;
-        //System.out.println(this.toString());
         for(int i=0;i<super.getPropiedades().size();i++){
             super.getPropiedades().get(i).actualizaPropietarioPorConversion(this);
         }
