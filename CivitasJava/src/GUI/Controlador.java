@@ -1,29 +1,17 @@
-package JuegoTexto;
+package GUI;
 
 import Civitas.CivitasJuego;
-import Civitas.Diario;
-import Civitas.OperacionesJuego;
-import Civitas.Respuestas;
-import Civitas.SalidasCarcel;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import Civitas.Casilla;
-import Civitas.GestionesInmobiliarias;
-import Civitas.Jugador;
-import Civitas.TituloPropiedad;
-import Civitas.OperacionInmobiliaria;
 
 public class Controlador {
 
     private CivitasJuego juego;
-    private VistaTextual vista;
+    private CivitasView vista;
 
-    Controlador(CivitasJuego juego, VistaTextual vista) {
+    Controlador(CivitasJuego juego, CivitasView vista) {
         this.juego = juego;
         this.vista = vista;
     }
-
+/*
     void juega() {
         OperacionesJuego operacion;
         Respuestas resp;
@@ -94,4 +82,5 @@ public class Controlador {
             }
             juego.ranking().toString();
     }
+*/
 }

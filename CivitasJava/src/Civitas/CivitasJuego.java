@@ -3,6 +3,7 @@ package Civitas;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
+import GUI.Dado;
 
 public class CivitasJuego {
     private int indiceJugadorActual;
