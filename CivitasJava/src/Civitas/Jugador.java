@@ -2,6 +2,7 @@ package Civitas;
 
 import java.util.ArrayList;
 import java.lang.Float;
+import GUI.Dado;
 
 public class Jugador implements Comparable<Jugador> {
     protected static int CasasMax = 4;
@@ -17,6 +18,7 @@ public class Jugador implements Comparable<Jugador> {
     private boolean puedeComprar;
     private float saldo; 
     protected boolean encarcelado;
+    protected boolean especulador = false;
     
     
     private ArrayList<TituloPropiedad> propiedades;
@@ -200,12 +202,12 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    protected String getNombre() {
+    public String getNombre() {
         return nombre;
     }
     
 
-    int getNumCasillaActual() {
+    public int getNumCasillaActual() {
         return numCasillaActual;
     }
     
@@ -225,13 +227,21 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    boolean getPuedeComprar() {
+    public boolean getPuedeComprar() {
         return puedeComprar;
     }
     
 
-    protected float getSaldo() {
+    public float getSaldo() {
         return saldo;
+    }
+    
+    public SorpresaSalirCarcel getSalvoConducto(){
+        return salvoconducto;
+    }
+    
+    public boolean getEspeculador(){
+        return especulador;
     }
     
     
