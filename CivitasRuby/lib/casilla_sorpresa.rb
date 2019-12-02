@@ -9,8 +9,8 @@ module Civitas
     
     def recibe_jugador(iactual,todos)
       if jugador_correcto(iactual,todos)
+        super
         sorpresa = @mazo.siguiente
-        informe(iactual,todos)
         sorpresa.aplicar_a_jugador(iactual,todos)
       end
     end

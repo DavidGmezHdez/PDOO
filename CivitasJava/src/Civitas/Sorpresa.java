@@ -16,7 +16,7 @@ public abstract class Sorpresa {
     
     void informe(int actual, ArrayList<Jugador> todos){
         Diario.getInstance().ocurreEvento("Aplicando sorpresa: \n" + this.toString() + 
-                " al jugador " + todos.get(actual).getNombre() + "de tipo: " + this.getClass());
+                " al jugador " + todos.get(actual).getNombre() + " de tipo: " + this.getClass());
     }
     
     abstract void aplicarAJugador(int actual, ArrayList<Jugador> todos);

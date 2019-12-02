@@ -25,7 +25,7 @@ public class CivitasJuego {
         estado = gestorEstados.estadoInicial();        
         
         this.indiceJugadorActual = dado.quienEmpieza(jugadores.size());
-        mazo = new MazoSorpresas();
+        mazo = new MazoSorpresas(true);
      
         this.inicializarTablero(this.mazo);
         this.inicializarMazoSorpresas(this.tablero);

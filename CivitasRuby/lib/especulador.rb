@@ -63,19 +63,20 @@ module Civitas
     
     
     def puedo_edificar_casa(propiedad)
-      return puedo_gastar(propiedad.precio_edificar) && propiedad.num_casas < getCasas_Max * @@FACTOR_ESPECULADOR
+      return puedo_gastar(propiedad.precio_edificar) && propiedad.num_casas < Especulador::getCasas_Max * @@FACTOR_ESPECULADOR
     end
     
     def puedo_edificar_hotel(propiedad)
-      return puedo_gastar(propiedad.precio_edificar) &&
-      propiedad.num_hoteles < getHoteles_Max*@FACTOR_ESPECULADOR && propiedad.num_casas >= @@CASAS_POR_HOTEL
+      return puedo_gastar(propiedad.precio_edificar) && 
+        propiedad.num_hoteles < Especulador::getHoteles_Max * @@FACTOR_ESPECULADOR && 
+        propiedad.num_casas >= @@CASAS_POR_HOTEL
     end
     
     
     def to_s
       "Jugador: { \n Nombre: #{@nombre} \n Encarcelado: #{@encarcelado} 
-      Propiedades: #{@propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
-      Casilla actual: #{@num_casilla_actual} \n Salvoconducto: #{@salvoconducto} \n Fianza: #{@fianza} \n}"
+ Propiedades: #{@propiedades} \n Saldo: #{@saldo} \n Puede comprar: #{@puede_comprar} 
+ Casilla actual: #{@num_casilla_actual} \n Salvoconducto: #{@salvoconducto} \n Fianza: #{@fianza} \n}"
     end
     
   end
