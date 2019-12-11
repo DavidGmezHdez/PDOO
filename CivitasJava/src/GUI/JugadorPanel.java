@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import Civitas.Jugador;
+import Civitas.TituloPropiedad;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,15 +25,28 @@ public class JugadorPanel extends javax.swing.JPanel {
     
     public void setJugador(Jugador jugador){
         this.jugador = jugador;
-        this.jTextField1.setText(this.jugador.getNombre());
-        this.jTextField2.setText(Float.toString(this.jugador.getSaldo()));
-        this.jLabel1.setText(Integer.toString(this.jugador.getNumCasillaActual()));
-        this.jLabel2.setText(Boolean.toString(this.jugador.getPuedeComprar()));
-        this.jTextField3.setText(Boolean.toString(this.jugador.isEncarcelado()));
-        this.jTextField4.setText(Boolean.toString(this.jugador.getEspeculador()));
+        this.Nombre.setText(this.jugador.getNombre());
+        this.Saldo.setText(Float.toString(this.jugador.getSaldo()));
+        this.numCasillaActual.setText(Integer.toString(this.jugador.getNumCasillaActual()));
+        this.puedeComprar.setText(Boolean.toString(this.jugador.getPuedeComprar()));
+        this.Encarcelado.setText(Boolean.toString(this.jugador.isEncarcelado()));
+        this.Especulador.setText(Boolean.toString(this.jugador.getEspeculador()));
+        rellenaPropiedades(this.jugador.getPropiedades());
         this.repaint();
     }
     
+    private void rellenaPropiedades(ArrayList<TituloPropiedad> lista){
+        this.propiedades.removeAll();
+        for(TituloPropiedad t:lista){
+            PropiedadPanel vistaPropiedad = new PropiedadPanel();
+            vistaPropiedad.setPropiedad(t);
+            
+            propiedades.add(vistaPropiedad);
+            vistaPropiedad.setVisible(true);
+        }
+        repaint();
+        revalidate();
+    }
     
 
     /**
@@ -42,44 +58,44 @@ public class JugadorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        Nombre = new javax.swing.JTextField();
+        Saldo = new javax.swing.JTextField();
+        numCasillaActual = new javax.swing.JLabel();
+        puedeComprar = new javax.swing.JLabel();
+        Encarcelado = new javax.swing.JTextField();
+        Especulador = new javax.swing.JTextField();
+        propiedades = new javax.swing.JPanel();
 
-        jTextField1.setText("Nombre");
-        jTextField1.setEnabled(false);
+        Nombre.setText("Nombre");
+        Nombre.setEnabled(false);
 
-        jTextField2.setText("Saldo");
-        jTextField2.setEnabled(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Saldo.setText("Saldo");
+        Saldo.setEnabled(false);
+        Saldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                SaldoActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("numCasillaActual");
-        jLabel1.setEnabled(false);
+        numCasillaActual.setText("numCasillaActual");
+        numCasillaActual.setEnabled(false);
 
-        jLabel2.setText("puedeComprar");
-        jLabel2.setEnabled(false);
+        puedeComprar.setText("puedeComprar");
+        puedeComprar.setEnabled(false);
 
-        jTextField3.setText("Encarcelado");
-        jTextField3.setEnabled(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        Encarcelado.setText("Encarcelado");
+        Encarcelado.setEnabled(false);
+        Encarcelado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                EncarceladoActionPerformed(evt);
             }
         });
 
-        jTextField4.setText("Especulador");
-        jTextField4.setEnabled(false);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        Especulador.setText("Especulador");
+        Especulador.setEnabled(false);
+        Especulador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                EspeculadorActionPerformed(evt);
             }
         });
 
@@ -88,71 +104,58 @@ public class JugadorPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(144, 144, 144)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(232, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(27, 27, 27)))
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(propiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numCasillaActual)
+                    .addComponent(puedeComprar)
+                    .addComponent(Encarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addComponent(numCasillaActual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(puedeComprar)
+                .addGap(18, 18, 18)
+                .addComponent(Encarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(propiedades, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void SaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaldoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_SaldoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void EncarceladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EncarceladoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_EncarceladoActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void EspeculadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspeculadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_EspeculadorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField Encarcelado;
+    private javax.swing.JTextField Especulador;
+    private javax.swing.JTextField Nombre;
+    private javax.swing.JTextField Saldo;
+    private javax.swing.JLabel numCasillaActual;
+    private javax.swing.JPanel propiedades;
+    private javax.swing.JLabel puedeComprar;
     // End of variables declaration//GEN-END:variables
 }

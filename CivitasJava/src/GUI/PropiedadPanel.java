@@ -14,13 +14,16 @@ public class PropiedadPanel extends javax.swing.JPanel {
     
     public void setPropiedad(TituloPropiedad titulo){
         tituloPropiedad = titulo;
-        this.jugador = jugador;
-        this.jTextField1.setText(this.jugador.getNombre());
-        this.jTextField2.setText(Float.toString(this.jugador.getSaldo()));
-        this.jLabel1.setText(Integer.toString(this.jugador.getNumCasillaActual()));
-        this.jLabel2.setText(Boolean.toString(this.jugador.getPuedeComprar()));
-        this.jTextField3.setText(Boolean.toString(this.jugador.isEncarcelado()));
-        this.jTextField4.setText(Boolean.toString(this.jugador.getEspeculador()));
+        this.Nombre.setText(this.tituloPropiedad.getNombre());
+        this.alquilerBase.setText(Float.toString(this.tituloPropiedad.getAlquilerBase()));
+        this.factorRevalorización.setText(Float.toString(this.tituloPropiedad.getFactorRevalorización()));
+        this.hipotecaBase.setText(Float.toString(this.tituloPropiedad.getHipotecaBase()));
+        this.hipotecado.setText(Boolean.toString(this.tituloPropiedad.getHipotecado()));
+        this.numCasas.setText(Integer.toString(this.tituloPropiedad.getNumCasas()));
+        this.numHoteles.setText(Integer.toString(this.tituloPropiedad.getNumHoteles()));
+        this.precioCompra.setText(Float.toString(this.tituloPropiedad.getPrecioCompra()));
+        this.precioEdificar.setText(Float.toString(this.tituloPropiedad.getPrecioEdificar()));
+        this.propietario.setText(this.tituloPropiedad.getPropietario().getNombre());
         this.repaint();
     }
 
@@ -33,62 +36,43 @@ public class PropiedadPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        alquilerBase = new javax.swing.JLabel();
+        factorRevalorización = new javax.swing.JLabel();
+        hipotecaBase = new javax.swing.JLabel();
+        precioCompra = new javax.swing.JLabel();
+        precioEdificar = new javax.swing.JLabel();
+        propietario = new javax.swing.JLabel();
+        Nombre = new javax.swing.JTextField();
+        numCasas = new javax.swing.JTextField();
+        numHoteles = new javax.swing.JTextField();
+        hipotecado = new javax.swing.JTextField();
 
-        jLabel1.setText("nombre");
-        jLabel1.setEnabled(false);
+        alquilerBase.setText("alquilerBase");
+        alquilerBase.setEnabled(false);
+        alquilerBase.setFocusable(false);
 
-        jLabel2.setText("alquilerBase");
-        jLabel2.setEnabled(false);
+        factorRevalorización.setText("factorRevalorización");
+        factorRevalorización.setEnabled(false);
 
-        jLabel3.setText("factorInteresesHipoteca");
-        jLabel3.setEnabled(false);
+        hipotecaBase.setText("hipotecaBase");
+        hipotecaBase.setEnabled(false);
 
-        jLabel4.setText("factorRevalorización");
-        jLabel4.setEnabled(false);
+        precioCompra.setText("precioCompra");
+        precioCompra.setEnabled(false);
 
-        jLabel5.setText("hipotecaBase");
-        jLabel5.setEnabled(false);
+        precioEdificar.setText("precioEdificar");
+        precioEdificar.setEnabled(false);
 
-        jLabel6.setText("hipotecado");
-        jLabel6.setEnabled(false);
+        propietario.setText("propietario");
+        propietario.setEnabled(false);
 
-        jLabel7.setText("precioCompra");
-        jLabel7.setEnabled(false);
+        Nombre.setText("Nombre");
 
-        jLabel8.setText("precioEdificar");
-        jLabel8.setEnabled(false);
+        numCasas.setText("NumCasas");
 
-        jLabel9.setText("numCasas");
-        jLabel9.setEnabled(false);
+        numHoteles.setText("NumHoteles");
 
-        jLabel10.setText("numHoteles");
-        jLabel10.setEnabled(false);
-
-        jLabel11.setText("propietario");
-        jLabel11.setEnabled(false);
-
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
+        hipotecado.setText("Hipotecado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,84 +81,56 @@ public class PropiedadPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addComponent(hipotecado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numCasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propietario)
+                    .addComponent(precioEdificar)
+                    .addComponent(precioCompra)
+                    .addComponent(hipotecaBase)
+                    .addComponent(factorRevalorización)
+                    .addComponent(alquilerBase))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(alquilerBase)
+                .addGap(28, 28, 28)
+                .addComponent(factorRevalorización)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(hipotecaBase)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(hipotecado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(precioCompra)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(precioEdificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(numCasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(numHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
+                .addComponent(propietario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField Nombre;
+    private javax.swing.JLabel alquilerBase;
+    private javax.swing.JLabel factorRevalorización;
+    private javax.swing.JLabel hipotecaBase;
+    private javax.swing.JTextField hipotecado;
+    private javax.swing.JTextField numCasas;
+    private javax.swing.JTextField numHoteles;
+    private javax.swing.JLabel precioCompra;
+    private javax.swing.JLabel precioEdificar;
+    private javax.swing.JLabel propietario;
     // End of variables declaration//GEN-END:variables
 }

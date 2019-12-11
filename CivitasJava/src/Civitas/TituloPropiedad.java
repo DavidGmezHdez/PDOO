@@ -2,6 +2,8 @@ package Civitas;
 
 public class TituloPropiedad {
 
+
+
     private String nombre;
     private float alquilerBase;
     private static float factorInteresesHipoteca = (float) 1.1;
@@ -104,12 +106,12 @@ public class TituloPropiedad {
     }
     
     
-    float getImporteCancelarHipoteca(){
+    public float getImporteCancelarHipoteca(){
         return this.hipotecaBase * this.factorInteresesHipoteca;
     }
     
     
-    float getImporteHipoteca(){
+    public float getImporteHipoteca(){
         return this.hipotecaBase;
     }       
     
@@ -119,17 +121,17 @@ public class TituloPropiedad {
     }
 
 
-    int getNumCasas() {
+    public int getNumCasas() {
         return numCasas;
     }
     
 
-    int getNumHoteles() {
+    public int getNumHoteles() {
         return numHoteles;
     }
     
     
-    float getPrecioAlquiler() {
+    public float getPrecioAlquiler() {
         if(this.hipotecado || this.propietarioEncarcelado())
             return 0;
         else
@@ -137,12 +139,12 @@ public class TituloPropiedad {
     }
     
 
-    float getPrecioCompra() {
+    public float getPrecioCompra() {
         return precioCompra;
     }
 
     
-    float getPrecioEdificar() {
+    public float getPrecioEdificar() {
         return precioEdificar;
     }
     
@@ -153,10 +155,30 @@ public class TituloPropiedad {
     }
 
 
-    Jugador getPropietario() {
+    public Jugador getPropietario() {
         return propietario;
     }
     
+    
+    public float getAlquilerBase() {
+        return alquilerBase;
+    }
+
+    public static float getFactorInteresesHipoteca() {
+        return factorInteresesHipoteca;
+    }
+
+    public float getFactorRevalorización() {
+        return factorRevalorización;
+    }
+
+    public float getHipotecaBase() {
+        return hipotecaBase;
+    }
+
+    public boolean isHipotecado() {
+        return hipotecado;
+    }
     
     boolean hipotecar(Jugador jugador){
         boolean salida = false;
