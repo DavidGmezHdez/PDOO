@@ -27,8 +27,6 @@ public class JugadorPanel extends javax.swing.JPanel {
         this.jugador = jugador;
         this.Nombre.setText(this.jugador.getNombre());
         this.Saldo.setText(Float.toString(this.jugador.getSaldo()));
-        this.numCasillaActual.setText(Integer.toString(this.jugador.getNumCasillaActual()));
-        this.puedeComprar.setText(Boolean.toString(this.jugador.getPuedeComprar()));
         this.Encarcelado.setText(Boolean.toString(this.jugador.isEncarcelado()));
         this.Especulador.setText(Boolean.toString(this.jugador.getEspeculador()));
         rellenaPropiedades(this.jugador.getPropiedades());
@@ -58,13 +56,23 @@ public class JugadorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        encarcelado = new javax.swing.JLabel();
+        saldo = new javax.swing.JLabel();
+        especulador = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         Nombre = new javax.swing.JTextField();
         Saldo = new javax.swing.JTextField();
-        numCasillaActual = new javax.swing.JLabel();
-        puedeComprar = new javax.swing.JLabel();
         Encarcelado = new javax.swing.JTextField();
         Especulador = new javax.swing.JTextField();
         propiedades = new javax.swing.JPanel();
+
+        encarcelado.setText("Encarcelado:");
+
+        saldo.setText("Saldo:");
+
+        especulador.setText("Especualdor:");
+
+        nombre.setText("Nombre:");
 
         Nombre.setText("Nombre");
         Nombre.setEnabled(false);
@@ -76,12 +84,6 @@ public class JugadorPanel extends javax.swing.JPanel {
                 SaldoActionPerformed(evt);
             }
         });
-
-        numCasillaActual.setText("numCasillaActual");
-        numCasillaActual.setEnabled(false);
-
-        puedeComprar.setText("puedeComprar");
-        puedeComprar.setEnabled(false);
 
         Encarcelado.setText("Encarcelado");
         Encarcelado.setEnabled(false);
@@ -104,34 +106,47 @@ public class JugadorPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(propiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numCasillaActual)
-                    .addComponent(puedeComprar)
-                    .addComponent(Encarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(especulador)
+                            .addComponent(encarcelado)
+                            .addComponent(nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saldo, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Saldo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Encarcelado, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(propiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombre)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saldo)
+                    .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numCasillaActual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(puedeComprar)
-                .addGap(18, 18, 18)
-                .addComponent(Encarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Encarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(encarcelado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(propiedades, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(especulador))
+                .addGap(68, 68, 68)
+                .addComponent(propiedades, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -154,8 +169,10 @@ public class JugadorPanel extends javax.swing.JPanel {
     private javax.swing.JTextField Especulador;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField Saldo;
-    private javax.swing.JLabel numCasillaActual;
+    private javax.swing.JLabel encarcelado;
+    private javax.swing.JLabel especulador;
+    private javax.swing.JLabel nombre;
     private javax.swing.JPanel propiedades;
-    private javax.swing.JLabel puedeComprar;
+    private javax.swing.JLabel saldo;
     // End of variables declaration//GEN-END:variables
 }

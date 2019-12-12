@@ -15,15 +15,9 @@ public class PropiedadPanel extends javax.swing.JPanel {
     public void setPropiedad(TituloPropiedad titulo){
         tituloPropiedad = titulo;
         this.Nombre.setText(this.tituloPropiedad.getNombre());
-        this.alquilerBase.setText(Float.toString(this.tituloPropiedad.getAlquilerBase()));
-        this.factorRevalorización.setText(Float.toString(this.tituloPropiedad.getFactorRevalorización()));
-        this.hipotecaBase.setText(Float.toString(this.tituloPropiedad.getHipotecaBase()));
-        this.hipotecado.setText(Boolean.toString(this.tituloPropiedad.getHipotecado()));
+        this.Hipotecada.setText(Boolean.toString(this.tituloPropiedad.getHipotecado()));
         this.numCasas.setText(Integer.toString(this.tituloPropiedad.getNumCasas()));
         this.numHoteles.setText(Integer.toString(this.tituloPropiedad.getNumHoteles()));
-        this.precioCompra.setText(Float.toString(this.tituloPropiedad.getPrecioCompra()));
-        this.precioEdificar.setText(Float.toString(this.tituloPropiedad.getPrecioEdificar()));
-        this.propietario.setText(this.tituloPropiedad.getPropietario().getNombre());
         this.repaint();
     }
 
@@ -36,35 +30,14 @@ public class PropiedadPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        alquilerBase = new javax.swing.JLabel();
-        factorRevalorización = new javax.swing.JLabel();
-        hipotecaBase = new javax.swing.JLabel();
-        precioCompra = new javax.swing.JLabel();
-        precioEdificar = new javax.swing.JLabel();
-        propietario = new javax.swing.JLabel();
         Nombre = new javax.swing.JTextField();
         numCasas = new javax.swing.JTextField();
         numHoteles = new javax.swing.JTextField();
-        hipotecado = new javax.swing.JTextField();
-
-        alquilerBase.setText("alquilerBase");
-        alquilerBase.setEnabled(false);
-        alquilerBase.setFocusable(false);
-
-        factorRevalorización.setText("factorRevalorización");
-        factorRevalorización.setEnabled(false);
-
-        hipotecaBase.setText("hipotecaBase");
-        hipotecaBase.setEnabled(false);
-
-        precioCompra.setText("precioCompra");
-        precioCompra.setEnabled(false);
-
-        precioEdificar.setText("precioEdificar");
-        precioEdificar.setEnabled(false);
-
-        propietario.setText("propietario");
-        propietario.setEnabled(false);
+        Hipotecada = new javax.swing.JTextField();
+        nombre = new javax.swing.JLabel();
+        hipotecada = new javax.swing.JLabel();
+        nCasas = new javax.swing.JLabel();
+        nHoteles = new javax.swing.JLabel();
 
         Nombre.setText("Nombre");
 
@@ -72,65 +45,67 @@ public class PropiedadPanel extends javax.swing.JPanel {
 
         numHoteles.setText("NumHoteles");
 
-        hipotecado.setText("Hipotecado");
+        Hipotecada.setText("Hipotecada");
+
+        nombre.setText("Nombre:");
+
+        hipotecada.setText("Hipotecada:");
+
+        nCasas.setText("Número Casas:");
+
+        nHoteles.setText("Número Hoteles:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hipotecado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre)
+                    .addComponent(hipotecada)
+                    .addComponent(nCasas)
+                    .addComponent(nHoteles))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numCasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(propietario)
-                    .addComponent(precioEdificar)
-                    .addComponent(precioCompra)
-                    .addComponent(hipotecaBase)
-                    .addComponent(factorRevalorización)
-                    .addComponent(alquilerBase))
-                .addContainerGap(168, Short.MAX_VALUE))
+                    .addComponent(Hipotecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(alquilerBase)
-                .addGap(28, 28, 28)
-                .addComponent(factorRevalorización)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hipotecaBase)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hipotecado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(precioCompra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(precioEdificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numCasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(propietario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Hipotecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hipotecada))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numCasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nCasas))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nHoteles))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Hipotecada;
     private javax.swing.JTextField Nombre;
-    private javax.swing.JLabel alquilerBase;
-    private javax.swing.JLabel factorRevalorización;
-    private javax.swing.JLabel hipotecaBase;
-    private javax.swing.JTextField hipotecado;
+    private javax.swing.JLabel hipotecada;
+    private javax.swing.JLabel nCasas;
+    private javax.swing.JLabel nHoteles;
+    private javax.swing.JLabel nombre;
     private javax.swing.JTextField numCasas;
     private javax.swing.JTextField numHoteles;
-    private javax.swing.JLabel precioCompra;
-    private javax.swing.JLabel precioEdificar;
-    private javax.swing.JLabel propietario;
     // End of variables declaration//GEN-END:variables
 }
