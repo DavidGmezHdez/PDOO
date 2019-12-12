@@ -18,30 +18,32 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="especulador" min="-2" max="-2" attributes="0"/>
-                          <Component id="encarcelado" min="-2" max="-2" attributes="0"/>
-                          <Component id="nombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="saldo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Especulador" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Saldo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Encarcelado" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                       <Component id="propiedades" min="-2" pref="126" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="saldo" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="nombre" min="-2" max="-2" attributes="0"/>
+                                  <Component id="encarcelado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="especulador" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Encarcelado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Especulador" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Saldo" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="Nombre" min="-2" pref="97" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,7 +90,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="especulador">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Especualdor:"/>
+        <Property name="text" type="java.lang.String" value="Especulador:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="nombre">

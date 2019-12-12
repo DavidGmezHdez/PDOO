@@ -1,6 +1,8 @@
 package GUI;
 
 import Civitas.CivitasJuego;
+import Civitas.OperacionesJuego;
+import Civitas.GestionesInmobiliarias;
 
 public class Controlador {
 
@@ -11,7 +13,7 @@ public class Controlador {
         this.juego = juego;
         this.vista = vista;
     }
-/*
+
     void juega() {
         OperacionesJuego operacion;
         Respuestas resp;
@@ -19,11 +21,12 @@ public class Controlador {
         int numProp;
         int indGest;
         
-        vista.setCivitasJuego(juego);
+        //vista.setCivitasJuego(juego);
+        vista.setCivitas(juego);
         
         while(!this.juego.finalDelJuego()){
             vista.actualizarVista();
-            vista.pausa();
+            //vista.pausa();
             operacion = juego.siguientePaso();
 
             if (operacion != OperacionesJuego.PASAR_TURNO)
@@ -38,7 +41,7 @@ public class Controlador {
                         }
                         juego.siguientePasoCompletado(operacion);
                         break;
-                    case GESTIONAR:
+                    /*case GESTIONAR:
                         vista.gestionar();
                         indGest = vista.getGestion();
                         numProp = vista.getPropiedad();
@@ -76,11 +79,11 @@ public class Controlador {
                                 break;
                         }
                         juego.siguientePasoCompletado(operacion);
-                        break;
+                        break;*/
                     }
                 }
             }
             juego.ranking().toString();
     }
-*/
+
 }

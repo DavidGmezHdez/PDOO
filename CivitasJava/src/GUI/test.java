@@ -12,6 +12,7 @@ public class test {
         Dado.createInstance(vista);
         
         Dado dado = Dado.getInstance();
+        dado.setDebug(true);
         
         CapturaNombres capturador = new CapturaNombres(vista,true);
         
@@ -24,6 +25,8 @@ public class test {
         vista.setCivitas(juego);
         
         vista.actualizarVista();
+        
+        //controlador.juega();
     }
 
 }

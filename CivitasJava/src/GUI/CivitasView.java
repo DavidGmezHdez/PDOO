@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
+
 import Civitas.CivitasJuego;
 import Civitas.OperacionesJuego;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class CivitasView extends javax.swing.JFrame {
 
@@ -20,8 +18,8 @@ public class CivitasView extends javax.swing.JFrame {
         initComponents();
         jugadorPanel = new JugadorPanel();
         this.contenedorVistaJugador.add(jugadorPanel);
-        this.repaint();
-        this.revalidate();
+        repaint();
+        revalidate();
     }
 
     
@@ -31,17 +29,20 @@ public class CivitasView extends javax.swing.JFrame {
     }
     
     public void actualizarVista(){
-        this.jugadorPanel.setJugador(this.juego.getJugadorActual());
+        this.jugadorPanel.setJugador(juego.getJugadorActual());
+        this.jugadorPanel.setVisible(true);
+        
         this.casillaActual.setText(this.juego.getCasillaActual().toString());
         this.Ranking.setText((this.juego.ranking()).toString());
         this.Ranking.setVisible(this.juego.finalDelJuego());
-        //mostrarSiguienteOperacion(this.juego.siguientePaso());
+        mostrarSiguienteOperacion(this.juego.siguientePaso());
         repaint();
         revalidate();
     }
     
     public void mostrarSiguienteOperacion(OperacionesJuego operacion){
         this.siguienteOperacion.setText(operacion.toString());
+        this.siguienteOperacion.setVisible(true);
         actualizarVista();
     }
     
@@ -52,7 +53,19 @@ public class CivitasView extends javax.swing.JFrame {
         gestionarD.revalidate();
         this.gestionarD.setVisible(true);
     }
-    
+
+    public void mostrarEventos() {
+        DiarioDialog diarioD = new DiarioDialog(this); //crea la ventana del diario
+    }
+
+    Respuestas comprar() {
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres comprar la calle actual?",
+                "Compra", JOptionPane.YES_NO_OPTION);
+        return (Respuestas.values()[opcion]);
+    }
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,61 +77,64 @@ public class CivitasView extends javax.swing.JFrame {
 
         CivitasView = new javax.swing.JLabel();
         contenedorVistaJugador = new javax.swing.JPanel();
-        casillaActual = new javax.swing.JTextField();
         siguienteOperacion = new javax.swing.JTextField();
         Ranking = new javax.swing.JTextField();
+        casillaActual = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setEnabled(false);
 
         CivitasView.setText("CivitasView");
         CivitasView.setEnabled(false);
 
-        casillaActual.setText("CasillaActual");
+        siguienteOperacion.setText("SiguienteOperacion");
+
+        Ranking.setText("Ranking");
+
+        casillaActual.setText("casillaActual");
         casillaActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casillaActualActionPerformed(evt);
             }
         });
 
-        siguienteOperacion.setText("SiguienteOperacion");
-
-        Ranking.setText("Ranking");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(casillaActual)
-                    .addComponent(Ranking)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(siguienteOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 342, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
             .addGroup(layout.createSequentialGroup()
-                .addGap(324, 324, 324)
-                .addComponent(CivitasView)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(siguienteOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Ranking)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(CivitasView)
+                                .addGap(95, 95, 95))
+                            .addComponent(casillaActual))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(CivitasView)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CivitasView)
-                        .addGap(68, 68, 68)
-                        .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
                         .addComponent(Ranking, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(siguienteOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(casillaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(casillaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 

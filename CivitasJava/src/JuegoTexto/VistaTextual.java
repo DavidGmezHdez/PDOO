@@ -2,7 +2,7 @@ package JuegoTexto;
 import Civitas.CivitasJuego;
 import Civitas.Diario;
 import Civitas.OperacionesJuego;
-import Civitas.Respuestas;
+import GUI.Respuestas;
 import Civitas.SalidasCarcel;
 import java.util.ArrayList;
 import java.util.Arrays;

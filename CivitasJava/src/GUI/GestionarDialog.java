@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
+
 import Civitas.Jugador;
 import Civitas.GestionesInmobiliarias;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author david
- */
 public class GestionarDialog extends javax.swing.JDialog {
     private int gestionElegida = -1, propiedadElegida = -1;
     /**

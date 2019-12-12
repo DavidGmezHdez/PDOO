@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
 
 import Civitas.Jugador;
 import Civitas.TituloPropiedad;
 import java.util.ArrayList;
 
-/**
- *
- * @author david
- */
 public class JugadorPanel extends javax.swing.JPanel {
 
     Jugador jugador;
@@ -25,12 +17,12 @@ public class JugadorPanel extends javax.swing.JPanel {
     
     public void setJugador(Jugador jugador){
         this.jugador = jugador;
-        this.Nombre.setText(this.jugador.getNombre());
-        this.Saldo.setText(Float.toString(this.jugador.getSaldo()));
-        this.Encarcelado.setText(Boolean.toString(this.jugador.isEncarcelado()));
-        this.Especulador.setText(Boolean.toString(this.jugador.getEspeculador()));
-        rellenaPropiedades(this.jugador.getPropiedades());
-        this.repaint();
+        this.Nombre.setText(jugador.getNombre());
+        this.Saldo.setText(Float.toString(jugador.getSaldo()));
+        this.Encarcelado.setText(Boolean.toString(jugador.isEncarcelado()));
+        this.Especulador.setText(Boolean.toString(jugador.getEspeculador()));
+        rellenaPropiedades(jugador.getPropiedades());
+        repaint();
     }
     
     private void rellenaPropiedades(ArrayList<TituloPropiedad> lista){
@@ -70,7 +62,7 @@ public class JugadorPanel extends javax.swing.JPanel {
 
         saldo.setText("Saldo:");
 
-        especulador.setText("Especualdor:");
+        especulador.setText("Especulador:");
 
         nombre.setText("Nombre:");
 
@@ -108,23 +100,24 @@ public class JugadorPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(especulador)
-                            .addComponent(encarcelado)
-                            .addComponent(nombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(saldo, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Saldo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Encarcelado, javax.swing.GroupLayout.Alignment.LEADING))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(144, 144, 144)
-                        .addComponent(propiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(propiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saldo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombre)
+                                    .addComponent(encarcelado)
+                                    .addComponent(especulador))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Encarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Especulador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
