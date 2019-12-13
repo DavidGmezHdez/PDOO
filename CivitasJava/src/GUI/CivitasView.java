@@ -11,7 +11,7 @@ public class CivitasView extends javax.swing.JFrame {
 
     CivitasJuego juego;
     JugadorPanel jugadorPanel;
-    GestionarDialog gestionarD;
+    GestionarDialog gestionarD = new GestionarDialog(this,true);
     /**
      * Creates new form CivitasView
      */
@@ -36,7 +36,7 @@ public class CivitasView extends javax.swing.JFrame {
         this.casillaActual.setText(this.juego.getCasillaActual().toString());
         this.Ranking.setText((this.juego.ranking()).toString());
         this.Ranking.setVisible(this.juego.finalDelJuego());
-        //mostrarSiguienteOperacion(this.juego.siguientePaso());
+        mostrarSiguienteOperacion(this.juego.siguientePaso());
         repaint();
         revalidate();
     }
@@ -44,7 +44,9 @@ public class CivitasView extends javax.swing.JFrame {
     public void mostrarSiguienteOperacion(OperacionesJuego operacion){
         this.siguienteOperacion.setText(operacion.toString());
         this.siguienteOperacion.setVisible(true);
-        actualizarVista();
+        //actualizarVista();
+         repaint();
+        revalidate();
     }
     
     public void gestionar(){
@@ -71,6 +73,15 @@ public class CivitasView extends javax.swing.JFrame {
         "Salir de la cárcel", JOptionPane.DEFAULT_OPTION,
         JOptionPane.QUESTION_MESSAGE,null, opciones, opciones[0] );
         return SalidasCarcel.values()[respuesta];
+    }
+    
+    
+    public int getGestion(){
+        return this.gestionarD.getGestionElegida();
+    }
+    
+    public int getPropiedad(){
+        return this.gestionarD.getPropiedadElegida();
     }
 
 

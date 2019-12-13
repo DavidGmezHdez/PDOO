@@ -3,6 +3,7 @@ package GUI;
 import Civitas.CivitasJuego;
 import Civitas.OperacionesJuego;
 import Civitas.GestionesInmobiliarias;
+import Civitas.OperacionInmobiliaria;
 
 public class Controlador {
 
@@ -41,7 +42,7 @@ public class Controlador {
                         }
                         juego.siguientePasoCompletado(operacion);
                         break;
-                    /*case GESTIONAR:
+                    case GESTIONAR:
                         vista.gestionar();
                         indGest = vista.getGestion();
                         numProp = vista.getPropiedad();
@@ -79,7 +80,7 @@ public class Controlador {
                                 break;
                         }
                         juego.siguientePasoCompletado(operacion);
-                        break;*/
+                        break;
                     }
                 }
             }
