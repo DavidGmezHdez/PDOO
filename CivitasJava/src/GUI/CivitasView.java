@@ -3,6 +3,7 @@ package GUI;
 
 import Civitas.CivitasJuego;
 import Civitas.OperacionesJuego;
+import Civitas.SalidasCarcel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -35,7 +36,7 @@ public class CivitasView extends javax.swing.JFrame {
         this.casillaActual.setText(this.juego.getCasillaActual().toString());
         this.Ranking.setText((this.juego.ranking()).toString());
         this.Ranking.setVisible(this.juego.finalDelJuego());
-        mostrarSiguienteOperacion(this.juego.siguientePaso());
+        //mostrarSiguienteOperacion(this.juego.siguientePaso());
         repaint();
         revalidate();
     }
@@ -62,6 +63,14 @@ public class CivitasView extends javax.swing.JFrame {
         int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres comprar la calle actual?",
                 "Compra", JOptionPane.YES_NO_OPTION);
         return (Respuestas.values()[opcion]);
+    }
+    
+    SalidasCarcel salirCarcel(){
+        String[] opciones = {"PAGANDO","TIRANDO"};
+        int respuesta = JOptionPane.showOptionDialog(null, "¿Cómo quieres salir de la cárcel?",
+        "Salir de la cárcel", JOptionPane.DEFAULT_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null, opciones, opciones[0] );
+        return SalidasCarcel.values()[respuesta];
     }
 
 

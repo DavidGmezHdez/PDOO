@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class JugadorPanel extends javax.swing.JPanel {
 
-    Jugador jugador;
+    public Jugador jugador;
     /**
      * Creates new form JugadorPanel
      */
@@ -15,17 +15,18 @@ public class JugadorPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void setJugador(Jugador jugador){
-        this.jugador = jugador;
+    public void setJugador(Jugador jug){
+        this.jugador = jug;
         this.Nombre.setText(jugador.getNombre());
         this.Saldo.setText(Float.toString(jugador.getSaldo()));
         this.Encarcelado.setText(Boolean.toString(jugador.isEncarcelado()));
         this.Especulador.setText(Boolean.toString(jugador.getEspeculador()));
         rellenaPropiedades(jugador.getPropiedades());
         repaint();
+        revalidate();
     }
     
-    private void rellenaPropiedades(ArrayList<TituloPropiedad> lista){
+    public void rellenaPropiedades(ArrayList<TituloPropiedad> lista){
         this.propiedades.removeAll();
         for(TituloPropiedad t:lista){
             PropiedadPanel vistaPropiedad = new PropiedadPanel();
