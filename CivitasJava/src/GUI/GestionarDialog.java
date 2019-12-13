@@ -41,82 +41,17 @@ public class GestionarDialog extends javax.swing.JDialog {
     
     public void setPropiedades(Jugador jugador){
         DefaultListModel propiedades = new DefaultListModel<>(); //datos para la lista
-        ArrayList<String>  nombresPropiedades = new ArrayList<>();
+        ArrayList<String>  nombrePropiedades = new ArrayList<>();
         
-        switch(this.gestionElegida){
-            case 1:
-                nombresPropiedades.clear();
-                for(int i=0;i<jugador.getPropiedades().size();i++){
-                    if(!nombresPropiedades.contains(jugador.getPropiedades().get(i).getNombre()))
-                        nombresPropiedades.add(jugador.getPropiedades().get(i).getNombre());
-                }
-              
-                for(String s:nombresPropiedades){
-                    propiedades.addElement(s);
-                }
-                
-                this.listaPropiedades.setModel(propiedades);
-                break;
-            
-            case 2:
-                nombresPropiedades.clear();
-                for(int i=0;i<jugador.getPropiedades().size();i++){
-                    if(!jugador.getPropiedades().get(i).getHipotecado() 
-                            && !nombresPropiedades.contains(jugador.getPropiedades().get(i).getNombre()))
-                        nombresPropiedades.add(jugador.getPropiedades().get(i).getNombre());
-                }
-              
-                for(String s:nombresPropiedades){
-                    propiedades.addElement(s);
-                }
-                
-                this.listaPropiedades.setModel(propiedades);
-                break;
-            
-            case 3:
-                nombresPropiedades.clear();
-                for(int i=0;i<jugador.getPropiedades().size();i++){
-                    if(jugador.getPropiedades().get(i).getHipotecado() 
-                            && !nombresPropiedades.contains(jugador.getPropiedades().get(i).getNombre()))
-                        nombresPropiedades.add(jugador.getPropiedades().get(i).getNombre());
-                }
-              
-                for(String s:nombresPropiedades){
-                    propiedades.addElement(s);
-                }
-                
-                this.listaPropiedades.setModel(propiedades);
-                break;
-            case 4:
-                nombresPropiedades.clear();
-                for(int i=0;i<jugador.getPropiedades().size();i++){
-                    if(jugador.puedoEdificarCasa(jugador.getPropiedades().get(i)) 
-                            && !nombresPropiedades.contains(jugador.getPropiedades().get(i).getNombre()))
-                        nombresPropiedades.add(jugador.getPropiedades().get(i).getNombre());
-                }
-              
-                for(String s:nombresPropiedades){
-                    propiedades.addElement(s);
-                }
-                
-                this.listaPropiedades.setModel(propiedades);
-                break;
-            
-            case 5:
-                nombresPropiedades.clear();
-                for(int i=0;i<jugador.getPropiedades().size();i++){
-                    if(jugador.puedoEdificarHotel(jugador.getPropiedades().get(i)) 
-                            && !nombresPropiedades.contains(jugador.getPropiedades().get(i).getNombre()))
-                        nombresPropiedades.add(jugador.getPropiedades().get(i).getNombre());
-                }
-              
-                for(String s:nombresPropiedades){
-                    propiedades.addElement(s);
-                }
-                
-                this.listaPropiedades.setModel(propiedades);
-                break;      
+        for(int i=0;i<jugador.getPropiedades().size();i++){
+            nombrePropiedades.add(jugador.getPropiedades().get(i).getNombre());
         }
+        
+        for(String s:nombrePropiedades){
+            propiedades.addElement(s);
+        }
+        
+        this.listaPropiedades.setModel(propiedades);
     }
     
     

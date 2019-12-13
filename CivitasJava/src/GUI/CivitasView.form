@@ -24,14 +24,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="siguienteOperacion" min="-2" pref="411" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Ranking" alignment="0" max="32767" attributes="0"/>
@@ -42,9 +42,9 @@
                           </Group>
                           <Component id="casillaActual" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="contenedorVistaJugador" min="-2" pref="234" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
           </Group>
@@ -63,10 +63,11 @@
                       <Component id="siguienteOperacion" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="casillaActual" min="-2" pref="114" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="155" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="contenedorVistaJugador" min="-2" pref="260" max="-2" attributes="0"/>
+                  <Component id="contenedorVistaJugador" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="106" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
