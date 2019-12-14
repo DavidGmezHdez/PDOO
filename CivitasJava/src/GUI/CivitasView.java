@@ -36,6 +36,7 @@ public class CivitasView extends javax.swing.JFrame {
         this.casillaActual.setText(this.juego.getCasillaActual().toString());
         this.Ranking.setText((this.juego.ranking()).toString());
         this.Ranking.setVisible(this.juego.finalDelJuego());
+        
         mostrarSiguienteOperacion(this.juego.siguientePaso());
         mostrarEventos();
         repaint();
