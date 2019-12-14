@@ -2,8 +2,10 @@
 require_relative 'jugador.rb'
 module Civitas
   class Especulador < Jugador
+    
     attr_accessor :fianza
     @@FACTOR_ESPECULADOR = 2
+    
     def self.nuevo_especulador(jugador,fianza)
       @fianza
       especulador = super(jugador)
