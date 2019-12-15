@@ -24,14 +24,14 @@ module Civitas
       @gestor_estados = GestorEstados.new
       @estado = @gestor_estados.estado_inicial
       
-      @mazo = MazoSorpresas.new(true)
+      @mazo = MazoSorpresas.new(false)
       @tablero = Tablero.new(15)
       
      
       inicializar_tablero(@mazo)
       inicializar_mazo_sorpresas(@tablero)
       
-      @@dado.debug = true
+      @@dado.debug = false
       
     end
     
