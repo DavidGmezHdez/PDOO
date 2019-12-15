@@ -10,6 +10,7 @@ public class Especulador extends Jugador {
         for(int i=0;i<super.getPropiedades().size();i++){
             super.getPropiedades().get(i).actualizaPropietarioPorConversion(this);
         }
+        super.especulador = true;
     }
     
     boolean pagarFianza(){

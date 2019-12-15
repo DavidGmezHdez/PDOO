@@ -3,9 +3,11 @@ import java.util.ArrayList;
 
 public class Casilla {
     private String nombre;
+    public int tipo = 0;
     
     Casilla(String nombre) {
         this.nombre = nombre;
+        
     }
     
     void informe(int iactual, ArrayList<Jugador> todos){
@@ -27,6 +29,10 @@ public class Casilla {
 
     void recibeJugador(int iactual, ArrayList<Jugador> todos) {
         informe(iactual, todos);
+    }
+    
+    public int getTipo(){
+        return this.tipo;
     }
         
     @Override

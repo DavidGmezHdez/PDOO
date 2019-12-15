@@ -8,6 +8,7 @@ public class CasillaCalle extends Casilla {
     CasillaCalle(TituloPropiedad titulo){
         super(titulo.getNombre());
         this.titulo = titulo;
+        super.tipo = 1;
     }
     
     TituloPropiedad getTituloPropiedad(){

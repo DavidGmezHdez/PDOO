@@ -30,18 +30,35 @@ public class PropiedadPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Nombre = new javax.swing.JTextField();
-        numCasas = new javax.swing.JTextField();
-        numHoteles = new javax.swing.JTextField();
-        Hipotecada = new javax.swing.JTextField();
         nombre = new javax.swing.JLabel();
+        Nombre = new javax.swing.JTextField();
         hipotecada = new javax.swing.JLabel();
+        Hipotecada = new javax.swing.JTextField();
         nCasas = new javax.swing.JLabel();
+        numCasas = new javax.swing.JTextField();
         nHoteles = new javax.swing.JLabel();
+        numHoteles = new javax.swing.JTextField();
+
+        nombre.setText("Nombre:");
+        add(nombre);
 
         Nombre.setText("Nombre");
+        add(Nombre);
+
+        hipotecada.setText("Hipotecada:");
+        add(hipotecada);
+
+        Hipotecada.setText("Hipotecada");
+        add(Hipotecada);
+
+        nCasas.setText("Número Casas:");
+        add(nCasas);
 
         numCasas.setText("NumCasas");
+        add(numCasas);
+
+        nHoteles.setText("Número Hoteles:");
+        add(nHoteles);
 
         numHoteles.setText("NumHoteles");
         numHoteles.addActionListener(new java.awt.event.ActionListener() {
@@ -49,62 +66,7 @@ public class PropiedadPanel extends javax.swing.JPanel {
                 numHotelesActionPerformed(evt);
             }
         });
-
-        Hipotecada.setText("Hipotecada");
-
-        nombre.setText("Nombre:");
-
-        hipotecada.setText("Hipotecada:");
-
-        nCasas.setText("Número Casas:");
-
-        nHoteles.setText("Número Hoteles:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nHoteles)
-                            .addComponent(nCasas))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numHoteles, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .addComponent(numCasas)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre)
-                            .addComponent(hipotecada))
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Nombre)
-                            .addComponent(Hipotecada, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Hipotecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hipotecada))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numCasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nCasas))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nHoteles))
-                .addContainerGap(112, Short.MAX_VALUE))
-        );
+        add(numHoteles);
     }// </editor-fold>//GEN-END:initComponents
 
     private void numHotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numHotelesActionPerformed

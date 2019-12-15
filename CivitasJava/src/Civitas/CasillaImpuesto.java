@@ -8,6 +8,7 @@ public class CasillaImpuesto extends Casilla {
     CasillaImpuesto(String nombre, float cantidad){
         super(nombre);
         this.importe = cantidad;
+        super.tipo = 2;
     }
     
     @Override
