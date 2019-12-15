@@ -34,10 +34,10 @@ public class PropiedadPanel extends javax.swing.JPanel {
         Nombre = new javax.swing.JTextField();
         hipotecada = new javax.swing.JLabel();
         Hipotecada = new javax.swing.JTextField();
-        nCasas = new javax.swing.JLabel();
-        numCasas = new javax.swing.JTextField();
         nHoteles = new javax.swing.JLabel();
         numHoteles = new javax.swing.JTextField();
+        nCasas = new javax.swing.JLabel();
+        numCasas = new javax.swing.JTextField();
 
         nombre.setText("Nombre:");
         add(nombre);
@@ -51,12 +51,6 @@ public class PropiedadPanel extends javax.swing.JPanel {
         Hipotecada.setText("Hipotecada");
         add(Hipotecada);
 
-        nCasas.setText("Número Casas:");
-        add(nCasas);
-
-        numCasas.setText("NumCasas");
-        add(numCasas);
-
         nHoteles.setText("Número Hoteles:");
         add(nHoteles);
 
@@ -67,6 +61,12 @@ public class PropiedadPanel extends javax.swing.JPanel {
             }
         });
         add(numHoteles);
+
+        nCasas.setText("Número Casas:");
+        add(nCasas);
+
+        numCasas.setText("NumCasas");
+        add(numCasas);
     }// </editor-fold>//GEN-END:initComponents
 
     private void numHotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numHotelesActionPerformed

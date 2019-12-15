@@ -181,7 +181,10 @@ public class GestionarDialog extends javax.swing.JDialog {
     private void RealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarActionPerformed
         this.gestionElegida = this.listaGestiones.getSelectedIndex();
         this.propiedadElegida = this.listaPropiedades.getSelectedIndex();
-        this.dispose();
+        //this.dispose();
+        if (gestionElegida != -1)
+            this.dispose();                               
+    
     }//GEN-LAST:event_RealizarActionPerformed
 
     /**

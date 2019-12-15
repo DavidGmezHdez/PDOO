@@ -4,6 +4,7 @@ package GUI;
 import Civitas.CivitasJuego;
 import Civitas.OperacionesJuego;
 import Civitas.SalidasCarcel;
+import Civitas.Diario;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -65,7 +66,9 @@ public class CivitasView extends javax.swing.JFrame {
     }
 
     public void mostrarEventos() {
-        DiarioDialog diarioD = new DiarioDialog(this); //crea la ventana del diario
+        if (Diario.getInstance().eventosPendientes()) {
+            DiarioDialog diarioD = new DiarioDialog(this); //crea la ventana del diario
+        }
     }
 
     Respuestas comprar() {
