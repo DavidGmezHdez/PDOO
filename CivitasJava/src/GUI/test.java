@@ -12,7 +12,7 @@ public class test {
         Dado.createInstance(vista);
         
         Dado dado = Dado.getInstance();
-        dado.setDebug(true);
+        dado.setDebug(false);
         
         CapturaNombres capturador = new CapturaNombres(vista,true);
         
