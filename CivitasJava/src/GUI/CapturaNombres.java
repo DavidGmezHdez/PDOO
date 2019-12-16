@@ -143,11 +143,10 @@ public class CapturaNombres extends javax.swing.JDialog {
         this.dispose();
         nombres.add (nombre2.getText());
         this.dispose();
-        /*nombres.add (nombre3.getText());
+        nombres.add (nombre3.getText());
         this.dispose();
         nombres.add (nombre4.getText());
         this.dispose();
-        */
     }//GEN-LAST:event_jugarActionPerformed
 
     /**
